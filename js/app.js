@@ -414,7 +414,10 @@ function renderInteractiveReviewer(container, questions) {
   const restartBtn = document.createElement('button');
   restartBtn.className = 'quiz-restart-btn';
   restartBtn.textContent = 'Restart Quiz';
-  restartBtn.onclick = () => renderInteractiveReviewer(container, questions);
+  restartBtn.onclick = () => {
+    renderInteractiveReviewer(container, questions);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   container.appendChild(restartBtn);
 }
 
@@ -495,7 +498,10 @@ function renderInteractiveIdent(container, questions) {
   const restartBtn = document.createElement('button');
   restartBtn.className = 'quiz-restart-btn';
   restartBtn.textContent = 'Restart Quiz';
-  restartBtn.onclick = () => renderInteractiveIdent(container, questions);
+  restartBtn.onclick = () => {
+    renderInteractiveIdent(container, questions);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   container.appendChild(restartBtn);
 }
 

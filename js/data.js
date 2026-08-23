@@ -711,6 +711,206 @@ const SUBJECTS = [
                 "D. Implementation"
               ],
               correctIndex: 2
+            },
+            {
+              question: "31. Which SDLC model represents development and testing activities as two corresponding sides of a \"V\"?",
+              options: [
+                "A. Incremental Model",
+                "B. Evolutionary Model",
+                "C. V Model",
+                "D. Prototype Model"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "32. In the V Model, Requirement Analysis is paired with which testing activity?",
+              options: [
+                "A. Unit Testing",
+                "B. Integration Testing",
+                "C. System Testing",
+                "D. Acceptance Testing"
+              ],
+              correctIndex: 3
+            },
+            {
+              question: "33. Which SDLC model develops a system by adding functions through several versions until the final version is complete?",
+              options: [
+                "A. V Model",
+                "B. Incremental Model",
+                "C. Evolutionary Model",
+                "D. Waterfall Model"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "34. What distinguishes the Evolutionary Model from the Incremental Model?",
+              options: [
+                "A. It does not involve testing",
+                "B. Each version provides only one function",
+                "C. The development phase for the entire system is repeated several times",
+                "D. It requires a prototype before coding"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "35. What is the main purpose of prototyping?",
+              options: [
+                "A. To eliminate software testing",
+                "B. To understand the system and resolve risks or uncertainties",
+                "C. To replace requirements analysis",
+                "D. To produce the final system immediately"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "36. Who are associated with the development of Scrum?",
+              options: [
+                "A. Kent Beck and Erich Gamma",
+                "B. Ken Schwaber and Jeff Sutherland",
+                "C. Mary and Tom Poppendieck",
+                "D. Scott Ambler and Kent Beck"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "37. Which Agile methodology was established by Kent Beck and other engineers in the late 1990s?",
+              options: [
+                "A. Scrum",
+                "B. Lean Software Development",
+                "C. Extreme Programming (XP)",
+                "D. Agile Unified Process"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "38. In XP, what is a brief description of the functions or requirements needed by the customer?",
+              options: [
+                "A. Spike",
+                "B. User Story",
+                "C. Sprint Backlog",
+                "D. Burndown Chart"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "39. What is the primary purpose of a Spike in XP?",
+              options: [
+                "A. To release the final product",
+                "B. To estimate salaries of developers",
+                "C. To investigate difficult requirements or potential technical solutions",
+                "D. To replace acceptance testing"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "40. Which XP practice involves writing tests before writing the actual code?",
+              options: [
+                "A. Refactoring",
+                "B. Pair Programming",
+                "C. Test-Driven Development",
+                "D. Continuous Integration"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "41. Which XP practice removes duplication and unnecessary complexity from existing code?",
+              options: [
+                "A. Refactoring",
+                "B. Simple Design",
+                "C. Planning Game",
+                "D. Metaphor"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "42. Which of the following is NOT one of XP's five values?",
+              options: [
+                "A. Communication",
+                "B. Simplicity",
+                "C. Feedback",
+                "D. Transparency"
+              ],
+              correctIndex: 3
+            },
+            {
+              question: "43. Which XP value emphasizes accepting and responding to changes in requirements and technology?",
+              options: [
+                "A. Respect",
+                "B. Courage",
+                "C. Simplicity",
+                "D. Communication"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "44. What is the XP practice where two developers work together at one computer?",
+              options: [
+                "A. Collective Code Ownership",
+                "B. Pair Programming",
+                "C. Continuous Integration",
+                "D. On-Site Customer"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "45. Which XP practice means that all developers share responsibility for the source code?",
+              options: [
+                "A. Collective Code Ownership",
+                "B. Coding Standard",
+                "C. Simple Design",
+                "D. Planning Game"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "46. In Scrum, what is the repetitive development period that typically lasts 1 to 4 weeks?",
+              options: [
+                "A. Cycle",
+                "B. Sprint",
+                "C. Release",
+                "D. Iteration Review"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "47. Which Scrum deliverable contains the prioritized list of work to be done for the product?",
+              options: [
+                "A. Sprint Backlog",
+                "B. Burndown Chart",
+                "C. Product Backlog",
+                "D. User Story"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "48. Which Scrum meeting is normally limited to 15 minutes and focuses on project progress?",
+              options: [
+                "A. Sprint Review",
+                "B. Sprint Planning",
+                "C. Daily Scrum",
+                "D. Release Planning"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "49. Which Scrum artifact shows the amount of work remaining during a sprint?",
+              options: [
+                "A. Product Backlog",
+                "B. Sprint Backlog",
+                "C. Burndown Chart",
+                "D. User Story"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "50. What is the primary purpose of software reuse?",
+              options: [
+                "A. To avoid using existing software components",
+                "B. To increase development productivity by using existing software or software knowledge",
+                "C. To eliminate the need for software testing",
+                "D. To ensure every system is developed from scratch"
+              ],
+              correctIndex: 1
             }
           ],
           ident: [
@@ -1026,6 +1226,56 @@ const SUBJECTS = [
             question: "35. On what date and at what age was Rizal executed, and where?",
             options: ["A) December 30, 1896, age 35, at Bagumbayan Field (Luneta)", "B) December 28, 1896, age 34, at Fort Santiago", "C) November 3, 1896, age 35, at Dapitan", "D) February 17, 1896, age 35, at Calamba"],
             correctIndex: 0
+          },
+          {
+            question: "36. Rizal is remembered as a versatile genius recognized in many fields. Which of the following best reflects that range?",
+            options: ["A) Only a novelist and poet", "B) Architect, artist, scientist, inventor, and ophthalmic surgeon, among many other roles", "C) Only a doctor and linguist", "D) Only a farmer and businessman"],
+            correctIndex: 1
+          },
+          {
+            question: "37. Besides farming, fishing, and business, what medical service did Rizal provide in Dapitan?",
+            options: ["A) He ran a hospital", "B) He trained army medics", "C) He built a pharmacy chain", "D) He performed surgery only in Manila"],
+            correctIndex: 0
+          },
+          {
+            question: "38. What subjects did Rizal teach his students in Dapitan?",
+            options: ["A) Only Latin and Spanish", "B) Languages, arts, sciences, vocational skills, and self-defense", "C) Only surveying", "D) Only medicine"],
+            correctIndex: 1
+          },
+          {
+            question: "39. What scientific activity did Rizal engage in during his exile in Dapitan besides teaching and engineering projects?",
+            options: ["A) He collected biological specimens and corresponded with international scientists", "B) He conducted chemical weapons research", "C) He wrote medical textbooks for UST", "D) He ran a printing press"],
+            correctIndex: 0
+          },
+          {
+            question: "40. What ship brought Rizal back to Manila on November 3, 1896?",
+            options: ["A) The Talim", "B) The Colon", "C) The San Pablo", "D) The Don Juan"],
+            correctIndex: 1
+          },
+          {
+            question: "41. What major event had broken out shortly before Rizal's return to Manila in 1896?",
+            options: ["A) The Cavite Mutiny", "B) The Philippine Revolution (August 26, 1896)", "C) The Spanish-American War", "D) The Gomburza execution"],
+            correctIndex: 1
+          },
+          {
+            question: "42. Who served as Rizal's defense counsel during his mock court-martial?",
+            options: ["A) Don Luis Taviel de Andrade", "B) Andres Bonifacio", "C) Camilo de Polavieja", "D) Antonio de Morga"],
+            correctIndex: 0
+          },
+          {
+            question: "43. What charges was Rizal tried for in his mock court-martial?",
+            options: ["A) Treason and espionage", "B) Rebellion, sedition, and illegal association", "C) Heresy and blasphemy", "D) Smuggling and tax evasion"],
+            correctIndex: 1
+          },
+          {
+            question: "44. Who approved Rizal's death sentence, and when?",
+            options: ["A) Governor General Izquierdo, February 1872", "B) Governor General Camilo de Polavieja, December 28, 1896", "C) Governor General Polavieja, November 3, 1896", "D) King Alfonso XIII, January 1897"],
+            correctIndex: 1
+          },
+          {
+            question: "45. When did Rizal complete his studies in Philosophy and Letters with \"excellent\" marks, and at what age?",
+            options: ["A) June 21, 1884, age 23", "B) June 19, 1885, age 24", "C) May 3, 1882, age 21", "D) December 30, 1881, age 20"],
+            correctIndex: 1
           }
         ]
       }
