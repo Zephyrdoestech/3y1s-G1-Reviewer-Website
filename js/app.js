@@ -355,10 +355,69 @@ function renderExamContent() {
     </div>
 
     <div id="panel-notes"    class="tab-panel${currentTab === 'notes'    ? ' active' : ''}"><div class="prose">${exam.notes    || '<p>No notes yet.</p>'}</div></div>
-    <div id="panel-reviewer" class="tab-panel${currentTab === 'reviewer' ? ' active' : ''}"><div class="prose">${exam.reviewer || '<p>No reviewer yet.</p>'}</div></div>`;
+    <div id="panel-reviewer" class="tab-panel${currentTab === 'reviewer' ? ' active' : ''}"></div>`;
+
+  const reviewerPanel = $('panel-reviewer');
+  if (Array.isArray(exam.reviewer)) {
+    renderInteractiveReviewer(reviewerPanel, exam.reviewer);
+  } else {
+    reviewerPanel.innerHTML = `<div class="prose">${exam.reviewer || '<p>No reviewer yet.</p>'}</div>`;
+  }
 
   initRevealObserver();
 }
+
+// ── Interactive Reviewer Component ───────────────────────────
+function renderInteractiveReviewer(container, questions) {
+  container.innerHTML = '';
+  
+  questions.forEach((q, qIndex) => {
+    const qContainer = document.createElement('div');
+    qContainer.className = 'quiz-question-container';
+    
+    const qText = document.createElement('div');
+    qText.className = 'quiz-question-text';
+    qText.textContent = q.question;
+    qContainer.appendChild(qText);
+    
+    const optionsList = document.createElement('div');
+    optionsList.className = 'quiz-options-list';
+    
+    q.options.forEach((optText, optIndex) => {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option-btn';
+      btn.textContent = optText;
+      btn.onclick = () => handleQuizOptionClick(btn, optIndex, q.correctIndex, optionsList);
+      optionsList.appendChild(btn);
+    });
+    
+    qContainer.appendChild(optionsList);
+    container.appendChild(qContainer);
+  });
+  
+  const restartBtn = document.createElement('button');
+  restartBtn.className = 'quiz-restart-btn';
+  restartBtn.textContent = 'Restart Quiz';
+  restartBtn.onclick = () => renderInteractiveReviewer(container, questions);
+  container.appendChild(restartBtn);
+}
+
+function handleQuizOptionClick(clickedBtn, selectedIndex, correctIndex, optionsList) {
+  // Lock all options for this question
+  const allBtns = optionsList.querySelectorAll('.quiz-option-btn');
+  allBtns.forEach(btn => btn.disabled = true);
+  
+  if (selectedIndex === correctIndex) {
+    clickedBtn.classList.add('quiz-option-correct');
+  } else {
+    clickedBtn.classList.add('quiz-option-incorrect');
+    // Highlight the correct option too
+    if (allBtns[correctIndex]) {
+      allBtns[correctIndex].classList.add('quiz-option-correct');
+    }
+  }
+}
+
 
 function switchTab(tab) {
   currentTab = tab;

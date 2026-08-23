@@ -1041,3 +1041,90 @@ a:hover { text-decoration: underline; }
   .exam-badge { display: none; }
   .modal { padding: 24px 20px; max-width: 90vw; }
 }
+
+/* ── Interactive Quiz Component ── */
+.quiz-question-container {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.quiz-question-container:last-child {
+  border-bottom: none;
+  margin-bottom: 1rem;
+}
+
+.quiz-question-text {
+  font-weight: 600;
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quiz-option-btn {
+  text-align: left;
+  padding: 12px 16px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s var(--easing);
+}
+
+.quiz-option-btn:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+.quiz-option-btn.quiz-option-correct {
+  background: var(--success-light);
+  border-color: var(--success);
+  color: var(--success);
+  font-weight: 500;
+}
+
+.quiz-option-btn.quiz-option-incorrect {
+  background: var(--danger-light);
+  border-color: var(--danger);
+  color: var(--danger);
+  font-weight: 500;
+}
+
+.quiz-option-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.quiz-option-btn.quiz-option-correct:disabled,
+.quiz-option-btn.quiz-option-incorrect:disabled {
+  opacity: 1;
+}
+
+.quiz-restart-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s var(--easing);
+}
+
+.quiz-restart-btn:hover {
+  background: var(--bg-secondary);
+}
