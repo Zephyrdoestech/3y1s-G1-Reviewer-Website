@@ -1,0 +1,273 @@
+/* ============================================================
+   themes.css — Theme variable definitions
+   3rd Year 1st Sem Reviewer – G1
+
+   Architecture:
+     [data-theme="<id>"][data-mode="<light|dark>"]
+   6 total blocks: 3 themes × 2 modes.
+
+   Font loading: each theme block sets --font-sans and optionally
+   --font-display. The font @imports are conditional via the
+   :root[data-theme="..."] selector — browsers only download
+   the font files for the active theme.
+   ============================================================ */
+
+/* ── Google Fonts Imports ── */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+/* ── Theme: Folio ────────────────────────────────────────────
+   Editorial study aesthetic. Cool slate grays, emerald accent.
+   Sharp corners, flat surfaces. Ink-on-paper clarity for
+   long reading sessions. Geist Sans + system mono.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="folio"][data-mode="light"] {
+  --font-sans:     'Geist', system-ui, -apple-system, sans-serif;
+  --font-display:  'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Geist Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+  --bg:            #f7f7f8;
+  --bg-secondary:  #eeeff1;
+  --surface:       #ffffff;
+  --surface-alt:   #f2f3f5;
+  --border:        rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.15);
+  --text-primary:  #111113;
+  --text-secondary:#555560;
+  --text-muted:    #8e8e99;
+  --accent:        #10805a;
+  --accent-2:      #10805a;
+  --accent-light:  #e4f5ed;
+  --accent-hover:  #0b6847;
+  --success:       #10805a;
+  --success-light: #e4f5ed;
+  --warning:       #b05c0a;
+  --warning-light: #fef4e6;
+  --danger:        #c13d37;
+  --danger-light:  #fce8e7;
+  --badge-quiz:    #10805a;
+  --badge-mid:     #1a6b8a;
+  --badge-fin:     #7a3b8a;
+
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.06);
+  --shadow-lg:  0 4px 16px rgba(0,0,0,0.08);
+  --shadow-xl:  0 12px 40px rgba(0,0,0,0.10);
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+}
+
+[data-theme="folio"][data-mode="dark"] {
+  --font-sans:     'Geist', system-ui, -apple-system, sans-serif;
+  --font-display:  'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Geist Mono', 'Cascadia Code', 'Fira Code', monospace;
+
+  --bg:            #0c0c0e;
+  --bg-secondary:  #111114;
+  --surface:       #19191c;
+  --surface-alt:   #222226;
+  --border:        rgba(255, 255, 255, 0.07);
+  --border-strong: rgba(255, 255, 255, 0.13);
+  --text-primary:  #eaeaec;
+  --text-secondary:#9a9aa2;
+  --text-muted:    #5c5c66;
+  --accent:        #34d399;
+  --accent-2:      #34d399;
+  --accent-light:  #0d2a1f;
+  --accent-hover:  #4aeab0;
+  --success:       #34d399;
+  --success-light: #0d2a1f;
+  --warning:       #f0a040;
+  --warning-light: #2a1c08;
+  --danger:        #f06050;
+  --danger-light:  #2a100d;
+  --badge-quiz:    #34d399;
+  --badge-mid:     #40b8d8;
+  --badge-fin:     #c87ae0;
+
+  --shadow-sm:  0 1px 2px rgba(0,0,0,0.4);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.45);
+  --shadow-lg:  0 4px 16px rgba(0,0,0,0.50);
+  --shadow-xl:  0 12px 40px rgba(0,0,0,0.55);
+
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+}
+
+
+/* ── Theme: Oxide ────────────────────────────────────────────
+   Warm industrial. Terracotta/rust accent against warm stone.
+   Softer radii, tinted shadows. Feels like a well-worn
+   leather notebook. Outfit font, relaxed tracking.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="oxide"][data-mode="light"] {
+  --font-sans:     'Outfit', system-ui, -apple-system, sans-serif;
+  --font-display:  'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+
+  --bg:            #f4f1ec;
+  --bg-secondary:  #eae6df;
+  --surface:       #faf8f5;
+  --surface-alt:   #f0ece6;
+  --border:        rgba(100, 70, 40, 0.10);
+  --border-strong: rgba(100, 70, 40, 0.18);
+  --text-primary:  #2a2420;
+  --text-secondary:#6a5e54;
+  --text-muted:    #9e9488;
+  --accent:        #c0582a;
+  --accent-2:      #c0582a;
+  --accent-light:  #fbeee7;
+  --accent-hover:  #a84820;
+  --success:       #458040;
+  --success-light: #e8f4e6;
+  --warning:       #b87020;
+  --warning-light: #fef4e4;
+  --danger:        #b83a30;
+  --danger-light:  #fce8e6;
+  --badge-quiz:    #c0582a;
+  --badge-mid:     #307868;
+  --badge-fin:     #8a4a7a;
+
+  --shadow-sm:  0 1px 3px rgba(80,50,20,0.06);
+  --shadow-md:  0 3px 12px rgba(80,50,20,0.08);
+  --shadow-lg:  0 6px 24px rgba(80,50,20,0.10);
+  --shadow-xl:  0 16px 48px rgba(80,50,20,0.13);
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  22px;
+  --radius-xl:  32px;
+}
+
+[data-theme="oxide"][data-mode="dark"] {
+  --font-sans:     'Outfit', system-ui, -apple-system, sans-serif;
+  --font-display:  'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+
+  --bg:            #141110;
+  --bg-secondary:  #1a1614;
+  --surface:       #211d1a;
+  --surface-alt:   #2a2622;
+  --border:        rgba(255, 220, 180, 0.08);
+  --border-strong: rgba(255, 220, 180, 0.14);
+  --text-primary:  #efe8e0;
+  --text-secondary:#a89e94;
+  --text-muted:    #6a6058;
+  --accent:        #e8854a;
+  --accent-2:      #e8854a;
+  --accent-light:  #2a1a10;
+  --accent-hover:  #f09860;
+  --success:       #5aa855;
+  --success-light: #122210;
+  --warning:       #e0a040;
+  --warning-light: #2a1c08;
+  --danger:        #e05545;
+  --danger-light:  #2a100d;
+  --badge-quiz:    #e8854a;
+  --badge-mid:     #55b8a0;
+  --badge-fin:     #c87ae0;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.35);
+  --shadow-md:  0 3px 12px rgba(0,0,0,0.40);
+  --shadow-lg:  0 6px 24px rgba(0,0,0,0.45);
+  --shadow-xl:  0 16px 48px rgba(0,0,0,0.55);
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  22px;
+  --radius-xl:  32px;
+}
+
+
+/* ── Theme: Cobalt ───────────────────────────────────────────
+   High-contrast tech. Electric cobalt blue accent against
+   crisp neutral backgrounds. Medium radius, clean lines.
+   Feels like a modern developer tool. Space Grotesk font.
+   ─────────────────────────────────────────────────────────── */
+
+[data-theme="cobalt"][data-mode="light"] {
+  --font-sans:     'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-display:  'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+
+  --bg:            #f2f4f8;
+  --bg-secondary:  #e8ebf0;
+  --surface:       #ffffff;
+  --surface-alt:   #edf0f5;
+  --border:        rgba(20, 40, 80, 0.08);
+  --border-strong: rgba(20, 40, 80, 0.15);
+  --text-primary:  #101828;
+  --text-secondary:#4a5568;
+  --text-muted:    #8890a0;
+  --accent:        #2563eb;
+  --accent-2:      #2563eb;
+  --accent-light:  #e0eaff;
+  --accent-hover:  #1d4ed8;
+  --success:       #198754;
+  --success-light: #e0f5ea;
+  --warning:       #c87a1a;
+  --warning-light: #fef4e4;
+  --danger:        #cc3333;
+  --danger-light:  #fce8e8;
+  --badge-quiz:    #2563eb;
+  --badge-mid:     #0d9488;
+  --badge-fin:     #8b5cf6;
+
+  --shadow-sm:  0 1px 3px rgba(15,30,60,0.06);
+  --shadow-md:  0 4px 14px rgba(15,30,60,0.08);
+  --shadow-lg:  0 8px 28px rgba(15,30,60,0.10);
+  --shadow-xl:  0 18px 50px rgba(15,30,60,0.13);
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+}
+
+[data-theme="cobalt"][data-mode="dark"] {
+  --font-sans:     'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-display:  'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-mono:     'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+
+  --bg:            #0a0e18;
+  --bg-secondary:  #0f1322;
+  --surface:       #141828;
+  --surface-alt:   #1c2038;
+  --border:        rgba(140, 180, 255, 0.08);
+  --border-strong: rgba(140, 180, 255, 0.14);
+  --text-primary:  #e4e8f0;
+  --text-secondary:#8896b0;
+  --text-muted:    #4a5570;
+  --accent:        #5b92ff;
+  --accent-2:      #5b92ff;
+  --accent-light:  #111c3a;
+  --accent-hover:  #78a8ff;
+  --success:       #40c080;
+  --success-light: #0a2218;
+  --warning:       #f0a840;
+  --warning-light: #221a08;
+  --danger:        #f05555;
+  --danger-light:  #22100e;
+  --badge-quiz:    #5b92ff;
+  --badge-mid:     #2dd4bf;
+  --badge-fin:     #a78bfa;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.45);
+  --shadow-md:  0 4px 14px rgba(0,0,0,0.50);
+  --shadow-lg:  0 8px 28px rgba(0,0,0,0.55);
+  --shadow-xl:  0 18px 50px rgba(0,0,0,0.60);
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+}
+

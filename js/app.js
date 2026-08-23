@@ -1,5 +1,5 @@
 /* ============================================================
-   app.js — 3rd Year 1st Sem Reviewer – G1
+   app.js: 3rd Year 1st Sem Reviewer G1
    Vanilla JS, no dependencies.
    ============================================================ */
 
@@ -8,14 +8,24 @@
 // ── Constants ──────────────────────────────────────────────
 const ADMIN_USER = 'zyril';
 const ADMIN_PASS = 'zyril2006';
-// NOTE: This is a client-side credential check only — NOT real security.
+// NOTE: This is a client-side credential check only, not real security.
 // Anyone who opens DevTools can read or bypass this check. This is
 // acceptable for a low-stakes personal study tool, but do NOT reuse
 // this pattern for anything that needs actual access control.
 
-const STORAGE_KEY_THEME  = 'g1-reviewer-theme';
 const STORAGE_KEY_ADMIN  = 'g1-reviewer-admin';   // sessionStorage
 const STORAGE_KEY_STATUS = 'g1-reviewer-statuses'; // localStorage overrides
+
+// ── Theme Configuration ────────────────────────────────────
+// To add a 4th theme: add one entry here + one CSS variable block
+// (light + dark) in css/themes.css. That's it.
+const THEMES = [
+  { id: 'cobalt',  label: 'Cobalt' },
+  { id: 'folio',   label: 'Folio' },
+  { id: 'oxide',   label: 'Oxide' },
+];
+
+const DEFAULT_THEME = 'cobalt'; // Best first impression for new visitors
 
 // ── State ──────────────────────────────────────────────────
 let currentView   = 'landing'; // 'landing' | 'app'
@@ -90,26 +100,55 @@ function getBadgeClass(type) {
 // ── DOM refs ───────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 
-// ── Theme ──────────────────────────────────────────────────
-function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
+// ── Visual Theme (data-theme: cobalt | folio | oxide) ──────
+function switchTheme(themeId) {
+  document.documentElement.setAttribute('data-theme', themeId);
+  localStorage.setItem('siteTheme', themeId);
+  // Sync the dropdown in case this was called programmatically
+  const sel = $('theme-switcher');
+  if (sel) sel.value = themeId;
+}
+
+function populateThemeSwitcher() {
+  const sel = $('theme-switcher');
+  if (!sel) return;
+  sel.innerHTML = THEMES.map(t =>
+    `<option value="${t.id}">${t.label}</option>`
+  ).join('');
+  // Set the saved or default value
+  const current = document.documentElement.getAttribute('data-theme') || DEFAULT_THEME;
+  sel.value = current;
+}
+
+// ── Light/Dark Mode (data-mode: light | dark) ──────────────
+function applyMode(mode) {
+  document.documentElement.setAttribute('data-mode', mode);
   const btn = $('theme-toggle');
   if (!btn) return;
-  btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-  btn.innerHTML = theme === 'dark' ? svgSun() : svgMoon();
+  btn.setAttribute('aria-label', mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  btn.innerHTML = mode === 'dark' ? svgSun() : svgMoon();
 }
 
-function toggleTheme() {
-  const current = document.documentElement.getAttribute('data-theme') || 'light';
+function toggleMode() {
+  const current = document.documentElement.getAttribute('data-mode') || 'light';
   const next = current === 'dark' ? 'light' : 'dark';
-  localStorage.setItem(STORAGE_KEY_THEME, next);
-  applyTheme(next);
+  localStorage.setItem('siteMode', next);
+  applyMode(next);
 }
 
-function initTheme() {
-  const saved = localStorage.getItem(STORAGE_KEY_THEME);
+function initThemeAndMode() {
+  // Theme (visual): already set by anti-FOUC script, but sync the dropdown
+  const savedTheme = localStorage.getItem('siteTheme') || DEFAULT_THEME;
+  document.documentElement.setAttribute('data-theme', savedTheme);
+
+  // Mode (light/dark): already set by anti-FOUC script, but sync the toggle icon
+  const savedMode = localStorage.getItem('siteMode');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  const mode = savedMode || (prefersDark ? 'dark' : 'light');
+  applyMode(mode);
+
+  // Populate the theme switcher dropdown
+  populateThemeSwitcher();
 }
 
 // ── SVG icons (inline, lightweight) ────────────────────────
@@ -194,7 +233,7 @@ function renderExamList(containerId, exams, isDone) {
   if (!container) return;
 
   if (exams.length === 0) {
-    container.innerHTML = `<div class="empty-state">${isDone ? 'No past exams yet.' : 'No upcoming exams — nice!'}</div>`;
+    container.innerHTML = `<div class="empty-state">${isDone ? 'No past exams yet.' : 'No upcoming exams.'}</div>`;
     return;
   }
 
@@ -271,7 +310,6 @@ function handleSidebarExamClick(examId) {
 function renderWelcome() {
   $('main-content').innerHTML = `
     <div class="content-welcome reveal">
-      <div class="welcome-icon">📚</div>
       <h2>Select an exam to begin</h2>
       <p>Choose a subject from the sidebar, then pick an exam to view its notes or reviewer.</p>
     </div>`;
@@ -287,7 +325,7 @@ function renderExamContent() {
 
   const adminNote = isAdmin() && status === 'upcoming' ? `
     <div class="admin-note">
-      ⚠️ Admin: Status changes via "Mark as Done" only persist on <em>this browser/device</em>.
+      Admin: Status changes via "Mark as Done" only persist on <em>this browser/device</em>.
       To make it permanent for all visitors, edit <code>status</code> in <code>js/data.js</code> and redeploy.
     </div>` : '';
 
@@ -302,9 +340,9 @@ function renderExamContent() {
       </div>
       <h1 class="exam-content-title">${exam.title}</h1>
       <div class="exam-content-meta">
-        <span>📅 ${formatDate(exam.date)}</span>
+        <span>${formatDate(exam.date)}</span>
         <span style="color: ${status === 'done' ? 'var(--success)' : 'var(--warning)'}">
-          ${status === 'done' ? '✓ Done' : '⏳ Upcoming'}
+          ${status === 'done' ? '✓ Done' : 'Upcoming'}
         </span>
       </div>
       ${markDoneBtn}
@@ -312,8 +350,8 @@ function renderExamContent() {
     </div>
 
     <div class="tabs" role="tablist">
-      <button class="tab-btn${currentTab === 'notes'    ? ' active' : ''}" id="tab-notes"    role="tab" aria-selected="${currentTab==='notes'}" onclick="switchTab('notes')">📝 Notes</button>
-      <button class="tab-btn${currentTab === 'reviewer' ? ' active' : ''}" id="tab-reviewer" role="tab" aria-selected="${currentTab==='reviewer'}" onclick="switchTab('reviewer')">🧠 Reviewer</button>
+      <button class="tab-btn${currentTab === 'notes'    ? ' active' : ''}" id="tab-notes"    role="tab" aria-selected="${currentTab==='notes'}" onclick="switchTab('notes')">Notes</button>
+      <button class="tab-btn${currentTab === 'reviewer' ? ' active' : ''}" id="tab-reviewer" role="tab" aria-selected="${currentTab==='reviewer'}" onclick="switchTab('reviewer')">Reviewer</button>
     </div>
 
     <div id="panel-notes"    class="tab-panel${currentTab === 'notes'    ? ' active' : ''}"><div class="prose">${exam.notes    || '<p>No notes yet.</p>'}</div></div>
@@ -349,7 +387,7 @@ function handleMarkDone(event, examId) {
 
 // ── Admin login modal ───────────────────────────────────────
 function openAdminModal() {
-  if (isAdmin()) { /* already in — show logout confirmation */ return; }
+  if (isAdmin()) { /* already logged in, show logout confirmation */ return; }
   $('admin-modal').classList.add('active');
   $('admin-username').value = '';
   $('admin-password').value = '';
@@ -470,7 +508,7 @@ function initAdminFormEnter() {
 
 // ── Boot ────────────────────────────────────────────────────
 function init() {
-  initTheme();
+  initThemeAndMode();
   updateAdminUI();
   initKeyboardSupport();
   initModalBackdropClose();

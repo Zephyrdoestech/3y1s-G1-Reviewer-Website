@@ -1,84 +1,17 @@
 /* ============================================================
    style.css — 3rd Year 1st Sem Reviewer – G1
-   Design: Ethereal Glass / Dark-first with light mode support.
-   No frameworks. Vanilla CSS only.
+   Layout, components, and responsive rules. All color/theme
+   variables are defined in themes.css — this file only
+   consumes them via var().
    ============================================================ */
 
-/* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-
-/* ── Design Tokens ── */
+/* ── Structural Tokens (theme-independent) ── */
 :root {
-  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-
-  /* Light palette */
-  --bg:            #f5f4f2;
-  --bg-secondary:  #edecea;
-  --surface:       #ffffff;
-  --surface-alt:   #f0eeec;
-  --border:        rgba(0, 0, 0, 0.08);
-  --border-strong: rgba(0, 0, 0, 0.14);
-  --text-primary:  #1a1814;
-  --text-secondary:#5a5650;
-  --text-muted:    #9a9590;
-  --accent:        #5b4bcc;
-  --accent-light:  #ebe8fa;
-  --accent-hover:  #4a3bbb;
-  --success:       #2d8a55;
-  --success-light: #e4f5ed;
-  --warning:       #c8701a;
-  --warning-light: #fef3e2;
-  --danger:        #c0392b;
-  --danger-light:  #fdecea;
-  --badge-quiz:    #5b4bcc;
-  --badge-mid:     #1a7a6a;
-  --badge-fin:     #8a3a8a;
-
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md:  0 4px 16px rgba(0,0,0,0.07), 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
-  --shadow-xl:  0 20px 60px rgba(0,0,0,0.13), 0 8px 16px rgba(0,0,0,0.06);
-
-  --radius-sm:  8px;
-  --radius-md:  14px;
-  --radius-lg:  22px;
-  --radius-xl:  32px;
-
   --easing: cubic-bezier(0.32, 0.72, 0, 1);
   --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   --sidebar-width: 280px;
   --header-height: 64px;
-}
-
-/* Dark mode tokens */
-[data-theme="dark"] {
-  --bg:            #0d0c0b;
-  --bg-secondary:  #131210;
-  --surface:       #1c1a18;
-  --surface-alt:   #242220;
-  --border:        rgba(255, 255, 255, 0.07);
-  --border-strong: rgba(255, 255, 255, 0.12);
-  --text-primary:  #f0ede8;
-  --text-secondary:#a09b94;
-  --text-muted:    #6a6560;
-  --accent:        #8272e8;
-  --accent-light:  #1e1a3a;
-  --accent-hover:  #9585f0;
-  --success:       #3daa6a;
-  --success-light: #0d2218;
-  --warning:       #e8a040;
-  --warning-light: #261a08;
-  --danger:        #e05545;
-  --danger-light:  #260f0c;
-  --badge-quiz:    #8272e8;
-  --badge-mid:     #3daa8a;
-  --badge-fin:     #c075c0;
-
-  --shadow-sm:  0 1px 3px rgba(0,0,0,0.3),  0 1px 2px rgba(0,0,0,0.2);
-  --shadow-md:  0 4px 16px rgba(0,0,0,0.35), 0 2px 4px rgba(0,0,0,0.2);
-  --shadow-lg:  0 8px 32px rgba(0,0,0,0.40), 0 4px 8px rgba(0,0,0,0.25);
-  --shadow-xl:  0 20px 60px rgba(0,0,0,0.50), 0 8px 16px rgba(0,0,0,0.3);
 }
 
 /* ── Reset ── */
@@ -182,6 +115,39 @@ a:hover { text-decoration: underline; }
 }
 .theme-toggle svg { display: block; }
 
+/* Theme switcher dropdown */
+.theme-switcher {
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 28px 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  color: var(--text-secondary);
+  cursor: pointer;
+  outline: none;
+  transition: background 0.2s var(--easing), color 0.2s var(--easing), border-color 0.2s var(--easing);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px 6px;
+  min-width: 0;
+}
+
+.theme-switcher:hover {
+  background-color: var(--accent-light);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.theme-switcher:focus-visible {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
 /* Nav home button */
 .nav-home-btn {
   background: var(--surface-alt);
@@ -210,7 +176,7 @@ a:hover { text-decoration: underline; }
 /* Hero */
 .hero-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2.2fr 1fr;
   gap: 32px;
   align-items: start;
   margin-bottom: 64px;
@@ -257,7 +223,7 @@ a:hover { text-decoration: underline; }
   font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.7;
-  max-width: 420px;
+  max-width: 600px;
 }
 
 /* GCash card */

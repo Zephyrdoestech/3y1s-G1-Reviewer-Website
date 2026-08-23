@@ -1,5 +1,5 @@
 // ============================================================
-// data.js — All reviewer content lives here.
+// data.js: All reviewer content lives here.
 //
 // To add subjects/exams, follow the same shape as below.
 //
@@ -25,13 +25,13 @@ const SUBJECTS = [
         type: "Quiz",
         date: "2026-09-05",
         status: "upcoming",
-        notes: `<p>Placeholder notes for RIZAL Quiz 1. Add your notes here — bullet points, key dates, important names, etc.</p>
+        notes: `<p>Placeholder notes for RIZAL Quiz 1. Add your notes here, including bullet points, key dates, and important names.</p>
 <ul>
   <li>Jose Rizal was born on June 19, 1861, in Calamba, Laguna.</li>
   <li>He was the 7th of 11 children of Francisco Mercado and Teodora Alonso.</li>
   <li>His full name: José Protasio Rizal Mercado y Alonso Realonda.</li>
 </ul>`,
-        reviewer: `<h3>RIZAL Quiz 1 — Reviewer</h3>
+        reviewer: `<h3>RIZAL Quiz 1 Reviewer</h3>
 <p>Answer the following questions. Click "Show Answer" to reveal each answer.</p>
 
 <details>
@@ -61,7 +61,7 @@ const SUBJECTS = [
         date: "2026-10-20",
         status: "upcoming",
         notes: "<p>Placeholder notes for RIZAL Midterms. Add your notes here.</p>",
-        reviewer: `<h3>RIZAL Midterms — Reviewer</h3>
+        reviewer: `<h3>RIZAL Midterms Reviewer</h3>
 <p>Placeholder reviewer content. Add questions and answers below.</p>
 <details>
   <summary>Sample Question</summary>
@@ -86,7 +86,7 @@ const SUBJECTS = [
   <li>SDLC phases: Planning → Analysis → Design → Implementation → Testing → Deployment → Maintenance.</li>
   <li>Agile vs Waterfall methodologies.</li>
 </ul>`,
-        reviewer: `<h3>APP DEV Quiz 1 — Reviewer</h3>
+        reviewer: `<h3>APP DEV Quiz 1 Reviewer</h3>
 <p>Review the Software Engineering fundamentals below.</p>
 
 <details>
@@ -101,7 +101,7 @@ const SUBJECTS = [
 
 <details>
   <summary>3. What is the difference between Agile and Waterfall?</summary>
-  <p><strong>Answer:</strong> <strong>Waterfall</strong> is linear and sequential — each phase must finish before the next begins. <strong>Agile</strong> is iterative and incremental — work is done in short sprints with continuous feedback.</p>
+  <p><strong>Answer:</strong> <strong>Waterfall</strong> is linear and sequential; each phase must finish before the next begins. <strong>Agile</strong> is iterative and incremental, with work done in short sprints and continuous feedback.</p>
 </details>`
       },
       {
@@ -116,7 +116,7 @@ const SUBJECTS = [
   <li>Class vs Object distinction.</li>
   <li>Access modifiers: public, private, protected.</li>
 </ul>`,
-        reviewer: `<h3>APP DEV Quiz 2 — Reviewer</h3>
+        reviewer: `<h3>APP DEV Quiz 2 Reviewer</h3>
 
 <details>
   <summary>1. What are the four pillars of OOP?</summary>
@@ -140,7 +140,7 @@ const SUBJECTS = [
         date: "2026-10-15",
         status: "upcoming",
         notes: "<p>Placeholder notes for APP DEV Midterms. Add your notes here.</p>",
-        reviewer: `<h3>APP DEV Midterms — Reviewer</h3>
+        reviewer: `<h3>APP DEV Midterms Reviewer</h3>
 <p>Placeholder reviewer content. Add questions and answers below.</p>
 <details>
   <summary>Sample Question</summary>
@@ -154,7 +154,7 @@ const SUBJECTS = [
         date: "2026-12-01",
         status: "upcoming",
         notes: "<p>Placeholder notes for APP DEV Finals. Add your notes here.</p>",
-        reviewer: `<h3>APP DEV Finals — Reviewer</h3>
+        reviewer: `<h3>APP DEV Finals Reviewer</h3>
 <p>Placeholder reviewer content. Add questions and answers below.</p>
 <details>
   <summary>Sample Question</summary>
@@ -179,7 +179,7 @@ const SUBJECTS = [
   <li>Time complexity: O(1), O(n), O(log n), O(n²).</li>
   <li>Big-O notation basics.</li>
 </ul>`,
-        reviewer: `<h3>COM SCI Quiz 1 — Reviewer</h3>
+        reviewer: `<h3>COM SCI Quiz 1 Reviewer</h3>
 
 <details>
   <summary>1. What is a Stack and what is its access policy?</summary>
@@ -193,7 +193,7 @@ const SUBJECTS = [
 
 <details>
   <summary>3. What is the time complexity of accessing an element in an array by index?</summary>
-  <p><strong>Answer:</strong> O(1) — constant time, because arrays allow direct index-based access.</p>
+  <p><strong>Answer:</strong> O(1) (constant time), because arrays allow direct index-based access.</p>
 </details>`
       },
       {
@@ -203,7 +203,7 @@ const SUBJECTS = [
         date: "2026-10-18",
         status: "upcoming",
         notes: "<p>Placeholder notes for COM SCI Midterms.</p>",
-        reviewer: `<h3>COM SCI Midterms — Reviewer</h3>
+        reviewer: `<h3>COM SCI Midterms Reviewer</h3>
 <details>
   <summary>Sample Question</summary>
   <p><strong>Answer:</strong> Sample answer goes here.</p>
