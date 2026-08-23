@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="All the reviewers for G1, 1st Semester, 3rd Year — quizzes, midterms, finals, notes and reviewers in one place." />
+  <meta name="theme-color" content="#5b4bcc" />
+
+  <title>3rd Year 1st Sem Reviewer — G1</title>
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════
+       HEADER
+  ═══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+
+    <!-- Hamburger (app view, mobile only) -->
+    <button id="hamburger-btn"
+            class="hamburger-btn"
+            aria-label="Open sidebar menu"
+            aria-expanded="false"
+            aria-controls="sidebar"
+            onclick="toggleMobileSidebar()"
+            style="display:none">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
+    <span class="logo">3rd Year 1st Sem <span>Reviewer</span> — G1</span>
+
+    <div class="header-actions">
+      <!-- Home button (app view only) -->
+      <button id="nav-home-btn"
+              class="nav-home-btn"
+              aria-label="Back to home"
+              onclick="showLanding()"
+              style="display:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span>Home</span>
+      </button>
+
+      <!-- Theme toggle -->
+      <button id="theme-toggle"
+              class="theme-toggle"
+              aria-label="Toggle dark/light mode"
+              onclick="toggleTheme()">
+        <!-- icon injected by JS -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════════════════
+       LANDING VIEW
+  ═══════════════════════════════════════════════════════════ -->
+  <main id="landing-view" aria-label="Landing page">
+
+    <div class="landing-page">
+
+      <!-- Hero -->
+      <section class="hero-row" aria-label="Site introduction">
+
+        <!-- Left: tagline -->
+        <div class="hero-left reveal">
+          <div class="hero-eyebrow">G1 · 3rd Year · 1st Semester</div>
+          <h1 class="hero-title">All the reviewers you need,<br><em>in one place.</em></h1>
+          <p class="hero-tagline">
+            Notes, reviewers, and exam schedules for Group 1 — 3rd Year, 1st Semester.
+            Pick an exam below or browse by subject.
+          </p>
+          <div style="margin-top:24px">
+            <button
+              onclick="showApp(null)"
+              style="
+                display:inline-flex; align-items:center; gap:10px;
+                background:var(--accent); color:#fff;
+                border:none; border-radius:100px;
+                padding:12px 24px; font-size:0.9rem; font-weight:700;
+                cursor:pointer; font-family:var(--font-sans);
+                transition:background 0.2s var(--easing), transform 0.15s var(--easing-spring);
+              "
+              onmouseover="this.style.background='var(--accent-hover)'"
+              onmouseout="this.style.background='var(--accent)'"
+              onmousedown="this.style.transform='scale(0.97)'"
+              onmouseup="this.style.transform='scale(1)'"
+              aria-label="Browse all subjects"
+            >
+              Browse all subjects
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: GCash QR -->
+        <div class="gcash-card reveal">
+          <img src="assets/gcash-qr.png"
+               alt="GCash QR code for donations"
+               width="200" height="200"
+               loading="lazy" />
+          <p class="gcash-caption">
+            Accepting donations modawat rako bisag piso salamat ha!
+          </p>
+        </div>
+
+      </section>
+
+      <!-- Upcoming + Past Exams -->
+      <section aria-label="Exam lists">
+
+        <div class="exams-grid">
+
+          <!-- Upcoming -->
+          <div>
+            <div class="section-header reveal">
+              <h2 class="section-title">⏳ Upcoming Exams</h2>
+              <span id="upcoming-count" class="section-count">0</span>
+            </div>
+            <div id="upcoming-list" class="exam-list" aria-label="Upcoming exams list"></div>
+          </div>
+
+          <!-- Past -->
+          <div>
+            <div class="section-header reveal">
+              <h2 class="section-title">✅ Past Exams</h2>
+              <span id="past-count" class="section-count">0</span>
+            </div>
+            <div id="past-list" class="exam-list" aria-label="Past exams list"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════
+       APP VIEW (Subject / Exam browser)
+  ═══════════════════════════════════════════════════════════ -->
+  <div id="app-view" class="app-layout" style="display:none" aria-label="Exam browser">
+
+    <!-- Mobile sidebar overlay -->
+    <div id="sidebar-overlay"
+         class="sidebar-overlay"
+         role="presentation"
+         onclick="closeMobileSidebar()"></div>
+
+    <!-- Sidebar -->
+    <nav id="sidebar"
+         class="sidebar"
+         aria-label="Subjects and exams">
+      <div class="sidebar-label">Subjects</div>
+      <div id="sidebar-subjects"></div>
+    </nav>
+
+    <!-- Main exam content -->
+    <div id="main-content" class="main-content" role="main"></div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div>
+      <span>3rd Year 1st Sem Reviewer — G1</span>
+      &nbsp;·&nbsp;
+      <span style="color:var(--text-muted)">Study hard! 💪</span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <!-- Admin badge (shown when logged in) -->
+      <span id="admin-badge" class="admin-badge">
+        🔑 Admin Mode
+        <button id="logout-btn" class="logout-btn" onclick="adminLogout()" aria-label="Log out of admin">Log out</button>
+      </span>
+
+      <!-- Admin login button -->
+      <button id="footer-admin-btn"
+              class="footer-admin-btn"
+              onclick="openAdminModal()"
+              aria-label="Admin login">
+        Admin Login
+      </button>
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════════════
+       ADMIN LOGIN MODAL
+  ═══════════════════════════════════════════════════════════ -->
+  <div id="admin-modal"
+       class="modal-backdrop"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="admin-modal-title">
+
+    <div class="modal">
+      <h2 id="admin-modal-title" class="modal-title">🔑 Admin Login</h2>
+      <p class="modal-subtitle">
+        Enter credentials to enable admin features (e.g. marking exams as done).
+        This is a client-side check — not real security. Anyone who reads the JS source can bypass it.
+      </p>
+
+      <div class="form-group">
+        <label for="admin-username">Username</label>
+        <input type="text"
+               id="admin-username"
+               name="username"
+               autocomplete="username"
+               placeholder="Enter username" />
+      </div>
+
+      <div class="form-group">
+        <label for="admin-password">Password</label>
+        <input type="password"
+               id="admin-password"
+               name="password"
+               autocomplete="current-password"
+               placeholder="Enter password" />
+      </div>
+
+      <div id="admin-error" class="modal-error" role="alert">
+        Incorrect username or password. Please try again.
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="submitAdminLogin()" id="admin-submit-btn">Log In</button>
+        <button class="btn-ghost"   onclick="closeAdminModal()" id="admin-cancel-btn">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Scripts (data first, then app) ── -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
