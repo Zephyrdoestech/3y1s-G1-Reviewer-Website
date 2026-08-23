@@ -20,12 +20,12 @@ const STORAGE_KEY_STATUS = 'g1-reviewer-statuses'; // localStorage overrides
 // To add a 4th theme: add one entry here + one CSS variable block
 // (light + dark) in css/themes.css. That's it.
 const THEMES = [
-  { id: 'cobalt',  label: 'Cobalt' },
+  { id: 'canvas',  label: 'Canvas' },
   { id: 'folio',   label: 'Folio' },
-  { id: 'oxide',   label: 'Oxide' },
+  { id: 'studio',  label: 'Studio' },
 ];
 
-const DEFAULT_THEME = 'cobalt'; // Best first impression for new visitors
+const DEFAULT_THEME = 'canvas'; // Best first impression for new visitors
 
 // ── State ──────────────────────────────────────────────────
 let currentView   = 'landing'; // 'landing' | 'app'
@@ -360,6 +360,16 @@ function renderExamContent() {
   const reviewerPanel = $('panel-reviewer');
   if (Array.isArray(exam.reviewer)) {
     renderInteractiveReviewer(reviewerPanel, exam.reviewer);
+  } else if (exam.reviewer && typeof exam.reviewer === 'object') {
+    reviewerPanel.innerHTML = `
+      <div class="tabs reviewer-subtabs" role="tablist" style="margin-bottom: 1rem;">
+        <button class="tab-btn active" id="subtab-mcq" role="tab" onclick="switchReviewerTab('mcq')">Multiple Choice</button>
+        <button class="tab-btn" id="subtab-ident" role="tab" onclick="switchReviewerTab('ident')">Identification</button>
+      </div>
+      <div id="subpanel-mcq" class="tab-panel active"></div>
+      <div id="subpanel-ident" class="tab-panel"><div class="prose">${exam.reviewer.ident}</div></div>
+    `;
+    renderInteractiveReviewer($('subpanel-mcq'), exam.reviewer.mcq);
   } else {
     reviewerPanel.innerHTML = `<div class="prose">${exam.reviewer || '<p>No reviewer yet.</p>'}</div>`;
   }
@@ -421,13 +431,32 @@ function handleQuizOptionClick(clickedBtn, selectedIndex, correctIndex, optionsL
 
 function switchTab(tab) {
   currentTab = tab;
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    const isActive = btn.id === `tab-${tab}`;
-    btn.classList.toggle('active', isActive);
-    btn.setAttribute('aria-selected', isActive);
+  const mainTabs = document.querySelector('.tabs');
+  if (mainTabs) {
+    mainTabs.querySelectorAll('.tab-btn').forEach(btn => {
+      const isActive = btn.id === `tab-${tab}`;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive);
+    });
+  }
+  ['notes', 'reviewer'].forEach(t => {
+    const panel = document.getElementById(`panel-${t}`);
+    if (panel) panel.classList.toggle('active', t === tab);
   });
-  document.querySelectorAll('.tab-panel').forEach(panel => {
-    panel.classList.toggle('active', panel.id === `panel-${tab}`);
+}
+
+function switchReviewerTab(tab) {
+  const reviewerTabs = document.querySelector('.reviewer-subtabs');
+  if (reviewerTabs) {
+    reviewerTabs.querySelectorAll('.tab-btn').forEach(btn => {
+      const isActive = btn.id === `subtab-${tab}`;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive);
+    });
+  }
+  ['mcq', 'ident'].forEach(t => {
+    const panel = document.getElementById(`subpanel-${t}`);
+    if (panel) panel.classList.toggle('active', t === tab);
   });
 }
 

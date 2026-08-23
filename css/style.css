@@ -5,12 +5,9 @@
    consumes them via var().
    ============================================================ */
 
-/* ── Structural Tokens (theme-independent) ── */
 :root {
   --easing: cubic-bezier(0.32, 0.72, 0, 1);
   --easing-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  --sidebar-width: 280px;
   --header-height: 64px;
 }
 
@@ -28,8 +25,15 @@ body {
   color: var(--text-primary);
   line-height: 1.65;
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   transition: background-color 0.4s var(--easing), color 0.4s var(--easing);
   overflow-x: hidden;
+}
+
+#landing-view,
+#app-view {
+  flex: 1;
 }
 
 img { max-width: 100%; display: block; }
@@ -170,7 +174,7 @@ a:hover { text-decoration: underline; }
 .landing-page {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: calc(48px * var(--spacing-ratio, 1)) 24px calc(80px * var(--spacing-ratio, 1));
 }
 
 /* Hero */
@@ -206,6 +210,7 @@ a:hover { text-decoration: underline; }
 }
 
 .hero-title {
+  font-family: var(--font-display, var(--font-sans));
   font-size: clamp(1.75rem, 4vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -265,6 +270,7 @@ a:hover { text-decoration: underline; }
 }
 
 .section-title {
+  font-family: var(--font-display, var(--font-sans));
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -499,15 +505,6 @@ a:hover { text-decoration: underline; }
   font-weight: 600;
 }
 
-.sidebar-exam-item.active::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 4px; bottom: 4px;
-  width: 3px;
-  border-radius: 0 3px 3px 0;
-  background: var(--accent);
-}
-
 .sidebar-exam-item .item-text {
   flex: 1;
   min-width: 0;
@@ -560,7 +557,7 @@ a:hover { text-decoration: underline; }
 .main-content {
   flex: 1;
   min-width: 0;
-  padding: 32px;
+  padding: calc(32px * var(--spacing-ratio, 1));
   overflow-y: auto;
 }
 
@@ -578,6 +575,7 @@ a:hover { text-decoration: underline; }
 }
 
 .content-welcome h2 {
+  font-family: var(--font-display, var(--font-sans));
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
@@ -606,6 +604,7 @@ a:hover { text-decoration: underline; }
 }
 
 .exam-content-title {
+  font-family: var(--font-display, var(--font-sans));
   font-size: clamp(1.2rem, 3vw, 1.75rem);
   font-weight: 800;
   letter-spacing: -0.025em;
@@ -677,10 +676,11 @@ a:hover { text-decoration: underline; }
 }
 
 .prose h1, .prose h2, .prose h3, .prose h4 {
+  font-family: var(--font-display, var(--font-sans));
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-top: 1.75em;
+  margin-top: calc(1.75em * var(--spacing-ratio, 1));
   margin-bottom: 0.5em;
 }
 
@@ -795,7 +795,7 @@ a:hover { text-decoration: underline; }
   background: var(--surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
-  padding: 32px;
+  padding: calc(32px * var(--spacing-ratio, 1));
   width: 100%;
   max-width: 400px;
   max-height: 90dvh;
@@ -904,6 +904,7 @@ a:hover { text-decoration: underline; }
 
 /* ── Footer ── */
 .site-footer {
+  margin-top: auto;
   border-top: 1px solid var(--border);
   padding: 24px;
   display: flex;
