@@ -7,7 +7,7 @@
 
 // ── Constants ──────────────────────────────────────────────
 const ADMIN_USER = 'zyril';
-const ADMIN_PASS = 'zyril2006';
+const ADMIN_PASS = '123';
 // NOTE: This is a client-side credential check only, not real security.
 // Anyone who opens DevTools can read or bypass this check. This is
 // acceptable for a low-stakes personal study tool, but do NOT reuse
@@ -583,12 +583,11 @@ function adminLogout() {
 function updateAdminUI() {
   const badge  = $('admin-badge');
   const footerBtn = $('footer-admin-btn');
+  if (footerBtn) footerBtn.style.display = 'none';
   if (isAdmin()) {
     badge.classList.add('visible');
-    if (footerBtn) footerBtn.textContent = 'Admin Mode';
   } else {
     badge.classList.remove('visible');
-    if (footerBtn) footerBtn.textContent = 'Admin Login';
   }
 }
 
