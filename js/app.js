@@ -143,8 +143,7 @@ function initThemeAndMode() {
 
   // Mode (light/dark): already set by anti-FOUC script, but sync the toggle icon
   const savedMode = localStorage.getItem('siteMode');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const mode = savedMode || (prefersDark ? 'dark' : 'light');
+  const mode = savedMode || 'light';
   applyMode(mode);
 
   // Populate the theme switcher dropdown
@@ -367,9 +366,16 @@ function renderExamContent() {
         <button class="tab-btn" id="subtab-ident" role="tab" onclick="switchReviewerTab('ident')">Identification</button>
       </div>
       <div id="subpanel-mcq" class="tab-panel active"></div>
-      <div id="subpanel-ident" class="tab-panel"><div class="prose">${exam.reviewer.ident}</div></div>
+      <div id="subpanel-ident" class="tab-panel"></div>
     `;
     renderInteractiveReviewer($('subpanel-mcq'), exam.reviewer.mcq);
+    
+    const identPanel = $('subpanel-ident');
+    if (Array.isArray(exam.reviewer.ident)) {
+      renderInteractiveIdent(identPanel, exam.reviewer.ident);
+    } else {
+      identPanel.innerHTML = `<div class="prose">${exam.reviewer.ident}</div>`;
+    }
   } else {
     reviewerPanel.innerHTML = `<div class="prose">${exam.reviewer || '<p>No reviewer yet.</p>'}</div>`;
   }
@@ -428,6 +434,70 @@ function handleQuizOptionClick(clickedBtn, selectedIndex, correctIndex, optionsL
   }
 }
 
+function renderInteractiveIdent(container, questions) {
+  container.innerHTML = '<h3>Part II. Identification</h3><div class="ident-quiz-container"></div>';
+  const quizContainer = container.querySelector('.ident-quiz-container');
+  
+  questions.forEach((q, qIndex) => {
+    const qContainer = document.createElement('div');
+    qContainer.className = 'quiz-question-container';
+    
+    const qText = document.createElement('div');
+    qText.className = 'quiz-question-text';
+    qText.textContent = `${qIndex + 1}. ${q.question}`;
+    qContainer.appendChild(qText);
+    
+    const inputGroup = document.createElement('div');
+    inputGroup.className = 'ident-input-group';
+    
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'ident-input';
+    input.placeholder = 'Type your answer...';
+    
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'ident-check-btn';
+    checkBtn.textContent = 'Check';
+    
+    const feedback = document.createElement('div');
+    feedback.className = 'ident-feedback';
+    
+    checkBtn.onclick = () => {
+      const val = input.value.trim().toLowerCase();
+      if (!val) return;
+      
+      const isCorrect = q.accept.some(ans => ans.toLowerCase() === val) || val === q.answer.toLowerCase();
+      
+      input.disabled = true;
+      checkBtn.disabled = true;
+      
+      if (isCorrect) {
+        feedback.innerHTML = `<span style="color: var(--success); font-weight: 600;">✓ Correct!</span>`;
+        input.classList.add('input-correct');
+      } else {
+        feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ Incorrect. The correct answer is: ${q.answer}</span>`;
+        input.classList.add('input-incorrect');
+      }
+    };
+    
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') checkBtn.click();
+    });
+    
+    inputGroup.appendChild(input);
+    inputGroup.appendChild(checkBtn);
+    qContainer.appendChild(inputGroup);
+    qContainer.appendChild(feedback);
+    
+    quizContainer.appendChild(qContainer);
+  });
+  
+  const restartBtn = document.createElement('button');
+  restartBtn.className = 'quiz-restart-btn';
+  restartBtn.textContent = 'Restart Quiz';
+  restartBtn.onclick = () => renderInteractiveIdent(container, questions);
+  container.appendChild(restartBtn);
+}
 
 function switchTab(tab) {
   currentTab = tab;

@@ -22,7 +22,7 @@
     (function () {
       var t = localStorage.getItem('siteTheme') || 'canvas';
       var m = localStorage.getItem('siteMode');
-      if (!m) m = window.matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+      if (!m) m = 'light';
       document.documentElement.setAttribute('data-theme', t);
       document.documentElement.setAttribute('data-mode', m);
     })();

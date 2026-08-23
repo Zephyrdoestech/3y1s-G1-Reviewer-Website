@@ -412,342 +412,360 @@ const SUBJECTS = [
 </section>`,
         reviewer: {
           mcq: [
+            {
+              question: "1. What is the correct order of the SDLC phases as presented?",
+              options: [
+                "A. Design, Planning, Analysis, Implementation, Support",
+                "B. Planning, Analysis, Design, Implementation, Support",
+                "C. Analysis, Planning, Design, Support, Implementation",
+                "D. Planning, Design, Analysis, Implementation, Support"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "2. Which methodology includes \"Revolutionary\" and \"Throw-away\" as its two types?",
+              options: [
+                "A. Waterfall",
+                "B. Spiral",
+                "C. Prototyping",
+                "D. Agile"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "3. In the SMART criteria for project scope, what does \"A\" stand for?",
+              options: [
+                "A. Accurate",
+                "B. Attainable",
+                "C. Achievable Only",
+                "D. Adaptive"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "4. Aside from Scope, what are the two other major project constraints listed in the slides?",
+              options: [
+                "A. Quality and Risk",
+                "B. Cost and Time",
+                "C. Team and Tools",
+                "D. Design and Testing"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "5. How is Software Engineering defined in terms of its goal regarding customers?",
+              options: [
+                "A. Building the most technically advanced system possible",
+                "B. Solving customers' problems within cost, time, and other constraints",
+                "C. Maximizing the number of features in a system",
+                "D. Replacing programmers with automated tools"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "6. Which statement about solving customers' problems is TRUE per the slides?",
+              options: [
+                "A. Adding unnecessary features always helps solve the problem",
+                "B. The solution is always to build, never to buy",
+                "C. Sometimes the solution is to buy, not build",
+                "D. Communication with customers is optional"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "7. Who are the four stakeholders in Software Engineering?",
+              options: [
+                "A. Users, Testers, Managers, Vendors",
+                "B. Users, Customers, Software developers, Development Managers",
+                "C. Clients, Coders, QA, Sales",
+                "D. Analysts, Designers, Testers, Support staff"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "8. Can all four stakeholder roles be fulfilled by the same person?",
+              options: [
+                "A. No, they must always be different individuals",
+                "B. Yes, all four roles can be fulfilled by the same person",
+                "C. Only Users and Customers can overlap",
+                "D. Only in small projects, according to the slides"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "9. Which software quality attribute means a system does not waste resources such as CPU time and memory?",
+              options: [
+                "A. Usability",
+                "B. Efficiency",
+                "C. Reliability",
+                "D. Maintainability"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "10. Which software quality attribute means a system does what it is required to do without failing?",
+              options: [
+                "A. Reliability",
+                "B. Reusability",
+                "C. Usability",
+                "D. Maintainability"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "11. \"Its parts can be used in other projects, so reprogramming is not needed\" describes which quality attribute?",
+              options: [
+                "A. Maintainability",
+                "B. Efficiency",
+                "C. Reusability",
+                "D. Usability"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "12. What are the three key elements needed for a successful software project (per the diagram)?",
+              options: [
+                "A. Process, People, Technology",
+                "B. Planning, Design, Testing",
+                "C. Cost, Time, Scope",
+                "D. Method, Tool, Procedure"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "13. Which is the more detailed second definition of Software Engineering given in the slides?",
+              options: [
+                "A. A tool for writing code faster",
+                "B. A discipline that studies the overall life cycle of software systematically, descriptively, and quantitatively",
+                "C. A branch of mathematics for algorithm design",
+                "D. A management framework for hiring developers"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "14. Which of the four key elements of software engineering is \"an automated or semi-automated method used to improve productivity or consistency when performing a task\"?",
+              options: [
+                "A. Method",
+                "B. Tool",
+                "C. Procedure",
+                "D. People"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "15. Which key element \"combines a method and a tool so they can be used to develop software in a rational and timely fashion\"?",
+              options: [
+                "A. Procedure",
+                "B. Tool",
+                "C. People",
+                "D. Method"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "16. What is the correct general sequence of the software life cycle as defined in the slides?",
+              options: [
+                "A. Design → Requirements analysis → Feasibility review → Implementation → Test → Development planning → Operation → Maintenance",
+                "B. Feasibility review → Development planning → Requirements analysis → Design → Implementation → Test → Operation → Maintenance",
+                "C. Requirements analysis → Design → Feasibility review → Test → Implementation → Maintenance → Operation",
+                "D. Development planning → Feasibility review → Design → Requirements analysis → Test → Implementation → Operation → Maintenance"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "17. Which of the following is NOT listed as one of the most representative software lifecycle models?",
+              options: [
+                "A. Waterfall model",
+                "B. Prototype model",
+                "C. Agile Scrum model",
+                "D. Incremental model"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "18. Which lifecycle model clearly shows the activities to be performed to project managers and developers, and emphasizes verification and validation?",
+              options: [
+                "A. Incremental model",
+                "B. V model",
+                "C. Evolutionary model",
+                "D. Spiral model"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "19. In the V model, which testing activity pairs with \"Requirement Analysis\"?",
+              options: [
+                "A. Unit Testing",
+                "B. Integration Testing",
+                "C. Acceptance Testing",
+                "D. System Testing"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "20. What is the main purpose of prototyping when applied within the V model or Waterfall model?",
+              options: [
+                "A. To finalize the coding standard",
+                "B. To help developers and customers commonly understand what is needed and what should be developed",
+                "C. To replace the testing phase",
+                "D. To reduce documentation requirements"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "21. In the Incremental model, what characterizes the final system version?",
+              options: [
+                "A. It only contains the last added feature",
+                "B. It is a complete system into which all functions are incorporated",
+                "C. It discards all previous versions",
+                "D. It is identical to the first version"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "22. How does the Evolutionary model differ from the Incremental model?",
+              options: [
+                "A. It does not use lifecycles at all",
+                "B. The development phase for the entire system is reiterated several times, with each version providing all functions",
+                "C. It never produces a complete system",
+                "D. It is only used for hardware projects"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "23. Which of the following is NOT one of the stated reasons a software development methodology is necessary?",
+              options: [
+                "A. Improving development productivity by reusing experience",
+                "B. Effective project management",
+                "C. Guaranteeing zero-cost development",
+                "D. Assuring quality through phase verification and approval"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "24. Which methodology focuses on business activities and uses abstraction, structuralization, stepwise refinement, and modularization?",
+              options: [
+                "A. Structural methodology",
+                "B. Information engineering methodology",
+                "C. Object-oriented methodology",
+                "D. CBD methodology"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "25. Which methodology focuses on data and emphasizes an enterprise integrated data model?",
+              options: [
+                "A. CBD methodology",
+                "B. Object-oriented methodology",
+                "C. Information engineering methodology",
+                "D. Structural methodology"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "26. Which methodology treats a program unit as an object, integrates data and logic, and allows reuse by inheritance?",
+              options: [
+                "A. Structural methodology",
+                "B. Object-oriented methodology",
+                "C. Information engineering methodology",
+                "D. CBD methodology"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "27. Which methodology emphasizes interface and aims to reuse \"black box\" commercial components?",
+              options: [
+                "A. CBD methodology",
+                "B. Structural methodology",
+                "C. Information engineering methodology",
+                "D. Object-oriented methodology"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "28. During which software development phase is deciding \"exactly what to develop\" described as the hardest task?",
+              options: [
+                "A. Design",
+                "B. Requirements analysis",
+                "C. Implementation",
+                "D. Testing"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "29. Which phase is described as \"the first step in physical realization\" of a system?",
+              options: [
+                "A. Requirements analysis",
+                "B. Design",
+                "C. Implementation",
+                "D. Testing"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "30. What is described as the final step in assuring software quality?",
+              options: [
+                "A. Design",
+                "B. Requirements analysis",
+                "C. Testing",
+                "D. Implementation"
+              ],
+              correctIndex: 2
+            }
+          ],
+          ident: [
           {
-            question: "1. What is the correct order of the SDLC phases as presented?",
-            options: [
-              "A. Design, Planning, Analysis, Implementation, Support",
-              "B. Planning, Analysis, Design, Implementation, Support",
-              "C. Analysis, Planning, Design, Support, Implementation",
-              "D. Planning, Design, Analysis, Implementation, Support"
-            ],
-            correctIndex: 1
+            question: "This 15-minute daily meeting is where all team members discuss what they did, what they will do, and any issues.",
+            answer: "Daily Scrum",
+            accept: ["daily scrum", "daily scrum meeting", "scrum"]
           },
           {
-            question: "2. Which methodology includes \"Revolutionary\" and \"Throw-away\" as its two types?",
-            options: [
-              "A. Waterfall",
-              "B. Spiral",
-              "C. Prototyping",
-              "D. Agile"
-            ],
-            correctIndex: 2
+            question: "This agile methodology was established by Kent Beck and other engineers in the late 1990s and is generally suitable for small and medium-sized development organizations.",
+            answer: "XP (eXtreme Programming)",
+            accept: ["xp", "extreme programming", "xp (extreme programming)", "eXtreme Programming"]
           },
           {
-            question: "3. In the SMART criteria for project scope, what does \"A\" stand for?",
-            options: [
-              "A. Accurate",
-              "B. Attainable",
-              "C. Achievable Only",
-              "D. Adaptive"
-            ],
-            correctIndex: 1
+            question: "This Scrum deliverable is a breakdown of work to be done, with priority mainly determined by the product manager on behalf of the customer.",
+            answer: "Product backlog",
+            accept: ["product backlog", "backlog"]
           },
           {
-            question: "4. Aside from Scope, what are the two other major project constraints listed in the slides?",
-            options: [
-              "A. Quality and Risk",
-              "B. Cost and Time",
-              "C. Team and Tools",
-              "D. Design and Testing"
-            ],
-            correctIndex: 1
+            question: "This Scrum deliverable shows the remaining work in the sprint backlog, tracked per iteration as a story point.",
+            answer: "Burndown chart",
+            accept: ["burndown chart", "burn down chart", "burndown"]
           },
           {
-            question: "5. How is Software Engineering defined in terms of its goal regarding customers?",
-            options: [
-              "A. Building the most technically advanced system possible",
-              "B. Solving customers' problems within cost, time, and other constraints",
-              "C. Maximizing the number of features in a system",
-              "D. Replacing programmers with automated tools"
-            ],
-            correctIndex: 1
+            question: "In XP, this is a simple program written to explore difficult requirements or potential solutions, aiming to increase the reliability of user stories while reducing technical risk.",
+            answer: "Spike",
+            accept: ["spike", "structural spike"]
           },
           {
-            question: "6. Which statement about solving customers' problems is TRUE per the slides?",
-            options: [
-              "A. Adding unnecessary features always helps solve the problem",
-              "B. The solution is always to build, never to buy",
-              "C. Sometimes the solution is to buy, not build",
-              "D. Communication with customers is optional"
-            ],
-            correctIndex: 2
+            question: "This field of software engineering deconstructs a developed system to reveal its documents and design techniques, and is performed during the maintenance phase.",
+            answer: "Reverse engineering",
+            accept: ["reverse engineering"]
           },
           {
-            question: "7. Who are the four stakeholders in Software Engineering?",
-            options: [
-              "A. Users, Testers, Managers, Vendors",
-              "B. Users, Customers, Software developers, Development Managers",
-              "C. Clients, Coders, QA, Sales",
-              "D. Analysts, Designers, Testers, Support staff"
-            ],
-            correctIndex: 1
+            question: "This term refers to developing new software using existing software or software knowledge in order to increase development productivity.",
+            answer: "Software reuse",
+            accept: ["software reuse", "reuse"]
           },
           {
-            question: "8. Can all four stakeholder roles be fulfilled by the same person?",
-            options: [
-              "A. No, they must always be different individuals",
-              "B. Yes, all four roles can be fulfilled by the same person",
-              "C. Only Users and Customers can overlap",
-              "D. Only in small projects, according to the slides"
-            ],
-            correctIndex: 1
+            question: "This XP value states \"Always ask, what is the simplest thing possible?\" and keeps the design clear by removing unnecessary complexity.",
+            answer: "Simplicity",
+            accept: ["simplicity"]
           },
           {
-            question: "9. Which software quality attribute means a system does not waste resources such as CPU time and memory?",
-            options: [
-              "A. Usability",
-              "B. Efficiency",
-              "C. Reliability",
-              "D. Maintainability"
-            ],
-            correctIndex: 1
+            question: "This term refers to the repetitive development period in Scrum, measured in units of 1 to 4 weeks.",
+            answer: "Sprint",
+            accept: ["sprint", "sprints"]
           },
           {
-            question: "10. Which software quality attribute means a system does what it is required to do without failing?",
-            options: [
-              "A. Reliability",
-              "B. Reusability",
-              "C. Usability",
-              "D. Maintainability"
-            ],
-            correctIndex: 0
-          },
-          {
-            question: "11. \"Its parts can be used in other projects, so reprogramming is not needed\" describes which quality attribute?",
-            options: [
-              "A. Maintainability",
-              "B. Efficiency",
-              "C. Reusability",
-              "D. Usability"
-            ],
-            correctIndex: 2
-          },
-          {
-            question: "12. What are the three key elements needed for a successful software project (per the diagram)?",
-            options: [
-              "A. Process, People, Technology",
-              "B. Planning, Design, Testing",
-              "C. Cost, Time, Scope",
-              "D. Method, Tool, Procedure"
-            ],
-            correctIndex: 0
-          },
-          {
-            question: "13. Which is the more detailed second definition of Software Engineering given in the slides?",
-            options: [
-              "A. A tool for writing code faster",
-              "B. A discipline that studies the overall life cycle of software systematically, descriptively, and quantitatively",
-              "C. A branch of mathematics for algorithm design",
-              "D. A management framework for hiring developers"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "14. Which of the four key elements of software engineering is \"an automated or semi-automated method used to improve productivity or consistency when performing a task\"?",
-            options: [
-              "A. Method",
-              "B. Tool",
-              "C. Procedure",
-              "D. People"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "15. Which key element \"combines a method and a tool so they can be used to develop software in a rational and timely fashion\"?",
-            options: [
-              "A. Procedure",
-              "B. Tool",
-              "C. People",
-              "D. Method"
-            ],
-            correctIndex: 0
-          },
-          {
-            question: "16. What is the correct general sequence of the software life cycle as defined in the slides?",
-            options: [
-              "A. Design → Requirements analysis → Feasibility review → Implementation → Test → Development planning → Operation → Maintenance",
-              "B. Feasibility review → Development planning → Requirements analysis → Design → Implementation → Test → Operation → Maintenance",
-              "C. Requirements analysis → Design → Feasibility review → Test → Implementation → Maintenance → Operation",
-              "D. Development planning → Feasibility review → Design → Requirements analysis → Test → Implementation → Operation → Maintenance"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "17. Which of the following is NOT listed as one of the most representative software lifecycle models?",
-            options: [
-              "A. Waterfall model",
-              "B. Prototype model",
-              "C. Agile Scrum model",
-              "D. Incremental model"
-            ],
-            correctIndex: 2
-          },
-          {
-            question: "18. Which lifecycle model clearly shows the activities to be performed to project managers and developers, and emphasizes verification and validation?",
-            options: [
-              "A. Incremental model",
-              "B. V model",
-              "C. Evolutionary model",
-              "D. Spiral model"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "19. In the V model, which testing activity pairs with \"Requirement Analysis\"?",
-            options: [
-              "A. Unit Testing",
-              "B. Integration Testing",
-              "C. Acceptance Testing",
-              "D. System Testing"
-            ],
-            correctIndex: 2
-          },
-          {
-            question: "20. What is the main purpose of prototyping when applied within the V model or Waterfall model?",
-            options: [
-              "A. To finalize the coding standard",
-              "B. To help developers and customers commonly understand what is needed and what should be developed",
-              "C. To replace the testing phase",
-              "D. To reduce documentation requirements"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "21. In the Incremental model, what characterizes the final system version?",
-            options: [
-              "A. It only contains the last added feature",
-              "B. It is a complete system into which all functions are incorporated",
-              "C. It discards all previous versions",
-              "D. It is identical to the first version"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "22. How does the Evolutionary model differ from the Incremental model?",
-            options: [
-              "A. It does not use lifecycles at all",
-              "B. The development phase for the entire system is reiterated several times, with each version providing all functions",
-              "C. It never produces a complete system",
-              "D. It is only used for hardware projects"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "23. Which of the following is NOT one of the stated reasons a software development methodology is necessary?",
-            options: [
-              "A. Improving development productivity by reusing experience",
-              "B. Effective project management",
-              "C. Guaranteeing zero-cost development",
-              "D. Assuring quality through phase verification and approval"
-            ],
-            correctIndex: 2
-          },
-          {
-            question: "24. Which methodology focuses on business activities and uses abstraction, structuralization, stepwise refinement, and modularization?",
-            options: [
-              "A. Structural methodology",
-              "B. Information engineering methodology",
-              "C. Object-oriented methodology",
-              "D. CBD methodology"
-            ],
-            correctIndex: 0
-          },
-          {
-            question: "25. Which methodology focuses on data and emphasizes an enterprise integrated data model?",
-            options: [
-              "A. CBD methodology",
-              "B. Object-oriented methodology",
-              "C. Information engineering methodology",
-              "D. Structural methodology"
-            ],
-            correctIndex: 2
-          },
-          {
-            question: "26. Which methodology treats a program unit as an object, integrates data and logic, and allows reuse by inheritance?",
-            options: [
-              "A. Structural methodology",
-              "B. Object-oriented methodology",
-              "C. Information engineering methodology",
-              "D. CBD methodology"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "27. Which methodology emphasizes interface and aims to reuse \"black box\" commercial components?",
-            options: [
-              "A. CBD methodology",
-              "B. Structural methodology",
-              "C. Information engineering methodology",
-              "D. Object-oriented methodology"
-            ],
-            correctIndex: 0
-          },
-          {
-            question: "28. During which software development phase is deciding \"exactly what to develop\" described as the hardest task?",
-            options: [
-              "A. Design",
-              "B. Requirements analysis",
-              "C. Implementation",
-              "D. Testing"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "29. Which phase is described as \"the first step in physical realization\" of a system?",
-            options: [
-              "A. Requirements analysis",
-              "B. Design",
-              "C. Implementation",
-              "D. Testing"
-            ],
-            correctIndex: 1
-          },
-          {
-            question: "30. What is described as the final step in assuring software quality?",
-            options: [
-              "A. Design",
-              "B. Requirements analysis",
-              "C. Testing",
-              "D. Implementation"
-            ],
-            correctIndex: 2
+            question: "These are the typical outputs of reverse engineering, including structure diagrams, data flow charts, control flow graphs, and entity relationship diagrams.",
+            answer: "Output of reverse engineering",
+            accept: ["output of reverse engineering", "design/structural documentation", "design documentation", "structural documentation", "structure diagrams", "design documents"]
           }
-        ],
-        ident: `<h3>Part II. Identification (10 items)</h3>
-
-<ol>
-<li>This 15-minute daily meeting is where all team members discuss what they did, what they will do, and any issues.
-<details><summary>Show Answer</summary>Daily Scrum</details>
-</li>
-<li>This agile methodology was established by Kent Beck and other engineers in the late 1990s and is generally suitable for small and medium-sized development organizations.
-<details><summary>Show Answer</summary>XP (eXtreme Programming)</details>
-</li>
-<li>This Scrum deliverable is a breakdown of work to be done, with priority mainly determined by the product manager on behalf of the customer.
-<details><summary>Show Answer</summary>Product backlog</details>
-</li>
-<li>This Scrum deliverable shows the remaining work in the sprint backlog, tracked per iteration as a story point.
-<details><summary>Show Answer</summary>Burndown chart</details>
-</li>
-<li>In XP, this is a simple program written to explore difficult requirements or potential solutions, aiming to increase the reliability of user stories while reducing technical risk.
-<details><summary>Show Answer</summary>Spike</details>
-</li>
-<li>This field of software engineering deconstructs a developed system to reveal its documents and design techniques, and is performed during the maintenance phase.
-<details><summary>Show Answer</summary>Reverse engineering</details>
-</li>
-<li>This term refers to developing new software using existing software or software knowledge in order to increase development productivity.
-<details><summary>Show Answer</summary>Software reuse</details>
-</li>
-<li>This XP value states "Always ask, what is the simplest thing possible?" and keeps the design clear by removing unnecessary complexity.
-<details><summary>Show Answer</summary>Simplicity</details>
-</li>
-<li>This term refers to the repetitive development period in Scrum, measured in units of 1 to 4 weeks.
-<details><summary>Show Answer</summary>Sprint</details>
-</li>
-<li>These are the typical outputs of reverse engineering, including structure diagrams, data flow charts, control flow graphs, and entity relationship diagrams.
-<details><summary>Show Answer</summary>Output of reverse engineering (design/structural documentation)</details>
-</li>
-</ol>`
-      }
+        ]
+        }
       }
     ]
   },
@@ -757,7 +775,7 @@ const SUBJECTS = [
     exams: [
       {
         id: "rizal-quiz1",
-        title: "Rizal Quiz 1 - August 24",
+        title: "Quiz 1 - August 24",
         type: "Quiz",
         date: "2026-08-24",
         status: "upcoming",
