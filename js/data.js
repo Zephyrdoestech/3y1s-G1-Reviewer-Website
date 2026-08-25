@@ -21,12 +21,12 @@ const SUBJECTS = [
     exams: [
       {
         id: "appdev-quiz1",
-        title: "Quiz 1 - August 24 (Software Development)",
+        title: "Quiz 1 - Software Development",
         type: "Quiz",
         date: "2026-08-24",
-        status: "upcoming",
+        status: "done",
         notes: `<section class="notes-section">
-<h2>APP DEV Notes — Software Development (TOPCIT)</h2>
+<h2>Software Development (TOPCIT)</h2>
 
 <h3>I. Software Engineering Overview</h3>
 
@@ -914,57 +914,57 @@ const SUBJECTS = [
             }
           ],
           ident: [
-          {
-            question: "This 15-minute daily meeting is where all team members discuss what they did, what they will do, and any issues.",
-            answer: "Daily Scrum",
-            accept: ["daily scrum", "daily scrum meeting", "scrum"]
-          },
-          {
-            question: "This agile methodology was established by Kent Beck and other engineers in the late 1990s and is generally suitable for small and medium-sized development organizations.",
-            answer: "XP (eXtreme Programming)",
-            accept: ["xp", "extreme programming", "xp (extreme programming)", "eXtreme Programming"]
-          },
-          {
-            question: "This Scrum deliverable is a breakdown of work to be done, with priority mainly determined by the product manager on behalf of the customer.",
-            answer: "Product backlog",
-            accept: ["product backlog", "backlog"]
-          },
-          {
-            question: "This Scrum deliverable shows the remaining work in the sprint backlog, tracked per iteration as a story point.",
-            answer: "Burndown chart",
-            accept: ["burndown chart", "burn down chart", "burndown"]
-          },
-          {
-            question: "In XP, this is a simple program written to explore difficult requirements or potential solutions, aiming to increase the reliability of user stories while reducing technical risk.",
-            answer: "Spike",
-            accept: ["spike", "structural spike"]
-          },
-          {
-            question: "This field of software engineering deconstructs a developed system to reveal its documents and design techniques, and is performed during the maintenance phase.",
-            answer: "Reverse engineering",
-            accept: ["reverse engineering"]
-          },
-          {
-            question: "This term refers to developing new software using existing software or software knowledge in order to increase development productivity.",
-            answer: "Software reuse",
-            accept: ["software reuse", "reuse"]
-          },
-          {
-            question: "This XP value states \"Always ask, what is the simplest thing possible?\" and keeps the design clear by removing unnecessary complexity.",
-            answer: "Simplicity",
-            accept: ["simplicity"]
-          },
-          {
-            question: "This term refers to the repetitive development period in Scrum, measured in units of 1 to 4 weeks.",
-            answer: "Sprint",
-            accept: ["sprint", "sprints"]
-          },
-          {
-            question: "These are the typical outputs of reverse engineering, including structure diagrams, data flow charts, control flow graphs, and entity relationship diagrams.",
-            answer: "Output of reverse engineering",
-            accept: ["output of reverse engineering", "design/structural documentation", "design documentation", "structural documentation", "structure diagrams", "design documents"]
-          }
-        ]
+            {
+              question: "This 15-minute daily meeting is where all team members discuss what they did, what they will do, and any issues.",
+              answer: "Daily Scrum",
+              accept: ["daily scrum", "daily scrum meeting", "scrum"]
+            },
+            {
+              question: "This agile methodology was established by Kent Beck and other engineers in the late 1990s and is generally suitable for small and medium-sized development organizations.",
+              answer: "XP (eXtreme Programming)",
+              accept: ["xp", "extreme programming", "xp (extreme programming)", "eXtreme Programming"]
+            },
+            {
+              question: "This Scrum deliverable is a breakdown of work to be done, with priority mainly determined by the product manager on behalf of the customer.",
+              answer: "Product backlog",
+              accept: ["product backlog", "backlog"]
+            },
+            {
+              question: "This Scrum deliverable shows the remaining work in the sprint backlog, tracked per iteration as a story point.",
+              answer: "Burndown chart",
+              accept: ["burndown chart", "burn down chart", "burndown"]
+            },
+            {
+              question: "In XP, this is a simple program written to explore difficult requirements or potential solutions, aiming to increase the reliability of user stories while reducing technical risk.",
+              answer: "Spike",
+              accept: ["spike", "structural spike"]
+            },
+            {
+              question: "This field of software engineering deconstructs a developed system to reveal its documents and design techniques, and is performed during the maintenance phase.",
+              answer: "Reverse engineering",
+              accept: ["reverse engineering"]
+            },
+            {
+              question: "This term refers to developing new software using existing software or software knowledge in order to increase development productivity.",
+              answer: "Software reuse",
+              accept: ["software reuse", "reuse"]
+            },
+            {
+              question: "This XP value states \"Always ask, what is the simplest thing possible?\" and keeps the design clear by removing unnecessary complexity.",
+              answer: "Simplicity",
+              accept: ["simplicity"]
+            },
+            {
+              question: "This term refers to the repetitive development period in Scrum, measured in units of 1 to 4 weeks.",
+              answer: "Sprint",
+              accept: ["sprint", "sprints"]
+            },
+            {
+              question: "These are the typical outputs of reverse engineering, including structure diagrams, data flow charts, control flow graphs, and entity relationship diagrams.",
+              answer: "Output of reverse engineering",
+              accept: ["output of reverse engineering", "design/structural documentation", "design documentation", "structural documentation", "structure diagrams", "design documents"]
+            }
+          ]
         }
       }
     ]
@@ -975,10 +975,10 @@ const SUBJECTS = [
     exams: [
       {
         id: "rizal-quiz1",
-        title: "Quiz 1 - August 24",
+        title: "Quiz 1 - Tribute to Jose Rizal",
         type: "Quiz",
         date: "2026-08-24",
-        status: "upcoming",
+        status: "done",
         notes: `<h3>A Tribute to Our National Hero, Dr. Jose P. Rizal</h3>
 
 <h4>Childhood</h4>
@@ -1278,6 +1278,1285 @@ const SUBJECTS = [
             correctIndex: 1
           }
         ]
+      }
+    ]
+  },
+  {
+    id: "dataanalytics",
+    name: "DATA ANALYTICS",
+    exams: [
+      {
+        id: "dataanalytics-quiz1",
+        title: "Quiz 1 - Lesson 1 and 2",
+        type: "Quiz",
+        date: "2026-08-27",
+        status: "upcoming",
+        notesLessons: [
+          {
+            tab: "Lesson 1",
+            content: `<section class="notes-section">
+<h2>Lesson 1: Introduction to Data Analytics</h2>
+
+<h3>Data Analytics Overview</h3>
+
+<h4>Data Analytics</h4>
+<p>The process of examining raw data to uncover patterns, trends, relationships, and actionable insights to support decision-making. It spans data collection, cleaning, transforming, and analyzing via statistical and computational methods.</p>
+
+<h4>Data Analytics vs. Data Analysis</h4>
+<p>Data analysis focuses on inspecting and interpreting data to answer specific questions, while data analytics is the broader end-to-end discipline that turns data into business decisions.</p>
+
+<h4>Core Importance</h4>
+<p>Data Analytics:</p>
+<ul>
+<li>Enables evidence-based decisions</li>
+<li>Boosts efficiency</li>
+<li>Mitigates risks</li>
+<li>Provides competitive advantages</li>
+<li>Forecasts future outcomes</li>
+</ul>
+
+<hr>
+
+<h3>Data-Driven Career Hierarchy</h3>
+
+<h4>Data Engineering <span class="hierarchy-tag tag-base">Base</span></h4>
+<p>Builds infrastructure, pipelines, and storage.</p>
+<p><strong>Important technologies/concepts:</strong></p>
+<ul>
+<li>EDW</li>
+<li>ETL</li>
+<li>EDL</li>
+<li>ESB</li>
+</ul>
+
+<h4>Data Analytics <span class="hierarchy-tag tag-middle">Middle</span></h4>
+<p>Focuses on:</p>
+<ul>
+<li>Data cleaning</li>
+<li>Data stewardship</li>
+<li>Visualization</li>
+<li>BI tools</li>
+<li>Reporting dashboards</li>
+</ul>
+
+<h4>Data Science <span class="hierarchy-tag tag-top">Top</span></h4>
+<p>Handles:</p>
+<ul>
+<li>Advanced data training</li>
+<li>Experimentation</li>
+<li>Machine Learning</li>
+<li>AI</li>
+</ul>
+
+<hr>
+
+<h3>Evolution of Data Analytics</h3>
+
+<div class="evolution-timeline">
+
+<div class="timeline-era">
+<h4>Early Data Processing <span class="era-badge">1960s–1980s</span></h4>
+<p><strong>Important concepts:</strong></p>
+<ul>
+<li>Mainframe computers</li>
+<li>Batch processing</li>
+<li>Punch cards</li>
+<li>COBOL</li>
+<li>Early hierarchical databases</li>
+<li>Flat file databases</li>
+<li>Basic reporting</li>
+</ul>
+</div>
+
+<div class="timeline-era">
+<h4>Business Intelligence <span class="era-badge">1990s–2000s</span></h4>
+<p><strong>Important concepts:</strong></p>
+<ul>
+<li>Relational databases</li>
+<li>Data warehousing</li>
+<li>ETL pipelines</li>
+<li>OLAP</li>
+<li>Multi-dimensional analysis</li>
+<li>Structured reporting dashboards</li>
+</ul>
+</div>
+
+<div class="timeline-era">
+<h4>Big Data & Advanced Analytics <span class="era-badge">2010s–Present</span></h4>
+<p><strong>Important concepts:</strong></p>
+<ul>
+<li>Cloud platforms</li>
+<li>Distributed computing</li>
+<li>Hadoop</li>
+<li>Spark</li>
+<li>Real-time streaming</li>
+<li>Unstructured data handling</li>
+<li>AI/ML models</li>
+</ul>
+</div>
+
+</div>
+
+<hr>
+
+<h3>4 Analytical Methods (Types of Analytics)</h3>
+
+<div class="analytics-methods-grid">
+
+<div class="analytics-method-card">
+<h4>Descriptive Analytics</h4>
+<p class="method-question"><em>"What happened?"</em></p>
+<p>Summarizes historical data using:</p>
+<ul>
+<li>Aggregation</li>
+<li>Summary statistics</li>
+<li>Dashboards</li>
+</ul>
+<p><strong>Example:</strong> Monthly sales reports.</p>
+</div>
+
+<div class="analytics-method-card">
+<h4>Diagnostic Analytics</h4>
+<p class="method-question"><em>"Why did it happen?"</em></p>
+<p>Investigates root causes through:</p>
+<ul>
+<li>Drill-down</li>
+<li>Discovery techniques</li>
+</ul>
+<p><strong>Example:</strong> Identifying causes behind dropped web traffic.</p>
+</div>
+
+<div class="analytics-method-card">
+<h4>Predictive Analytics</h4>
+<p class="method-question"><em>"What is likely to happen?"</em></p>
+<p>Forecasts future outcomes using:</p>
+<ul>
+<li>Regression models</li>
+<li>Time-series forecasting</li>
+</ul>
+<p><strong>Example:</strong> Predicting next quarter revenue.</p>
+</div>
+
+<div class="analytics-method-card">
+<h4>Prescriptive Analytics</h4>
+<p class="method-question"><em>"What should we do?"</em></p>
+<p>Recommends optimal actions via:</p>
+<ul>
+<li>Optimization algorithms</li>
+<li>Simulations</li>
+</ul>
+<p><strong>Example:</strong> Marketing budget allocation.</p>
+</div>
+
+</div>
+
+<hr>
+
+<h3>The 7-Step Data Analytics Process</h3>
+
+<div class="steps-list">
+
+<div class="step-item">
+<div class="step-number">1</div>
+<div class="step-body">
+<h4>Problem Definition</h4>
+<p>Establish SMART objectives:</p>
+<ul>
+<li><strong>S</strong>pecific</li>
+<li><strong>M</strong>easurable</li>
+<li><strong>A</strong>ttainable</li>
+<li><strong>R</strong>esult-Oriented</li>
+<li><strong>T</strong>ime-bounded</li>
+</ul>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">2</div>
+<div class="step-body">
+<h4>Data Collection</h4>
+<p>Gather data from:</p>
+<ul>
+<li>Databases</li>
+<li>Surveys</li>
+<li>Sensors</li>
+<li>APIs</li>
+</ul>
+<p>Remember: <strong>GIGO — Garbage In, Garbage Out</strong></p>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">3</div>
+<div class="step-body">
+<h4>Data Cleaning</h4>
+<p>Resolve:</p>
+<ul>
+<li>Missing values</li>
+<li>Duplicate entries</li>
+<li>Data inconsistencies</li>
+</ul>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">4</div>
+<div class="step-body">
+<h4>Data Exploration (EDA)</h4>
+<p>Identify:</p>
+<ul>
+<li>Distributions</li>
+<li>Correlations</li>
+<li>Outliers</li>
+</ul>
+<p>Using:</p>
+<ul>
+<li>Summary statistics</li>
+<li>Visual charts</li>
+</ul>
+<p>This should happen <strong>before</strong> formal modeling.</p>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">5</div>
+<div class="step-body">
+<h4>Data Analysis & Modeling</h4>
+<p>Build:</p>
+<ul>
+<li>Statistical models</li>
+<li>Regression models</li>
+<li>Machine learning models</li>
+</ul>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">6</div>
+<div class="step-body">
+<h4>Interpretation & Visualization</h4>
+<p>Translate model findings into:</p>
+<ul>
+<li>Dashboards</li>
+<li>Charts</li>
+<li>Actionable insights</li>
+</ul>
+</div>
+</div>
+
+<div class="step-item">
+<div class="step-number">7</div>
+<div class="step-body">
+<h4>Decision-Making</h4>
+<p>Implement data-driven actions across organizational tiers.</p>
+
+<div class="decision-tiers">
+<div class="tier-card">
+<h5>Strategic</h5>
+<p>High-level, long-term organizational goals.</p>
+<p>Associated with: <strong>Executive management</strong></p>
+</div>
+<div class="tier-card">
+<h5>Tactical</h5>
+<p>Medium-term execution strategies.</p>
+<p>Associated with: <strong>Mid-level management</strong></p>
+</div>
+<div class="tier-card">
+<h5>Operational</h5>
+<p>Day-to-day workflow optimizations.</p>
+<p>Associated with: <strong>Operations managers</strong></p>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+<hr>
+
+<h3>Big Data & The 5 Vs</h3>
+
+<h4>Big Data</h4>
+<p>Datasets whose scale, speed, and complexity exceed the handling capacity of traditional relational databases.</p>
+
+<div class="five-vs-grid">
+<div class="v-card">
+<div class="v-letter">V</div>
+<h5>Volume</h5>
+<p>Massive scale of generated data.</p>
+</div>
+<div class="v-card">
+<div class="v-letter">V</div>
+<h5>Velocity</h5>
+<p>Rapid speed of incoming and streaming data.</p>
+</div>
+<div class="v-card">
+<div class="v-letter">V</div>
+<h5>Variety</h5>
+<p>Heterogeneous formats:</p>
+<ul>
+<li>Structured</li>
+<li>Semi-structured</li>
+<li>Unstructured</li>
+</ul>
+</div>
+<div class="v-card">
+<div class="v-letter">V</div>
+<h5>Veracity</h5>
+<p>Trustworthiness, accuracy, and quality of data.</p>
+</div>
+<div class="v-card">
+<div class="v-letter">V</div>
+<h5>Value</h5>
+<p>Meaningful business impact and actionable insights derived.</p>
+</div>
+</div>
+
+<hr>
+
+<h3>Core Business Applications</h3>
+<ul>
+<li>Customer segmentation</li>
+<li>Demand forecasting</li>
+<li>Automated fraud detection</li>
+<li>Operational bottleneck reduction</li>
+<li>Marketing ROI evaluation</li>
+<li>New product development</li>
+</ul>
+
+</section>`
+          },
+          {
+            tab: "Lesson 2",
+            content: `<section class="notes-section">
+<h2>Lesson 2: Overview of Data</h2>
+
+<h3>Foundations & Hierarchy</h3>
+
+<h4>Data</h4>
+<p>Raw, unprocessed facts, numbers, symbols, or observations lacking inherent meaning on their own.</p>
+
+<h4>Information</h4>
+<p>Data processed, cleaned, and organized into meaningful context.</p>
+
+<h4>Knowledge</h4>
+<p>Actionable understanding and insights derived from interpreting information to guide decisions.</p>
+
+<h4>Variable</h4>
+<p>A measurable property that takes different values across subjects.</p>
+
+<h4>Observation</h4>
+<p>A single recorded unit or row across multiple variables.</p>
+
+<h4>Variation</h4>
+<p>Measurable differences observed across observations.</p>
+
+<h4>Random Variable</h4>
+<p>A variable whose exact outcome contains uncertainty.</p>
+
+<hr>
+
+<h3>Data Classifications</h3>
+
+<div class="table-responsive">
+<table class="data-table">
+<thead>
+<tr>
+<th>Classification Type</th>
+<th>Subcategory</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="3"><strong>By Structure</strong></td>
+<td>Structured</td>
+<td>Relational, strict rows and columns, easily queried via SQL</td>
+<td>SQL tables, Excel sheets</td>
+</tr>
+<tr>
+<td>Semi-Structured</td>
+<td>Non-tabular, uses key-value pairs, tags, or hierarchies</td>
+<td>JSON, XML, server logs</td>
+</tr>
+<tr>
+<td>Unstructured</td>
+<td>Free-form, lacks predefined schemas, requires NLP/Vision</td>
+<td>Images, video, raw text, emails</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>By Nature</strong></td>
+<td>Qualitative</td>
+<td>Categorical descriptions, labels, and attributes</td>
+<td>Feedback, colors, job titles</td>
+</tr>
+<tr>
+<td>Quantitative</td>
+<td>Measurable numerical values and counts</td>
+<td>Age, revenue, temperature</td>
+</tr>
+<tr>
+<td rowspan="2"><strong>By Source</strong></td>
+<td>Primary</td>
+<td>Collected firsthand for a direct research purpose</td>
+<td>Surveys, interviews, IoT sensors</td>
+</tr>
+<tr>
+<td>Secondary</td>
+<td>Pre-existing data published by third parties</td>
+<td>Repositories, industry reports</td>
+</tr>
+<tr>
+<td><strong>By Origin</strong></td>
+<td>Internal vs. External</td>
+<td>Company transaction records vs. public web datasets</td>
+<td>HR files vs. economic indexes</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h3>Sampling & Sample Size Formulas</h3>
+
+<h4>Population (N)</h4>
+<p>The complete collection of all entities under study.</p>
+
+<h4>Sample (n)</h4>
+<p>A representative subset drawn from the population to make statistical inferences.</p>
+
+<hr>
+
+<h4>1. Slovin-Yamane Formula</h4>
+<p>Used when population <strong>N</strong> is finite/known with unknown variance.</p>
+
+<div class="formula-block">
+<div class="formula">n = N / (1 + Ne²)</div>
+</div>
+
+<p>Where:</p>
+<ul>
+<li><strong>e</strong> = margin of error as a decimal</li>
+</ul>
+
+<h4>2. Cochran Formula</h4>
+<p>Used for proportions in large or infinite populations.</p>
+
+<div class="formula-block">
+<div class="formula">n = (Z² · p · q) / e²</div>
+</div>
+
+<p>Where:</p>
+<ul>
+<li><strong>Z</strong> = critical score</li>
+<li><strong>p</strong> = estimated proportion</li>
+<li><strong>q = 1 − p</strong></li>
+<li><strong>e</strong> = precision</li>
+</ul>
+<p>Default: <strong>p = 0.50</strong></p>
+
+<h4>Common Z-scores</h4>
+<div class="z-scores-grid">
+<div class="z-score-item"><span class="z-conf">90%</span> <span class="z-arrow">→</span> <span class="z-val">1.645</span></div>
+<div class="z-score-item"><span class="z-conf">95%</span> <span class="z-arrow">→</span> <span class="z-val">1.96</span></div>
+<div class="z-score-item"><span class="z-conf">99%</span> <span class="z-arrow">→</span> <span class="z-val">2.576</span></div>
+</div>
+
+<hr>
+
+<h3>4 Levels of Measurement</h3>
+
+<div class="table-responsive">
+<table class="data-table measurement-table">
+<thead>
+<tr>
+<th>Level</th>
+<th>Scale Type</th>
+<th>Characteristics</th>
+<th>Compatible Statistics</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nominal</strong></td>
+<td>Categorical</td>
+<td>Named categories without inherent order</td>
+<td>Mode, Chi-square</td>
+<td>Gender, blood type, ID numbers</td>
+</tr>
+<tr>
+<td><strong>Ordinal</strong></td>
+<td>Categorical</td>
+<td>Ranked order, but unequal or unknown distances</td>
+<td>Median, Spearman correlation</td>
+<td>Satisfaction ranks (Low/Med/High)</td>
+</tr>
+<tr>
+<td><strong>Interval</strong></td>
+<td>Metric</td>
+<td>Equal intervals between values, <span class="highlight-concept highlight-no-zero">no true zero</span></td>
+<td>Mean, Std Dev, t-test, ANOVA</td>
+<td>Temperature in °C/°F, IQ score</td>
+</tr>
+<tr>
+<td><strong>Ratio</strong></td>
+<td>Metric</td>
+<td>Equal intervals with an <span class="highlight-concept highlight-abs-zero">absolute, meaningful zero</span></td>
+<td>All parametric tests, ratios</td>
+<td>Income, age, distance, weight</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<hr>
+
+<h3>Data Quality & Data Preparation</h3>
+
+<h4>6 Dimensions of Quality</h4>
+
+<div class="quality-dims-grid">
+
+<div class="quality-dim-card">
+<div class="dim-number">1</div>
+<div class="dim-body">
+<h5>Consistency</h5>
+<p>No contradictory values across databases.</p>
+</div>
+</div>
+
+<div class="quality-dim-card">
+<div class="dim-number">2</div>
+<div class="dim-body">
+<h5>Uniqueness</h5>
+<p>Zero duplicate entries.</p>
+</div>
+</div>
+
+<div class="quality-dim-card">
+<div class="dim-number">3</div>
+<div class="dim-body">
+<h5>Timeliness</h5>
+<p>Data is up-to-date and accessible.</p>
+</div>
+</div>
+
+<div class="quality-dim-card">
+<div class="dim-number">4</div>
+<div class="dim-body">
+<h5>Validity</h5>
+<p>Complies with defined schemas, types, and constraints.</p>
+</div>
+</div>
+
+<div class="quality-dim-card">
+<div class="dim-number">5</div>
+<div class="dim-body">
+<h5>Accuracy</h5>
+<p>Reflects real-world truth correctly.</p>
+</div>
+</div>
+
+<div class="quality-dim-card">
+<div class="dim-number">6</div>
+<div class="dim-body">
+<h5>Completeness</h5>
+<p>No missing mandatory fields.</p>
+</div>
+</div>
+
+</div>
+
+<hr>
+
+<h3>Data Preparation Techniques</h3>
+
+<h4>Missing Value Imputation</h4>
+<p><strong>Missing Value Imputation:</strong> Techniques used to handle missing values in a dataset.</p>
+
+<p>Methods include:</p>
+<ul>
+<li><strong>Listwise Deletion:</strong> Removing records that contain missing values.</li>
+<li><strong>Statistical Imputation:</strong> Replacing missing values using statistical measures.</li>
+<li><strong>Predictive Modeling:</strong> Using a model to estimate and replace missing values.</li>
+</ul>
+
+<p>Statistical imputation can use:</p>
+<ul>
+<li><strong>Mean:</strong> Replaces missing values with the average value.</li>
+<li><strong>Median:</strong> Replaces missing values with the middle value.</li>
+<li><strong>Mode:</strong> Replaces missing values with the most frequently occurring value.</li>
+</ul>
+
+<h4>Deduplication</h4>
+<p><strong>Deduplication:</strong> Removing identical or duplicate rows to avoid sample overrepresentation.</p>
+
+<h4>Outlier Handling</h4>
+<p><strong>Outlier Handling:</strong> Identifying and managing extreme values that differ substantially from the majority of observations.</p>
+
+<p>Methods include:</p>
+<ul>
+<li><strong>Z-score:</strong> Used to identify observations that are unusually far from the mean.</li>
+<li><strong>IQR (Interquartile Range):</strong> A measure used to identify the spread of the middle 50% of the data and help detect outliers.</li>
+<li><strong>Boxplots:</strong> Visual charts that can be used to identify extreme values and potential outliers.</li>
+</ul>
+
+<h4>Data Transformation</h4>
+<p><strong>Data Transformation:</strong> Converting or modifying data into a suitable format for analysis or modeling.</p>
+
+<p>Includes:</p>
+<ul>
+<li><strong>Categorical Encoding:</strong> Converting categorical data into numerical representations.</li>
+<li><strong>One-Hot Encoding:</strong> Represents categories using separate binary variables.</li>
+<li><strong>Label Encoding:</strong> Assigns numerical labels to categories.</li>
+<li><strong>Feature Engineering:</strong> Creating or modifying variables to make them more useful for analysis or modeling.</li>
+</ul>
+
+<h4>Scaling & Normalization</h4>
+
+<h5>Min-Max Normalization</h5>
+<p>Rescales values into a fixed <strong>[0, 1]</strong> interval.</p>
+
+<h5>Z-score Standardization</h5>
+<p>Transforms values to:</p>
+<ul>
+<li>Mean μ = 0</li>
+<li>Standard deviation σ = 1</li>
+</ul>
+
+</section>`
+          }
+        ],
+        notes: null,
+        reviewer: {
+          mcq: [
+            {
+              question: "1. A company wants to know its total sales for each month during the previous year. Which type of analytics should it use?",
+              options: [
+                "A. Predictive Analytics",
+                "B. Prescriptive Analytics",
+                "C. Descriptive Analytics",
+                "D. Diagnostic Analytics"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "2. A retail company notices that website traffic suddenly decreased and wants to determine the reason. Which type of analytics is most appropriate?",
+              options: [
+                "A. Descriptive",
+                "B. Diagnostic",
+                "C. Predictive",
+                "D. Prescriptive"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "3. A bank uses historical transaction data to estimate which customers are most likely to default on loans next year. What type of analytics is this?",
+              options: [
+                "A. Descriptive",
+                "B. Diagnostic",
+                "C. Predictive",
+                "D. Prescriptive"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "4. A company uses an optimization algorithm to determine how its advertising budget should be distributed among different platforms. What type of analytics is being used?",
+              options: [
+                "A. Descriptive",
+                "B. Diagnostic",
+                "C. Predictive",
+                "D. Prescriptive"
+              ],
+              correctIndex: 3
+            },
+            {
+              question: "5. A data analyst receives a dataset containing duplicate customer records, missing ages, and inconsistent spellings of cities. Which step should address these problems?",
+              options: [
+                "A. Problem Definition",
+                "B. Data Collection",
+                "C. Data Cleaning",
+                "D. Decision-Making"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "6. A researcher creates charts and calculates summary statistics before building a formal model to understand the distribution of the data. What process is this?",
+              options: [
+                "A. Data Exploration",
+                "B. Data Collection",
+                "C. Data Transformation",
+                "D. Decision-Making"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "7. A manager wants to establish a specific, measurable, attainable, result-oriented, and time-bounded objective before collecting data. Which step is being performed?",
+              options: [
+                "A. Data Cleaning",
+                "B. Problem Definition",
+                "C. Data Modeling",
+                "D. Visualization"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "8. A company collects customer information through an online survey specifically for its current research project. What type of data source is this?",
+              options: [
+                "A. Secondary",
+                "B. External",
+                "C. Primary",
+                "D. Historical"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "9. A student uses an existing government dataset published online for a research project. What type of data is this based on source?",
+              options: [
+                "A. Primary",
+                "B. Secondary",
+                "C. Internal",
+                "D. Experimental"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "10. A company stores employee records in a database with clearly defined rows and columns that can be queried using SQL. How should the data be classified by structure?",
+              options: [
+                "A. Unstructured",
+                "B. Semi-structured",
+                "C. Structured",
+                "D. Qualitative"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "11. A developer receives customer information stored in JSON files using key-value pairs. How should this data be classified by structure?",
+              options: [
+                "A. Structured",
+                "B. Semi-structured",
+                "C. Unstructured",
+                "D. Quantitative"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "12. A company analyzes thousands of customer emails, photographs, and videos. These data types do not follow a predefined table structure. What type of data are they?",
+              options: [
+                "A. Structured",
+                "B. Semi-structured",
+                "C. Unstructured",
+                "D. Relational"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "13. A researcher records the favorite color of each participant. What is the nature of this variable?",
+              options: [
+                "A. Quantitative",
+                "B. Qualitative",
+                "C. Continuous",
+                "D. Ratio"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "14. A fitness application records the weight of every user in kilograms. How should this variable be classified by nature?",
+              options: [
+                "A. Qualitative",
+                "B. Quantitative",
+                "C. Nominal",
+                "D. Ordinal"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "15. A university wants to survey students about their satisfaction. It has a known population of 5,000 students and wants to use a formula appropriate for a finite population with an assumed margin of error. Which formula from the lesson is most appropriate?",
+              options: [
+                "A. Cochran Formula",
+                "B. Slovin-Yamane Formula",
+                "C. Z-score Formula",
+                "D. IQR Formula"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "16. A researcher is estimating a population proportion and has a very large or effectively infinite population. Which formula is appropriate?",
+              options: [
+                "A. Slovin-Yamane",
+                "B. Cochran",
+                "C. Min-Max",
+                "D. Z-score"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "17. A survey researcher wants a 95% confidence level for a Cochran sample-size calculation. Which Z-score should be used?",
+              options: [
+                "A. 1.645",
+                "B. 1.96",
+                "C. 2.576",
+                "D. 3.00"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "18. A teacher records students' blood types: A, B, AB, and O. There is no ranking among the categories. What level of measurement is appropriate?",
+              options: [
+                "A. Nominal",
+                "B. Ordinal",
+                "C. Interval",
+                "D. Ratio"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "19. Customers rate a restaurant as Poor, Fair, Good, or Excellent. The categories have an order, but the exact distance between categories is not known. What level of measurement is this?",
+              options: [
+                "A. Nominal",
+                "B. Ordinal",
+                "C. Interval",
+                "D. Ratio"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "20. A weather station records temperature in degrees Celsius. The differences between values are meaningful, but 0°C does not mean that temperature completely does not exist. What level of measurement is this?",
+              options: [
+                "A. Nominal",
+                "B. Ordinal",
+                "C. Interval",
+                "D. Ratio"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "21. A researcher records the distance traveled by each participant in kilometers. A distance of 0 km represents the absence of distance. What level of measurement is this?",
+              options: [
+                "A. Nominal",
+                "B. Ordinal",
+                "C. Interval",
+                "D. Ratio"
+              ],
+              correctIndex: 3
+            },
+            {
+              question: "22. A database contains two records for the same customer, causing that customer to be counted twice. Which data-quality dimension is most directly violated?",
+              options: [
+                "A. Timeliness",
+                "B. Uniqueness",
+                "C. Validity",
+                "D. Accuracy"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "23. A company stores a customer's age as \"twenty years old\" even though the database requires a numerical integer. Which data-quality dimension is primarily violated?",
+              options: [
+                "A. Validity",
+                "B. Timeliness",
+                "C. Completeness",
+                "D. Uniqueness"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "24. A hospital database contains a patient's correct address, but the address has not been updated for five years. Which data-quality dimension is primarily affected?",
+              options: [
+                "A. Accuracy",
+                "B. Timeliness",
+                "C. Uniqueness",
+                "D. Validity"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "25. A dataset contains a person's recorded age as 25, but the person's actual age is 24. Which data-quality dimension is violated?",
+              options: [
+                "A. Accuracy",
+                "B. Completeness",
+                "C. Consistency",
+                "D. Uniqueness"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "26. A dataset contains thousands of records, but many required email fields are blank. Which data-quality dimension is primarily affected?",
+              options: [
+                "A. Validity",
+                "B. Timeliness",
+                "C. Completeness",
+                "D. Accuracy"
+              ],
+              correctIndex: 2
+            },
+            {
+              question: "27. A machine-learning model requires numerical input, but the dataset contains a \"Department\" variable with values such as IT, HR, and Finance. Which preparation technique can convert these categories into numerical features?",
+              options: [
+                "A. Deduplication",
+                "B. Categorical Encoding",
+                "C. Outlier Removal",
+                "D. Normalization"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "28. A dataset contains extreme values that are unusually far from the majority of observations. Which technique can help identify these values?",
+              options: [
+                "A. Z-score or IQR",
+                "B. One-Hot Encoding only",
+                "C. Deduplication",
+                "D. Listwise deletion only"
+              ],
+              correctIndex: 0
+            },
+            {
+              question: "29. A machine-learning algorithm performs poorly because one feature ranges from 0 to 10 while another ranges from 0 to 100,000. Which technique can help put the variables on comparable scales?",
+              options: [
+                "A. Deduplication",
+                "B. Scaling and Normalization",
+                "C. Data Collection",
+                "D. Sampling"
+              ],
+              correctIndex: 1
+            },
+            {
+              question: "30. A company receives massive amounts of social-media posts every second from users around the world. Which Big Data \"V\" describes the speed at which this data arrives?",
+              options: [
+                "A. Volume",
+                "B. Variety",
+                "C. Velocity",
+                "D. Veracity"
+              ],
+              correctIndex: 2
+            }
+          ],
+          enum: [
+            {
+              question: "Enumerate the 4 types of analytics.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["descriptive analytics", "descriptive"],
+                ["diagnostic analytics", "diagnostic"],
+                ["predictive analytics", "predictive"],
+                ["prescriptive analytics", "prescriptive"]
+              ]
+            },
+            {
+              question: "Enumerate the 7 steps of the Data Analytics Process.",
+              requiredAnswerCount: 7,
+              ordered: true,
+              accept: [
+                ["problem definition"],
+                ["data collection"],
+                ["data cleaning"],
+                ["data exploration", "data exploration (eda)", "eda"],
+                ["data analysis & modeling", "data analysis and modeling", "data analysis & modelling", "data analysis"],
+                ["interpretation & visualization", "interpretation and visualization", "interpretation & visualisation"],
+                ["decision-making", "decision making", "decisionmaking"]
+              ]
+            },
+            {
+              question: "Enumerate the 5 Vs of Big Data.",
+              requiredAnswerCount: 5,
+              ordered: false,
+              accept: [
+                ["volume"],
+                ["velocity"],
+                ["variety"],
+                ["veracity"],
+                ["value"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 levels of organizational decision-making.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["strategic"],
+                ["tactical"],
+                ["operational"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 areas in the data-driven career hierarchy.",
+              requiredAnswerCount: 3,
+              ordered: true,
+              accept: [
+                ["data engineering"],
+                ["data analytics"],
+                ["data science"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 periods in the evolution of Data Analytics.",
+              requiredAnswerCount: 3,
+              ordered: true,
+              accept: [
+                ["early data processing"],
+                ["business intelligence"],
+                ["big data & advanced analytics", "big data and advanced analytics", "big data"]
+              ]
+            },
+            {
+              question: "Enumerate 4 technologies/concepts from Early Data Processing.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["mainframe computers", "mainframes", "mainframe"],
+                ["batch processing"],
+                ["punch cards", "punch card"],
+                ["cobol"],
+                ["early hierarchical databases", "hierarchical databases"],
+                ["flat file databases", "flat-file databases", "flat files"],
+                ["basic reporting"]
+              ]
+            },
+            {
+              question: "Enumerate 4 technologies/concepts associated with Business Intelligence.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["relational databases", "relational database"],
+                ["data warehousing", "data warehouse"],
+                ["etl pipelines", "etl pipeline", "etl"],
+                ["olap"],
+                ["multi-dimensional analysis", "multidimensional analysis"],
+                ["structured reporting dashboards", "reporting dashboards"]
+              ]
+            },
+            {
+              question: "Enumerate 4 technologies/concepts associated with Big Data & Advanced Analytics.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["cloud platforms", "cloud platform", "cloud"],
+                ["distributed computing"],
+                ["hadoop"],
+                ["spark"],
+                ["real-time streaming", "real time streaming", "realtime streaming"],
+                ["unstructured data handling"],
+                ["ai", "artificial intelligence"],
+                ["machine learning", "ml"],
+                ["ai/ml models", "ai/ml"]
+              ]
+            },
+            {
+              question: "Enumerate the 4 data collection sources mentioned in the lesson.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["databases", "database"],
+                ["surveys", "survey"],
+                ["sensors", "sensor"],
+                ["apis", "api"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 classifications of data by structure: the type with strict rows and columns, the type using key-value pairs or tags, and the type without a predefined schema.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["structured"],
+                ["semi-structured", "semi structured", "semistructured"],
+                ["unstructured"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 classifications of data by nature: one described by characteristics or labels, and the other represented by numbers.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["qualitative"],
+                ["quantitative"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 classifications of data by source: data collected firsthand for a specific purpose, and data obtained from existing sources.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["primary"],
+                ["secondary"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 classifications of data by origin: data generated from within an organization, and data acquired from outside the organization.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["internal"],
+                ["external"]
+              ]
+            },
+            {
+              question: "Enumerate the 4 levels of measurement: named categories without order, ranked categories, equal intervals without a true zero, and equal intervals with a meaningful zero.",
+              requiredAnswerCount: 4,
+              ordered: true,
+              accept: [
+                ["nominal"],
+                ["ordinal"],
+                ["interval"],
+                ["ratio"]
+              ]
+            },
+            {
+              question: "Enumerate the 6 dimensions of Data Quality, including whether data is consistent, unique, timely, valid, accurate, and complete.",
+              requiredAnswerCount: 6,
+              ordered: false,
+              accept: [
+                ["consistency"],
+                ["uniqueness"],
+                ["timeliness"],
+                ["validity"],
+                ["accuracy"],
+                ["completeness"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 approaches to handling missing values: removing rows, filling with statistical metrics, and using algorithms to guess the value.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["listwise deletion"],
+                ["statistical imputation"],
+                ["predictive modeling", "predictive modelling"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 statistical methods for missing-value imputation.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["mean"],
+                ["median"],
+                ["mode"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 methods used to identify outliers: measuring standard deviations from the mean, and using the spread between quartiles.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["z-score", "z score", "zscore"],
+                ["iqr", "interquartile range"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 categorical encoding techniques: creating binary columns for each category, and assigning a unique integer to each category.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["one-hot encoding", "one hot encoding", "onehot encoding"],
+                ["label encoding"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 scaling techniques: shifting values to a specific range like 0 to 1, and centering data around a mean of 0.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["min-max normalization", "min max normalization", "minmax normalization"],
+                ["z-score standardization", "z score standardization", "zscore standardization"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 main types of data based on nature.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["qualitative"],
+                ["quantitative"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 types of data based on source.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["primary"],
+                ["secondary"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 types of data based on origin.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["internal"],
+                ["external"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 concepts that form the foundation of how data is transformed into meaningful understanding and actionable insights.",
+              requiredAnswerCount: 3,
+              ordered: true,
+              accept: [
+                ["data"],
+                ["information"],
+                ["knowledge"]
+              ]
+            },
+            {
+              question: "Enumerate the 2 variables used in the Slovin-Yamane Formula.",
+              requiredAnswerCount: 2,
+              ordered: false,
+              accept: [
+                ["n", "population", "population (n)"],
+                ["e", "margin of error"]
+              ]
+            },
+            {
+              question: "Enumerate the 4 variables used in the Cochran Formula.",
+              requiredAnswerCount: 4,
+              ordered: false,
+              accept: [
+                ["z", "z-score", "z score", "critical score"],
+                ["p", "estimated proportion"],
+                ["q", "1-p", "1 - p"],
+                ["e", "precision", "margin of error"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 common confidence levels used with their Z-scores.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["90% = 1.645", "90 = 1.645", "1.645", "90%"],
+                ["95% = 1.96", "95 = 1.96", "1.96", "95%"],
+                ["99% = 2.576", "99 = 2.576", "2.576", "99%"]
+              ]
+            },
+            {
+              question: "Enumerate 6 business applications of Data Analytics.",
+              requiredAnswerCount: 6,
+              ordered: false,
+              accept: [
+                ["customer segmentation"],
+                ["demand forecasting"],
+                ["automated fraud detection", "fraud detection"],
+                ["operational bottleneck reduction", "bottleneck reduction"],
+                ["marketing roi evaluation", "marketing roi"],
+                ["new product development", "product development"]
+              ]
+            },
+            {
+              question: "Enumerate the 3 types of data structure.",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["structured"],
+                ["semi-structured", "semi structured", "semistructured"],
+                ["unstructured"]
+              ]
+            }
+          ]
+        }
       }
     ]
   }

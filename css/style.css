@@ -1202,3 +1202,508 @@ a:hover { text-decoration: underline; }
   font-size: 0.9rem;
   line-height: 1.4;
 }
+
+/* ============================================================
+   DATA ANALYTICS NOTES — Custom Components
+   ============================================================ */
+
+/* ── Prose Tables (used in Data Classifications, Levels of Measurement, etc.) ── */
+.prose table,
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1.5em;
+}
+
+.prose table th,
+.data-table th {
+  background: var(--surface-alt);
+  color: var(--text-primary);
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.prose table td,
+.data-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  vertical-align: top;
+}
+
+.prose table tbody tr:hover,
+.data-table tbody tr:hover {
+  background: var(--surface-alt);
+}
+
+.prose table td strong,
+.data-table td strong {
+  color: var(--text-primary);
+}
+
+/* Responsive table wrapper */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1.5em;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+.table-responsive .data-table {
+  margin-bottom: 0;
+  min-width: 600px;
+}
+
+.table-responsive .data-table th:first-child,
+.table-responsive .data-table td:first-child {
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+
+.table-responsive .data-table thead th:first-child {
+  background: var(--surface-alt);
+  z-index: 2;
+}
+
+/* Measurement table: wider for 5 columns */
+.measurement-table {
+  min-width: 720px;
+}
+
+/* ── Highlight Concepts (no true zero / absolute zero distinctions) ── */
+.highlight-concept {
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline;
+  white-space: nowrap;
+}
+
+.highlight-no-zero {
+  background: color-mix(in srgb, var(--warning) 15%, transparent);
+  color: var(--warning);
+  border: 1px solid color-mix(in srgb, var(--warning) 30%, transparent);
+}
+
+.highlight-abs-zero {
+  background: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
+}
+
+/* ── Formula Blocks ── */
+.formula-block {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  margin: 12px 0 16px;
+  overflow-x: auto;
+}
+
+.formula {
+  font-family: 'Geist Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* ── Z-scores Grid ── */
+.z-scores-grid {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 12px 0 16px;
+}
+
+.z-score-item {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.z-conf {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.z-arrow {
+  color: var(--text-muted);
+}
+
+.z-val {
+  font-family: 'Geist Mono', 'Cascadia Code', monospace;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+/* ── Hierarchy Tags (Base / Middle / Top) ── */
+.hierarchy-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.tag-base {
+  background: color-mix(in srgb, var(--text-muted) 15%, transparent);
+  color: var(--text-muted);
+  border: 1px solid color-mix(in srgb, var(--text-muted) 30%, transparent);
+}
+
+.tag-middle {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.tag-top {
+  background: color-mix(in srgb, var(--success) 15%, transparent);
+  color: var(--success);
+  border: 1px solid color-mix(in srgb, var(--success) 30%, transparent);
+}
+
+/* ── Evolution Timeline ── */
+.evolution-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 12px 0;
+}
+
+.timeline-era {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  transition: border-color 0.2s var(--easing), box-shadow 0.2s var(--easing);
+}
+
+.timeline-era:hover {
+  border-left-color: var(--accent-hover);
+  box-shadow: var(--shadow-md);
+}
+
+.era-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 8px;
+  vertical-align: middle;
+  letter-spacing: 0.02em;
+}
+
+/* ── Analytics Method Cards (4 types) ── */
+.analytics-methods-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.analytics-method-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 20px;
+  transition: border-color 0.2s var(--easing), box-shadow 0.2s var(--easing);
+}
+
+.analytics-method-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.analytics-method-card h4 {
+  margin-top: 0 !important;
+  margin-bottom: 4px;
+}
+
+.method-question {
+  color: var(--accent);
+  font-size: 0.9rem;
+  margin-bottom: 8px !important;
+}
+
+.method-question em {
+  color: var(--accent) !important;
+  font-style: italic;
+}
+
+/* ── 7-Step Process ── */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.step-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.step-number {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.step-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.step-body h4 {
+  margin-top: 0 !important;
+  margin-bottom: 6px;
+}
+
+/* Decision Tiers */
+.decision-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.tier-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.tier-card h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.tier-card p {
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+/* ── 5 Vs Grid ── */
+.five-vs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin: 16px 0;
+}
+
+.v-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  text-align: center;
+  transition: border-color 0.2s var(--easing), box-shadow 0.2s var(--easing);
+}
+
+.v-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.v-letter {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 6px;
+  font-family: var(--font-display, var(--font-sans));
+}
+
+.v-card h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.v-card p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.v-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 6px 0 0;
+}
+
+.v-card li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Quality Dimensions Grid ── */
+.quality-dims-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.quality-dim-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  transition: border-color 0.2s var(--easing);
+}
+
+.quality-dim-card:hover {
+  border-color: var(--accent);
+}
+
+.dim-number {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dim-body h5 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.dim-body p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+/* ── Lesson Tabs (Notes sub-tabs) ── */
+.lesson-tabs {
+  border-bottom-width: 1px;
+}
+
+/* ── Notes Section Horizontal Rules ── */
+.notes-section hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2em 0;
+}
+
+/* ── Prose h5 (used in V-cards, quality dims, scaling) ── */
+.prose h5 {
+  font-family: var(--font-display, var(--font-sans));
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+/* ============================================================
+   RESPONSIVE — Data Analytics Notes
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .analytics-methods-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .decision-tiers {
+    grid-template-columns: 1fr;
+  }
+
+  .five-vs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quality-dims-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-responsive .data-table {
+    min-width: 500px;
+  }
+
+  .measurement-table {
+    min-width: 600px;
+  }
+
+  .formula {
+    font-size: 0.9rem;
+  }
+
+  .step-item {
+    gap: 12px;
+  }
+
+  .step-number {
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .five-vs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .z-scores-grid {
+    flex-direction: column;
+  }
+
+  .timeline-era {
+    padding: 12px 14px;
+  }
+}

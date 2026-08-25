@@ -31,6 +31,7 @@ const DEFAULT_THEME = 'canvas'; // Best first impression for new visitors
 let currentView   = 'landing'; // 'landing' | 'app'
 let currentExamId = null;
 let currentTab    = 'notes';
+let currentLessonTab = 0;        // index into exam.notesLessons[]
 
 // ── Helpers ────────────────────────────────────────────────
 
@@ -87,6 +88,15 @@ function formatDate(dateStr) {
 /** Check if admin is logged in. */
 function isAdmin() {
   return sessionStorage.getItem(STORAGE_KEY_ADMIN) === '1';
+}
+
+/** Shuffle an array in place (Fisher-Yates). Also returns the array. */
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
 }
 
 /** Get badge class for exam type. */
@@ -210,6 +220,7 @@ function showApp(examId) {
 function openExam(examId) {
   currentExamId = examId;
   currentTab    = 'notes';
+  currentLessonTab = 0;
   renderSidebar();      // refresh active state
   renderExamContent();
 }
@@ -217,8 +228,8 @@ function openExam(examId) {
 // ── Landing render ──────────────────────────────────────────
 function renderLanding() {
   const all = getAllExams();
-  const upcoming = all.filter(e => e.status === 'upcoming').sort((a,b) => a.date.localeCompare(b.date));
-  const done     = all.filter(e => e.status === 'done'    ).sort((a,b) => b.date.localeCompare(a.date));
+  const upcoming = all.filter(e => e.status === 'upcoming').sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+  const done     = all.filter(e => e.status === 'done'    ).sort((a,b) => (b.date || '').localeCompare(a.date || ''));
 
   $('upcoming-count').textContent = upcoming.length;
   $('past-count').textContent     = done.length;
@@ -331,6 +342,34 @@ function renderExamContent() {
   const markDoneBtn = isAdmin() && status === 'upcoming' ? `
     <button class="mark-done-btn" style="margin-top:8px" onclick="handleMarkDone(event, '${exam.id}')">✓ Mark as Done</button>` : '';
 
+  // Determine whether this exam uses lesson tabs for notes
+  const hasLessonTabs = Array.isArray(exam.notesLessons) && exam.notesLessons.length > 0;
+
+  // Build the notes panel content
+  let notesPanelContent;
+  if (hasLessonTabs) {
+    const lessonTabsHtml = exam.notesLessons.map((lesson, i) =>
+      `<button class="tab-btn${currentLessonTab === i ? ' active' : ''}" 
+              id="lesson-tab-${i}" role="tab" 
+              aria-selected="${currentLessonTab === i}"
+              onclick="switchLessonTab(${i})">${lesson.tab}</button>`
+    ).join('');
+
+    const lessonPanelsHtml = exam.notesLessons.map((lesson, i) =>
+      `<div id="lesson-panel-${i}" class="tab-panel${currentLessonTab === i ? ' active' : ''}">
+        <div class="prose">${lesson.content}</div>
+      </div>`
+    ).join('');
+
+    notesPanelContent = `
+      <div class="tabs lesson-tabs" role="tablist" style="margin-bottom: 1rem;">
+        ${lessonTabsHtml}
+      </div>
+      ${lessonPanelsHtml}`;
+  } else {
+    notesPanelContent = `<div class="prose">${exam.notes || '<p>No notes yet.</p>'}</div>`;
+  }
+
   $('main-content').innerHTML = `
     <div class="exam-content-header reveal">
       <div class="exam-content-eyebrow">
@@ -353,93 +392,168 @@ function renderExamContent() {
       <button class="tab-btn${currentTab === 'reviewer' ? ' active' : ''}" id="tab-reviewer" role="tab" aria-selected="${currentTab==='reviewer'}" onclick="switchTab('reviewer')">Reviewer</button>
     </div>
 
-    <div id="panel-notes"    class="tab-panel${currentTab === 'notes'    ? ' active' : ''}"><div class="prose">${exam.notes    || '<p>No notes yet.</p>'}</div></div>
+    <div id="panel-notes"    class="tab-panel${currentTab === 'notes'    ? ' active' : ''}">${notesPanelContent}</div>
     <div id="panel-reviewer" class="tab-panel${currentTab === 'reviewer' ? ' active' : ''}"></div>`;
 
   const reviewerPanel = $('panel-reviewer');
   if (Array.isArray(exam.reviewer)) {
     renderInteractiveReviewer(reviewerPanel, exam.reviewer);
   } else if (exam.reviewer && typeof exam.reviewer === 'object') {
+    // Detect which sub-tabs to show
+    const hasIdent = exam.reviewer.ident != null;
+    const hasEnum  = exam.reviewer.enum != null;
+    const secondTabKey   = hasEnum ? 'enum' : 'ident';
+    const secondTabLabel = hasEnum ? 'Enumeration' : 'Identification';
+
     reviewerPanel.innerHTML = `
       <div class="tabs reviewer-subtabs" role="tablist" style="margin-bottom: 1rem;">
         <button class="tab-btn active" id="subtab-mcq" role="tab" onclick="switchReviewerTab('mcq')">Multiple Choice</button>
-        <button class="tab-btn" id="subtab-ident" role="tab" onclick="switchReviewerTab('ident')">Identification</button>
+        <button class="tab-btn" id="subtab-${secondTabKey}" role="tab" onclick="switchReviewerTab('${secondTabKey}')">${secondTabLabel}</button>
       </div>
       <div id="subpanel-mcq" class="tab-panel active"></div>
-      <div id="subpanel-ident" class="tab-panel"></div>
+      <div id="subpanel-${secondTabKey}" class="tab-panel"></div>
     `;
     renderInteractiveReviewer($('subpanel-mcq'), exam.reviewer.mcq);
-    
-    const identPanel = $('subpanel-ident');
-    if (Array.isArray(exam.reviewer.ident)) {
-      renderInteractiveIdent(identPanel, exam.reviewer.ident);
+
+    if (hasEnum) {
+      renderInteractiveEnum($('subpanel-enum'), exam.reviewer.enum);
     } else {
-      identPanel.innerHTML = `<div class="prose">${exam.reviewer.ident}</div>`;
+      const identPanel = $('subpanel-ident');
+      if (Array.isArray(exam.reviewer.ident)) {
+        renderInteractiveIdent(identPanel, exam.reviewer.ident);
+      } else {
+        identPanel.innerHTML = `<div class="prose">${exam.reviewer.ident}</div>`;
+      }
     }
   } else {
     reviewerPanel.innerHTML = `<div class="prose">${exam.reviewer || '<p>No reviewer yet.</p>'}</div>`;
   }
 
+
   initRevealObserver();
 }
 
+
 // ── Interactive Reviewer Component ───────────────────────────
-function renderInteractiveReviewer(container, questions) {
-  container.innerHTML = '';
+function renderInteractiveReviewer(container, originalQuestions) {
+  let score = 0;
+  let answeredCount = 0;
+
+  // Deep clone and shuffle questions
+  const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
+
+  container.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+      <h3 style="margin: 0;">Part I. Multiple Choice</h3>
+      <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-primary);">
+        Score: <span class="mcq-score" style="color: var(--accent);">0</span> / ${questions.length}
+      </div>
+    </div>
+    <div class="mcq-quiz-container"></div>
+  `;
   
+  const quizContainer = container.querySelector('.mcq-quiz-container');
+  const scoreDisplay = container.querySelector('.mcq-score');
+
   questions.forEach((q, qIndex) => {
+    // Keep track of the correct answer text before shuffling
+    const correctAnswerText = q.options[q.correctIndex];
+    // Shuffle the options
+    shuffleArray(q.options);
+    // Find the new correct index
+    const newCorrectIndex = q.options.indexOf(correctAnswerText);
+
     const qContainer = document.createElement('div');
     qContainer.className = 'quiz-question-container';
     
     const qText = document.createElement('div');
     qText.className = 'quiz-question-text';
-    qText.textContent = q.question;
+    // Remove old manual numbering from q.question if it exists, and re-number based on new order
+    const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
+    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
     qContainer.appendChild(qText);
     
     const optionsList = document.createElement('div');
     optionsList.className = 'quiz-options-list';
     
+    const letterPrefixes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+
     q.options.forEach((optText, optIndex) => {
+      // Remove old A. B. C. from optText if they exist
+      const rawOptText = optText.replace(/^[A-Z]\.\s*/, '');
       const btn = document.createElement('button');
       btn.className = 'quiz-option-btn';
-      btn.textContent = optText;
-      btn.onclick = () => handleQuizOptionClick(btn, optIndex, q.correctIndex, optionsList);
+      btn.textContent = `${letterPrefixes[optIndex] || ''}. ${rawOptText}`;
+      
+      btn.onclick = () => {
+        // Lock all options for this question
+        const allBtns = optionsList.querySelectorAll('.quiz-option-btn');
+        allBtns.forEach(b => b.disabled = true);
+        
+        answeredCount++;
+        
+        if (optIndex === newCorrectIndex) {
+          btn.classList.add('quiz-option-correct');
+          score++;
+          scoreDisplay.textContent = score;
+        } else {
+          btn.classList.add('quiz-option-incorrect');
+          if (allBtns[newCorrectIndex]) {
+            allBtns[newCorrectIndex].classList.add('quiz-option-correct');
+          }
+        }
+
+        // Check if finished
+        if (answeredCount === questions.length) {
+          const pct = Math.round((score / questions.length) * 100);
+          const finalFeedback = document.createElement('div');
+          finalFeedback.style.marginTop = '2rem';
+          finalFeedback.style.padding = '16px';
+          finalFeedback.style.background = 'var(--surface-alt)';
+          finalFeedback.style.border = '1px solid var(--border)';
+          finalFeedback.style.borderRadius = 'var(--radius-md)';
+          finalFeedback.style.textAlign = 'center';
+          finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
+          <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+          quizContainer.appendChild(finalFeedback);
+        }
+      };
+      
       optionsList.appendChild(btn);
     });
     
     qContainer.appendChild(optionsList);
-    container.appendChild(qContainer);
+    quizContainer.appendChild(qContainer);
   });
   
   const restartBtn = document.createElement('button');
   restartBtn.className = 'quiz-restart-btn';
   restartBtn.textContent = 'Restart Quiz';
   restartBtn.onclick = () => {
-    renderInteractiveReviewer(container, questions);
+    renderInteractiveReviewer(container, originalQuestions);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   container.appendChild(restartBtn);
 }
 
-function handleQuizOptionClick(clickedBtn, selectedIndex, correctIndex, optionsList) {
-  // Lock all options for this question
-  const allBtns = optionsList.querySelectorAll('.quiz-option-btn');
-  allBtns.forEach(btn => btn.disabled = true);
-  
-  if (selectedIndex === correctIndex) {
-    clickedBtn.classList.add('quiz-option-correct');
-  } else {
-    clickedBtn.classList.add('quiz-option-incorrect');
-    // Highlight the correct option too
-    if (allBtns[correctIndex]) {
-      allBtns[correctIndex].classList.add('quiz-option-correct');
-    }
-  }
-}
+function renderInteractiveIdent(container, originalQuestions) {
+  let score = 0;
+  let answeredCount = 0;
 
-function renderInteractiveIdent(container, questions) {
-  container.innerHTML = '<h3>Part II. Identification</h3><div class="ident-quiz-container"></div>';
+  // Deep clone and shuffle
+  const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
+
+  container.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+      <h3 style="margin: 0;">Part II. Identification</h3>
+      <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-primary);">
+        Score: <span class="ident-score" style="color: var(--accent);">0</span> / ${questions.length}
+      </div>
+    </div>
+    <div class="ident-quiz-container"></div>
+  `;
   const quizContainer = container.querySelector('.ident-quiz-container');
+  const scoreDisplay = container.querySelector('.ident-score');
   
   questions.forEach((q, qIndex) => {
     const qContainer = document.createElement('div');
@@ -447,7 +561,8 @@ function renderInteractiveIdent(container, questions) {
     
     const qText = document.createElement('div');
     qText.className = 'quiz-question-text';
-    qText.textContent = `${qIndex + 1}. ${q.question}`;
+    const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
+    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
     qContainer.appendChild(qText);
     
     const inputGroup = document.createElement('div');
@@ -473,13 +588,30 @@ function renderInteractiveIdent(container, questions) {
       
       input.disabled = true;
       checkBtn.disabled = true;
+      answeredCount++;
       
       if (isCorrect) {
+        score++;
+        scoreDisplay.textContent = score;
         feedback.innerHTML = `<span style="color: var(--success); font-weight: 600;">✓ Correct!</span>`;
         input.classList.add('input-correct');
       } else {
         feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ Incorrect. The correct answer is: ${q.answer}</span>`;
         input.classList.add('input-incorrect');
+      }
+
+      if (answeredCount === questions.length) {
+        const pct = Math.round((score / questions.length) * 100);
+        const finalFeedback = document.createElement('div');
+        finalFeedback.style.marginTop = '2rem';
+        finalFeedback.style.padding = '16px';
+        finalFeedback.style.background = 'var(--surface-alt)';
+        finalFeedback.style.border = '1px solid var(--border)';
+        finalFeedback.style.borderRadius = 'var(--radius-md)';
+        finalFeedback.style.textAlign = 'center';
+        finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+        quizContainer.appendChild(finalFeedback);
       }
     };
     
@@ -499,7 +631,198 @@ function renderInteractiveIdent(container, questions) {
   restartBtn.className = 'quiz-restart-btn';
   restartBtn.textContent = 'Restart Quiz';
   restartBtn.onclick = () => {
-    renderInteractiveIdent(container, questions);
+    renderInteractiveIdent(container, originalQuestions);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+  container.appendChild(restartBtn);
+}
+
+function renderInteractiveEnum(container, originalQuestions) {
+  let score = 0;
+  let answeredCount = 0;
+
+  // Deep clone and shuffle
+  const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
+
+  // Render Header & Score
+  container.innerHTML = `
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+      <h3 style="margin: 0;">Part II. Enumeration</h3>
+      <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-primary);">
+        Score: <span class="enum-score" style="color: var(--accent);">0</span> / ${questions.length}
+      </div>
+    </div>
+    <div class="enum-quiz-container"></div>
+  `;
+  
+  const quizContainer = container.querySelector('.enum-quiz-container');
+  const scoreDisplay = container.querySelector('.enum-score');
+  
+  questions.forEach((q, qIndex) => {
+    const qContainer = document.createElement('div');
+    qContainer.className = 'quiz-question-container';
+    
+    const qText = document.createElement('div');
+    qText.className = 'quiz-question-text';
+    const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
+    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
+    qContainer.appendChild(qText);
+    
+    const inputGroup = document.createElement('div');
+    inputGroup.className = 'ident-input-group';
+    inputGroup.style.display = 'flex';
+    inputGroup.style.flexDirection = 'column';
+    inputGroup.style.gap = '8px';
+    
+    const inputs = [];
+    for (let i = 0; i < q.requiredAnswerCount; i++) {
+      const row = document.createElement('div');
+      row.style.display = 'flex';
+      row.style.alignItems = 'center';
+      row.style.gap = '8px';
+      
+      const numLabel = document.createElement('span');
+      numLabel.textContent = `${i + 1}.`;
+      numLabel.style.fontWeight = '600';
+      numLabel.style.color = 'var(--text-secondary)';
+      numLabel.style.minWidth = '20px';
+      
+      const input = document.createElement('input');
+      input.type = 'text';
+      input.className = 'ident-input'; 
+      input.placeholder = `Enter answer ${i + 1}`;
+      input.style.flex = '1';
+      
+      inputs.push(input);
+      row.appendChild(numLabel);
+      row.appendChild(input);
+      inputGroup.appendChild(row);
+    }
+    
+    const actionGroup = document.createElement('div');
+    actionGroup.style.marginTop = '12px';
+    
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'ident-check-btn'; 
+    checkBtn.textContent = 'Check Answer';
+    
+    const feedback = document.createElement('div');
+    feedback.className = 'ident-feedback';
+    feedback.style.marginTop = '8px';
+    
+    const normalize = (str) => {
+      const normalized = str.trim().toLowerCase().replace(/\\s+/g, ' ');
+      const noPunct = normalized.replace(/[^\\w\\s]/g, '');
+      return { normalized, noPunct };
+    };
+
+    const isMatch = (userStr, acceptedVariants) => {
+      const userNorm = normalize(userStr);
+      return acceptedVariants.some(variant => {
+        const variantNorm = normalize(variant);
+        return variantNorm.normalized === userNorm.normalized || 
+               variantNorm.noPunct === userNorm.noPunct;
+      });
+    };
+    
+    checkBtn.onclick = () => {
+      let correctCount = 0;
+      const usedExpectedIndices = new Set();
+      
+      if (q.ordered) {
+        inputs.forEach((input, i) => {
+          const val = input.value;
+          if (!val.trim()) {
+             input.classList.add('input-incorrect');
+             return;
+          }
+          if (q.accept[i] && isMatch(val, q.accept[i])) {
+            input.classList.add('input-correct');
+            correctCount++;
+          } else {
+            input.classList.add('input-incorrect');
+          }
+        });
+      } else {
+        inputs.forEach((input) => {
+           const val = input.value;
+           if (!val.trim()) {
+             input.classList.add('input-incorrect');
+             return;
+           }
+           let foundMatch = false;
+           for (let j = 0; j < q.accept.length; j++) {
+              if (usedExpectedIndices.has(j)) continue; 
+              
+              if (isMatch(val, q.accept[j])) {
+                 foundMatch = true;
+                 usedExpectedIndices.add(j);
+                 break;
+              }
+           }
+           if (foundMatch) {
+              input.classList.add('input-correct');
+              correctCount++;
+           } else {
+              input.classList.add('input-incorrect');
+           }
+        });
+      }
+      
+      inputs.forEach(input => input.disabled = true);
+      checkBtn.disabled = true;
+      answeredCount++;
+      
+      if (correctCount === q.requiredAnswerCount) {
+        score++;
+        scoreDisplay.textContent = score;
+        feedback.innerHTML = `<span style="color: var(--success); font-weight: 600;">✓ Correct! All answers are right.</span>`;
+      } else {
+        const expectedSummary = q.accept.map(aliases => aliases[0]).join(', ');
+        feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ You got ${correctCount} out of ${q.requiredAnswerCount} correct.</span>
+        <div style="margin-top: 4px; font-size: 0.85rem; color: var(--text-secondary);">Expected answers: ${expectedSummary}</div>`;
+      }
+      
+      if (answeredCount === questions.length) {
+         const pct = Math.round((score / questions.length) * 100);
+         const finalFeedback = document.createElement('div');
+         finalFeedback.style.marginTop = '2rem';
+         finalFeedback.style.padding = '16px';
+         finalFeedback.style.background = 'var(--surface-alt)';
+         finalFeedback.style.border = '1px solid var(--border)';
+         finalFeedback.style.borderRadius = 'var(--radius-md)';
+         finalFeedback.style.textAlign = 'center';
+         finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
+         <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+         quizContainer.appendChild(finalFeedback);
+      }
+    };
+    
+    inputs.forEach((input, i) => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          if (i < inputs.length - 1) {
+            inputs[i + 1].focus();
+          } else {
+            checkBtn.click();
+          }
+        }
+      });
+    });
+    
+    actionGroup.appendChild(checkBtn);
+    qContainer.appendChild(inputGroup);
+    qContainer.appendChild(actionGroup);
+    qContainer.appendChild(feedback);
+    
+    quizContainer.appendChild(qContainer);
+  });
+  
+  const restartBtn = document.createElement('button');
+  restartBtn.className = 'quiz-restart-btn';
+  restartBtn.textContent = 'Restart Quiz';
+  restartBtn.onclick = () => {
+    renderInteractiveEnum(container, originalQuestions);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
   container.appendChild(restartBtn);
@@ -530,10 +853,32 @@ function switchReviewerTab(tab) {
       btn.setAttribute('aria-selected', isActive);
     });
   }
-  ['mcq', 'ident'].forEach(t => {
+  ['mcq', 'ident', 'enum'].forEach(t => {
     const panel = document.getElementById(`subpanel-${t}`);
     if (panel) panel.classList.toggle('active', t === tab);
   });
+}
+
+function switchLessonTab(index) {
+  currentLessonTab = index;
+  const lessonTabs = document.querySelector('.lesson-tabs');
+  if (lessonTabs) {
+    lessonTabs.querySelectorAll('.tab-btn').forEach((btn, i) => {
+      const isActive = i === index;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-selected', isActive);
+    });
+  }
+  // Toggle lesson panels
+  const found = findExam(currentExamId);
+  if (!found) return;
+  const exam = found.exam;
+  if (Array.isArray(exam.notesLessons)) {
+    exam.notesLessons.forEach((_, i) => {
+      const panel = document.getElementById(`lesson-panel-${i}`);
+      if (panel) panel.classList.toggle('active', i === index);
+    });
+  }
 }
 
 // ── Admin: Mark as Done ─────────────────────────────────────
