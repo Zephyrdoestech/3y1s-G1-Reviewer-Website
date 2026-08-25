@@ -30,386 +30,159 @@ const SUBJECTS = [
 
 <h3>I. Software Engineering Overview</h3>
 
-<h4>A. Foundations</h4>
-<ul>
-<li><strong>Developer vs Programmer</strong>: distinguished terms in the field (developer has broader scope covering design/architecture, programmer focuses on coding).</li>
-<li><strong>SDLC (Software Development Life Cycle)</strong>: Planning → Analysis → Design → Implementation → Support.</li>
-<li><strong>Methodologies</strong>:
-  <ul>
-    <li>Prototyping (Revolutionary, Throw-away)</li>
-    <li>Incremental</li>
-    <li>Spiral</li>
-    <li>Waterfall</li>
-    <li>Agile</li>
-  </ul>
-</li>
-<li><strong>Project scope (SMART)</strong>: Specific, Measurable, Attainable, Realistic, Time-bounded.</li>
-<li><strong>Other project constraints</strong>: Cost, Time.</li>
-</ul>
+<div class="five-vs-grid">
+  <div class="v-card">
+    <div class="v-letter">SDLC</div>
+    <h5>Lifecycle</h5>
+    <p>Planning → Analysis → Design → Implementation → Support.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">SMART</div>
+    <h5>Project Scope</h5>
+    <p>Specific, Measurable, Attainable, Realistic, Time-bounded.</p>
+  </div>
+</div>
 
-<h4>B. Software Engineering Defined</h4>
+<h4>Software Engineering Defined</h4>
 <blockquote>"The process of solving customers' problems by the systematic development and evolution of large, high-quality software systems within cost, time and other constraints."</blockquote>
+
+<h4>Stakeholders</h4>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Users & Customers</h5>
+    <p>Those who use and those who pay for the software.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Developers</h5>
+    <p>Those who build the software.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Managers</h5>
+    <p>Those who oversee the development.</p>
+  </div>
+</div>
+
+<hr>
+
+<h3>II. Software Quality Dimensions</h3>
+<div class="quality-dims-grid">
+  <div class="quality-dim-card">
+    <div class="dim-number">1</div>
+    <div class="dim-body">
+      <h5>Usability</h5>
+      <p>Users can learn it fast and get their job done easily.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">2</div>
+    <div class="dim-body">
+      <h5>Efficiency</h5>
+      <p>Doesn't waste resources such as CPU time and memory.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">3</div>
+    <div class="dim-body">
+      <h5>Reliability</h5>
+      <p>Does what it is required to do without failing.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">4</div>
+    <div class="dim-body">
+      <h5>Maintainability</h5>
+      <p>Can be easily changed.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">5</div>
+    <div class="dim-body">
+      <h5>Reusability</h5>
+      <p>Parts can be used in other projects.</p>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h3>III. Development Lifecycle Models</h3>
+<div class="evolution-timeline">
+
+<div class="timeline-era">
+<h4>V Model</h4>
 <ul>
-<li><strong>Solving customers' problems</strong> is the goal of software engineering.
-  <ul>
-    <li>Sometimes the solution is to buy, not build.</li>
-    <li>Adding unnecessary features does not help solve the problem.</li>
-    <li>Software engineers must communicate effectively to identify and understand the problem.</li>
-  </ul>
-</li>
+  <li>Clearly shows activities and tests (Requirements ↔ Acceptance, Design ↔ System).</li>
+  <li>Start/end of activities are clearly defined.</li>
+  <li>Emphasizes verification and validation.</li>
+</ul>
+</div>
+
+<div class="timeline-era">
+<h4>Prototyping</h4>
+<ul>
+  <li>Develops a part of a system to resolve risks/uncertainties.</li>
+  <li>Creates common understanding with customers.</li>
+</ul>
+</div>
+
+<div class="timeline-era">
+<h4>Incremental & Evolutionary</h4>
+<ul>
+  <li><strong>Incremental</strong>: System extended in phases; each version adds new functions.</li>
+  <li><strong>Evolutionary</strong>: Reiterates the entire development phase several times; each version provides all functions.</li>
+</ul>
+</div>
+</div>
+
+<hr>
+
+<h3>IV. Agile Development (XP & Scrum)</h3>
+
+<h4>eXtreme Programming (XP)</h4>
+<p>Lightweight method suitable for small/medium teams. Values: <strong>Communication, Simplicity, Feedback, Courage, Respect</strong>.</p>
+<ul>
+  <li><strong>User Stories</strong>: Collects requirements and acts as a communication tool.</li>
+  <li><strong>Spike</strong>: Simple program to resolve technical uncertainties.</li>
+  <li><strong>Pair Programming</strong>: Two developers work at one computer.</li>
+  <li><strong>Test-driven Development (TDD)</strong>: Write tests before code.</li>
 </ul>
 
-<h4>C. Stakeholders in Software Engineering</h4>
-<ol>
-<li>Users — those who use the software</li>
-<li>Customers — those who pay for the software</li>
-<li>Software developers</li>
-<li>Development Managers</li>
-</ol>
-<p>All four roles can be fulfilled by the same person.</p>
+<h4>Scrum <span class="hierarchy-tag tag-middle">Framework</span></h4>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Sprint</h5>
+    <p>The repetitive development period (1-4 weeks).</p>
+  </div>
+  <div class="tier-card">
+    <h5>3 Meetings</h5>
+    <p>Daily Scrum, Sprint Planning, Sprint Review.</p>
+  </div>
+  <div class="tier-card">
+    <h5>3 Deliverables</h5>
+    <p>Product Backlog, Sprint Backlog, Burndown Chart.</p>
+  </div>
+</div>
 
-<h4>D. Software Quality</h4>
-<ul>
-<li><strong>Usability</strong> — users can learn it fast and get their job done easily.</li>
-<li><strong>Efficiency</strong> — doesn't waste resources such as CPU time and memory.</li>
-<li><strong>Reliability</strong> — does what it is required to do without failing.</li>
-<li><strong>Maintainability</strong> — can be easily changed.</li>
-<li><strong>Reusability</strong> — parts can be used in other projects, so reprogramming is not needed.</li>
-</ul>
+<hr>
 
-<h4>E. Background and Purpose of Software Engineering</h4>
-<p>It is most important to apply software engineering technology to successfully develop software that becomes more multifunctional and bigger in scale, providing technologies and techniques that support systematic management to resolve difficulties from requirements analysis to maintenance.</p>
-<p><strong>3 key elements of a successful software project:</strong></p>
-<ol>
-<li><strong>Process</strong> — applying the definition of systematic business methods and flow (Procedures & Methods)</li>
-<li><strong>Organization / People</strong> — people equipped with specialized knowledge (Process & Organization)</li>
-<li><strong>Infrastructure and Technology</strong> — required for efficient operation of work methods and personnel (Tools & Equipment)</li>
-</ol>
+<h3>V. Reverse Engineering</h3>
+<p>Deconstructing a developed system to reveal its documents and design. Aimed at understanding and modifying a system during the maintenance phase.</p>
 
-<h4>F. Second Definition of Software Engineering</h4>
-<blockquote>"A discipline that studies the overall life cycle of software — such as development, operation, and maintenance — systematically, descriptively and quantitatively."</blockquote>
+<div class="five-vs-grid">
+  <div class="v-card">
+    <div class="v-letter">L</div>
+    <h5>Logic Reverse Engineering</h5>
+    <p>Information extracted from source code to obtain physical design.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">D</div>
+    <h5>Data Reverse Engineering</h5>
+    <p>Modifying or migrating an existing database to a new DBMS.</p>
+  </div>
+</div>
 
-<h4>G. Four Key Elements of Software Engineering</h4>
-<ol>
-<li><strong>Method</strong>
-  <ul>
-    <li>Composed of project planning and estimation, system and software analysis, data structure, program structure, algorithm, coding, testing, and maintenance tasks.</li>
-    <li>Methods centered on a specific language (e.g. object-oriented) or graphical notation are introduced over time.</li>
-    <li>A series of evaluation standards for software quality is introduced.</li>
-  </ul>
-</li>
-<li><strong>Tool</strong>
-  <ul>
-    <li>An automated or semi-automated method used to improve productivity or consistency when performing a task.</li>
-    <li>Numerous tools exist across the SDLC (requirements management, modeling, configuration management, change management).</li>
-    <li>When tools are integrated so information from one can be used by others, it becomes a system supporting software development.</li>
-  </ul>
-</li>
-<li><strong>Procedure</strong>
-  <ul>
-    <li>Combines a method and a tool so they can be used to develop software in a rational and timely fashion.</li>
-    <li>Defines the applied method, required deliverables (documents, reports), controls to guarantee quality, and the sequence of milestones for evaluating progress.</li>
-  </ul>
-</li>
-<li><strong>People</strong>
-  <ul>
-    <li>Software engineering relatively depends more heavily on people because many tasks (establishment, improvement, maintenance) are performed by employees/organizations specializing in it.</li>
-    <li>It is practically impossible to summarize software development in an easily accessible or graspable manner.</li>
-  </ul>
-</li>
-</ol>
-
-<h3>II. Lifecycle of Software Development</h3>
-
-<h4>A. Definition</h4>
-<p>The lifecycle refers to the entire process from understanding the user environment and problems to operation and maintenance. General sequence:</p>
-<p><strong>Feasibility review → Development planning → Requirements analysis → Design → Implementation → Test → Operation → Maintenance</strong></p>
-
-<h4>B. Purposes</h4>
-<ul>
-<li>To calculate project costs, draw up a development plan, and configure the basic framework.</li>
-<li>To standardize the terms.</li>
-<li>To manage a project.</li>
-</ul>
-
-<h4>C. Selecting a Software Lifecycle</h4>
-<ul>
-<li>An important activity for tailoring the development process of a project.</li>
-<li>Selection is based on the risk and uncertainty of system development and understanding of it.</li>
-<li>The selected model should minimize risks and uncertainties for the given project.</li>
-<li>Most representative models: Waterfall, prototype, evolutionary, incremental.</li>
-</ul>
-
-<h4>D. Types of Software Lifecycle Models</h4>
-
-<p><strong>1. V Model</strong></p>
-<ul>
-<li>Clearly shows the activities that should be performed to project managers and developers; helps customers understand development principles.</li>
-<li>An ideal lifecycle model identifies and clarifies all system requirements.</li>
-<li>Pairs: Requirement Analysis ↔ Acceptance Testing, System Design ↔ System Testing, Architecture Design ↔ Integration Testing, Module Design ↔ Unit Testing, with Coding at the bottom of the "V."</li>
-<li>Easy to apply to a project and manage; start/end of development activities and the project can be clearly defined.</li>
-<li>Emphasizes project verification and validation — explains the association between development activities (e.g. requirements analysis, design) and corresponding test activities performed at the same time.</li>
-<li>Lets teams know which phase should be redone if a software fault is found during testing.</li>
-</ul>
-
-<p><strong>2. V Model with Prototyping</strong></p>
-<ul>
-<li>Prototyping develops a system or part of a system to understand it or resolve risks/uncertainties.</li>
-<li>Leads developers and customers to a common understanding of what is needed and what should be developed.</li>
-<li>Can be applied to the development phase of the Waterfall model or V model, or used as an independent lifecycle model.</li>
-</ul>
-
-<p><strong>3. Incremental Model</strong></p>
-<ul>
-<li>A system is developed by extending its functions several times.</li>
-<li>Each phase's version runs only a few limited functions; later versions add newly added functions to those of the previous version.</li>
-<li>The final system version is a complete system into which all functions are incorporated.</li>
-</ul>
-
-<p><strong>4. Evolutionary Model</strong></p>
-<ul>
-<li>Like the incremental model, useful when system development time needs to be reduced.</li>
-<li>Unlike the incremental model, the development phase for the entire system is reiterated several times.</li>
-<li>Each system version provides all functions to the user.</li>
-</ul>
-
-<h3>III. Software Development Methodology</h3>
-
-<h4>A. Necessity of a Software Development Methodology</h4>
-<ol>
-<li>Improving development productivity by accumulating and reusing development experience.</li>
-<li>Effective project management.</li>
-<li>Providing a means of communication through formal procedures, deliverables, and unified standard terminology.</li>
-<li>Assuring quality at a certain level by verifying each phase and closing it after approval.</li>
-</ol>
-
-<h4>B. Comparison of Software Development Methodologies</h4>
-
-<table>
-<tr><th>Item</th><th>Structural</th><th>Information Engineering</th><th>Object-Oriented</th><th>CBD</th></tr>
-<tr>
-<td>Overview</td>
-<td>Focuses on business activities</td>
-<td>Focuses on data</td>
-<td>Identifies relationship between object and class, converts to a design model</td>
-<td>Develops a reusable component or combines commercial components</td>
-</tr>
-<tr>
-<td>Basic principle</td>
-<td>Abstraction, structuralization, stepwise refinement, modularization</td>
-<td>Information strategy plan, business area analysis, business system design, system development</td>
-<td>Requirements definition, OO analysis (object/dynamic/functional modeling), OO design, test/deployment</td>
-<td>Requirement analysis, analysis (architecture definition, use case modeling), design, development, implementation (release, training)</td>
-</tr>
-<tr>
-<td>Characteristics</td>
-<td>Divide and conquer, centered on program logic, structured with controllable modules</td>
-<td>Supports corporate business systems, emphasis on data models, program logic depends on data structure (CRUD), enterprise integrated data model</td>
-<td>Program unit is an object, data and logic integration, advanced modularization, reuse by inheritance, no gap between analysis and design</td>
-<td>Evolution of the object methodology, emphasis on interface, interface implementation using a component, aims to reuse black box components</td>
-</tr>
-<tr>
-<td>Major deliverables</td>
-<td>Domain analysis report, data flow diagram, structural drawings, program specification</td>
-<td>Domain analysis report, ERD, function chart, application structure diagram, program specification, table definition/list</td>
-<td>Business process/conceptual diagram, use case/sequence/class/component diagrams</td>
-<td>Business process/conceptual diagram, use case/sequence/class/component diagrams, reuse plan, .ent, EJB</td>
-</tr>
-<tr>
-<td>Supporting tool</td>
-<td>Teamwork, SA</td>
-<td>Cool Gen, SA</td>
-<td>Rose, SA, Palstic</td>
-<td>Cool Joe, Together</td>
-</tr>
-<tr>
-<td>Major supported language</td>
-<td>COBOL, C, VB, PASCAL</td>
-<td>COBOL, C, VB, PASCAL</td>
-<td>C++, JAVA, VB</td>
-<td>In principle, the choice of development language is unimportant</td>
-</tr>
-</table>
-
-<h4>C. Software Development Phases</h4>
-<ol>
-<li><strong>Requirements analysis</strong>
-  <ul>
-    <li>The hardest thing in software development is deciding exactly what to develop.</li>
-    <li>Practically the first step; the phase of understanding what the user needs.</li>
-    <li>A critical phase that can reduce development costs across the entire project.</li>
-    <li>Investing well in analyzing, defining, and managing requirements early can shorten the whole development period and prevent excessive costs and quality deterioration.</li>
-  </ul>
-</li>
-<li><strong>Design</strong>
-  <ul>
-    <li>Requirements analysis is conceptual; design is the first step in physical realization.</li>
-    <li>Determines the structure of a system composed of sub-systems, allocated to components (hardware or software).</li>
-    <li>Design directly affects quality — a poorly designed system's stability deteriorates, and unstable systems are difficult to maintain.</li>
-  </ul>
-</li>
-<li><strong>Implementation</strong>
-  <ul>
-    <li>Goal: program the system so requirements are satisfied based on the design specification.</li>
-    <li>The program should follow the description in the detailed design and user's guide.</li>
-    <li>One of the most important tasks is deciding on a coding standard and writing code clearly based on it.</li>
-  </ul>
-</li>
-<li><strong>Testing</strong>
-  <ul>
-    <li>A series of processes to inspect and evaluate whether the system satisfies prescribed requirements, and how expected vs. actual results differ (manual or automated).</li>
-    <li>The final step in assuring software quality — a series of tasks designed to find faults.</li>
-    <li>Includes both a quality evaluation of the developed software and modification tasks to improve quality.</li>
-  </ul>
-</li>
-</ol>
-
-<h3>IV. Agile Development Methodology</h3>
-
-<h4>A. Types of Agile Methodologies</h4>
-<ul>
-<li>Scrum — Ken Schwaber / Jeff Sutherland</li>
-<li>eXtreme Programming (XP) — Kent Beck / Erich Gamma</li>
-<li>Lean software development — Mary Poppendieck / Tom Poppendieck</li>
-<li>Agile Unified Process (AUP) — Scott Ambler</li>
-</ul>
-
-<h4>B. Agile Development Methodology — XP</h4>
-<p>XP (eXtreme Programming) was established by Kent Beck and other engineers in the late 1990s, based on lessons learned while implementing projects. It is a lightweight development method generally suitable for small and medium-sized development organizations.</p>
-
-<p><strong>XP development flow</strong>: User story → (Structural spike / Spike, uncertain vs. reliable estimate) → Release plan → Cycle → Acceptance → Minor release. Test scenarios flow from User story to Acceptance; customer approval occurs at Acceptance.</p>
-
-<p><strong>Key XP concepts</strong>:</p>
-<ul>
-<li><strong>User stories</strong> — a tool for collecting requirements and communication; briefly describe necessary matters regarding functions.</li>
-<li><strong>Spike</strong> — a simple program that considers difficult requirements or potential solutions; aims to increase the reliability of user stories while reducing the risk of technical problems.</li>
-<li><strong>Release planning</strong> — establishes a deployment plan for the entire project; divides one iteration into one to three weeks and keeps iterations even.</li>
-<li><strong>Acceptance test</strong> — performed by the customer before release.</li>
-<li><strong>Smaller releases</strong> — the final phase of the XP cycle; frequent small-scale releases provide several benefits to the customer early on.</li>
-</ul>
-
-<p><strong>XP's five values</strong>:</p>
-<ul>
-<li><strong>Communication</strong> — the most important thing in team-level software development; communication errors are typically found in failed projects.</li>
-<li><strong>Simplicity</strong> — always ask "What is the simplest thing possible?" Keep the design simple and clear by removing unnecessary complexity.</li>
-<li><strong>Feedback</strong> — gradual improvement is more effective than pursuing perfection; create feedback quickly and use it for improvement.</li>
-<li><strong>Courage</strong> — cope with changes to requirements and technology and deliver them to the customer as quickly as possible.</li>
-<li><strong>Respect</strong> — hides behind the first four; a person cannot implement the project properly without respecting other team members.</li>
-</ul>
-
-<p><strong>Basic XP practices</strong>:</p>
-<table>
-<tr><th>Category</th><th>Practice</th><th>Description</th></tr>
-<tr><td rowspan="7">Development</td><td>Simple design</td><td>Keep the design as simple as possible to meet current requirements.</td></tr>
-<tr><td>Test-driven development</td><td>Write test programs before writing code and automate them using test tools.</td></tr>
-<tr><td>Refactoring</td><td>Redesign existing code by eliminating duplication and complexity.</td></tr>
-<tr><td>Coding standard</td><td>Establish coding standards for effective communication.</td></tr>
-<tr><td>Pair programming</td><td>Two developers sit and work together at one computer.</td></tr>
-<tr><td>Collective code ownership</td><td>All developers share joint responsibility for the source code so anyone can modify it at any time.</td></tr>
-<tr><td>Continuous integration</td><td>Perform integration work continually until the work is finished.</td></tr>
-<tr><td rowspan="3">Management</td><td>Planning game</td><td>Establish the entire project and cycle plan considering business and technical aspects; keep updated through execution and feedback.</td></tr>
-<tr><td>Small release</td><td>Deploy executable modules quickly so customers frequently experience how the software works.</td></tr>
-<tr><td>Metaphor</td><td>Express the overall look of the system using pictures and stories that are easy to understand.</td></tr>
-<tr><td rowspan="2">Environment</td><td>40 hours/week</td><td>Do not work more than 40 hours per week to maintain quality.</td></tr>
-<tr><td>On-site customer</td><td>Have the customer who actually uses the system stay at the development site.</td></tr>
-</table>
-
-<h4>C. Scrum</h4>
-<p>The Scrum process has three components:</p>
-<ul>
-<li><strong>Sprint</strong> — the repetitive development period, in units of 1 to 4 weeks by the calendar.</li>
-<li><strong>Three meetings</strong> — Daily Scrum, Sprint planning, Sprint review.</li>
-<li><strong>Three deliverables</strong> — Product backlog, Sprint backlog, Burndown chart.</li>
-</ul>
-
-<p><strong>Deliverables</strong>:</p>
-<ul>
-<li><strong>Product backlog</strong> — a breakdown of work to be done; the product manager mainly determines priority on behalf of the customer. The function defined in the product backlog is called a user story. "Story point" is the standard mainly used to estimate the user's workload.</li>
-<li><strong>Sprint backlog</strong> — a list of work to be developed during a sprint. The user story and required work are defined as a task; the size of each task is estimated by the hour.</li>
-<li><strong>Burndown chart</strong> — shows remaining work in the sprint backlog; shows remaining work for each iteration as a story point.</li>
-</ul>
-
-<p><strong>Meetings</strong>:</p>
-<ul>
-<li><strong>Sprint planning</strong> — goals are set for each sprint and items are selected from the product backlog for execution during a sprint. A person is appointed to take charge of each item and draw up a plan for each task.</li>
-<li><strong>Daily Scrum</strong> — a 15-minute meeting held each day to share project progress. All team members attend and discuss what they did, what to do, and other issues.</li>
-<li><strong>Sprint review</strong> — checks work progress and deliverables to see if the sprint goal was achieved. The Scrum team demonstrates what they did to attendees and receives feedback (recommended to run a demo with customer participation). The Scrum master conducts a retrospective review to find what went well, what was disappointing, and what should be improved.</li>
-</ul>
-
-<p><strong>Characteristics of Scrum</strong>:</p>
-<ul>
-<li><strong>Transparency</strong> — Scrum enables effective understanding of a project's status or problems using techniques such as the Scrum meeting, burndown chart, and sprint review.</li>
-<li><strong>Timeboxing</strong> — concentration on a project becomes possible by limiting the time it takes to implement Scrum (e.g. daily Scrum limited to 15 minutes; sprint review performed periodically per iteration).</li>
-<li><strong>Communication</strong> — much effort is made to facilitate communication among team members, e.g. sharing problems during the daily Scrum and discussing difficulty/time using planning poker.</li>
-<li><strong>Empirical model</strong> — Scrum has its own process model but places emphasis on the experience of individuals participating in the project, since each project has its own intrinsic situation; the basic structure stays the same even though the specifics differ per team.</li>
-</ul>
-
-<h3>V. Software Reuse</h3>
-
-<h4>A. Software Reuse</h4>
-<p>Software reuse means developing new software using existing software or software knowledge. Reusable software or software knowledge is a reusable asset comprising design, requirements, inspection, and architecture. It is a method of standardizing knowledge about software development (function, module, configuration, etc.) and configuring it to be suitable for repeated use in order to increase development productivity.</p>
-
-<p><strong>Purpose of software reuse</strong>:</p>
-<table>
-<tr><th>Goal</th><th>Contents</th></tr>
-<tr><td>Responsibility</td><td>Performance such as functions, stability, speed, etc. has already been proved.</td></tr>
-<tr><td>Scalability</td><td>Easy to upgrade based on proven functions.</td></tr>
-<tr><td>Productivity</td><td>Improvement of the overall development process, such as cost, time, risk, etc.</td></tr>
-</table>
-
-<p><strong>Considerations when reusing software</strong>:</p>
-<ul>
-<li>Reuse software if productivity can be improved.</li>
-<li>Base the software development process on systematic software reuse.</li>
-<li>Establish a system for promoting a reuse culture.</li>
-<li>Create a reuse environment through initial investment.</li>
-<li>Continually improve and enhance the library.</li>
-<li>Support software reuse with tools.</li>
-<li>Evaluate and measure software productivity.</li>
-<li>Manage a set of information deliverables for software reuse: architecture, source code, data, designs, documents, estimates (templates), human interfaces, plans, requirements, test cases.</li>
-<li>Consider top-down/bottom-up development approach.</li>
-<li>Consider the granularity of reusable components.</li>
-</ul>
-
-<p><strong>Effects of software reuse</strong>:</p>
-<ul>
-<li>Reduces the TCO (Total Cost of Ownership) of software production.</li>
-<li>Creates sharing and utilization effects for producing high-quality software.</li>
-<li>Promotes the sharing of information on system development and the sharing of deliverables from other projects.</li>
-<li>Has an educational effect on the system structure and the method of developing a good system.</li>
-</ul>
-
-<h4>B. Reverse Engineering</h4>
-<p><strong>Definition</strong>: Reverse engineering is a field of software engineering in which a developed system is deconstructed to reveal its documents, design techniques, etc. It is a series of activities aimed at understanding and modifying a system, performed during the software maintenance phase — that is, recovering information or a document corresponding to the deliverables.</p>
-
-<p><strong>Input/Output of reverse engineering</strong>:</p>
-<table>
-<tr><th>Input</th><td>Data or document in the form of I/O, such as the source code, object code, work procedure, library, etc.</td></tr>
-<tr><th>Output</th><td>Structure diagram, data flow chart, control flow graph, entity relationship diagram, etc.</td></tr>
-</table>
-
-<p><strong>Main reasons reverse engineering is necessary</strong>:</p>
-<ul>
-<li>When it is difficult to maintain a running system.</li>
-<li>When frequent changes decrease a system's efficiency.</li>
-<li>When redeveloping a business system based on a file system into one based on a relational database.</li>
-<li>When downsizing the default mainframe.</li>
-</ul>
-
-<p><strong>Advantages of reverse engineering</strong>:</p>
-<ul>
-<li>Commercialized or previously developed software can be analyzed.</li>
-<li>Maintainability can be improved since the data and information of the existing system can be analyzed at the design level.</li>
-<li>CASE tools can be used easily by storing existing system information in a repository.</li>
-</ul>
-
-<p><strong>Types of reverse engineering</strong>:</p>
-<ul>
-<li><strong>Logic reverse engineering</strong> — information is extracted from the source code and stored in the physical design information storage; physical design information is obtained.</li>
-<li><strong>Data reverse engineering</strong> — the existing database is modified or migrated to a new database management system.</li>
-</ul>
-
-</section>`,
+</section>
+`,
         reviewer: {
           mcq: [
             {
@@ -979,77 +752,98 @@ const SUBJECTS = [
         type: "Quiz",
         date: "2026-08-24",
         status: "done",
-        notes: `<h3>A Tribute to Our National Hero, Dr. Jose P. Rizal</h3>
+        notes: `<section class="notes-section">
+<h2>A Tribute to Our National Hero, Dr. Jose P. Rizal</h2>
 
-<h4>Childhood</h4>
+<h3>The Life of Rizal</h3>
+<div class="evolution-timeline">
+
+<div class="timeline-era">
+<h4>Childhood <span class="era-badge">1861–1869</span></h4>
 <ul>
-  <li>Born in <strong>Calamba, Laguna</strong> on <strong>June 19, 1861</strong>, the seventh child of <strong>Francisco Mercado Rizal</strong> and <strong>Teodora Alonso y Quintos</strong>.</li>
-  <li>Baptized <strong>June 22, 1861</strong> as <strong>Jose Rizal Mercado</strong>, by Rev. Rufino Collantes, sponsored by Rev. Pedro Casañas.</li>
-  <li><strong>September 28, 1862</strong>: the Calamba parish church burned, destroying canonical records including Rizal's baptismal record.</li>
-  <li><strong>1864</strong>: at age three, learned the alphabet from his mother, his first teacher. <strong>Leon Monroy</strong> later taught him basic Latin for five months until Monroy's death.</li>
-  <li><strong>1865</strong>: his sister <strong>Concepcion</strong> died at age three, the first time Rizal cried real tears.</li>
-  <li>Uncles' influence:
-    <ul>
-      <li>Advice passed to him: work hard, be thorough and swift, think independently, and visualize everything.</li>
-      <li><strong>Uncle Manuel Alberto</strong> built up his physical strength and love of the outdoors.</li>
-      <li><strong>Uncle Gregorio</strong>, a scholar, instilled his love of learning.</li>
-    </ul>
-  </li>
-  <li><strong>1869</strong>, age 8: wrote his first poem, <strong>"Sa Aking Mga Kabata,"</strong> on the theme of love for one's language.</li>
+  <li>Born in <strong>Calamba, Laguna</strong> on <strong>June 19, 1861</strong> to Francisco Mercado Rizal and Teodora Alonso y Quintos.</li>
+  <li>Baptized as <strong>Jose Rizal Mercado</strong>.</li>
+  <li>Learned the alphabet from his mother at age 3.</li>
+  <li>Wrote his first poem, <strong>"Sa Aking Mga Kabata,"</strong> at age 8.</li>
+  <li>Influenced by Uncles Manuel (physical strength/outdoors) and Gregorio (love of learning).</li>
 </ul>
+</div>
 
-<h4>First School (Biñan)</h4>
+<div class="timeline-era">
+<h4>First School (Biñan) <span class="era-badge">1869–1870</span></h4>
 <ul>
-  <li><strong>June 1869</strong>: Jose and his brother <strong>Paciano</strong> traveled to Biñan, where Paciano enrolled him under Maestro <strong>Justiniano Aquino Cruz</strong>.</li>
-  <li>Defeated the bully <strong>Pedro</strong> using wrestling skills learned from Tio Manuel; lost an arm-wrestling match to <strong>Andres Salandanan</strong>.</li>
-  <li>Studied drawing and painting under <strong>Juancho</strong>, alongside classmate <strong>Jose Guevarra</strong>.</li>
-  <li>Outperformed all other students in Biñan in Spanish, Latin, and other subjects.</li>
-  <li>Left Biñan on <strong>December 17, 1870</strong> aboard the steamer <strong>Talim</strong> after a letter from his sister <strong>Saturnina</strong>.</li>
-  <li><strong>February 17, 1872</strong>: Fathers <strong>Gomez, Burgos, and Zamora (Gomburza)</strong> were executed by order of Governor General Izquierdo, an event that deeply affected the Rizal family.</li>
+  <li>Studied under Maestro <strong>Justiniano Aquino Cruz</strong>.</li>
+  <li>Defeated the bully Pedro but lost an arm-wrestling match to Andres Salandanan.</li>
+  <li>Studied drawing and painting under Juancho.</li>
+  <li>Outperformed all students in Spanish, Latin, and other subjects.</li>
 </ul>
+</div>
 
-<h4>Education</h4>
+<div class="timeline-era">
+<h4>Education <span class="era-badge">1877–1885</span></h4>
 <ul>
-  <li>Earned his Bachelor of Arts from <strong>Ateneo Municipal de Manila</strong> in <strong>1877</strong> (age 16), with an average of "excellent."</li>
-  <li>Also in 1877, enrolled in Philosophy and Letters at the <strong>University of Santo Tomas</strong> while completing surveying and expert assessor courses at Ateneo.</li>
-  <li>Finished surveying studies <strong>March 21, 1877</strong>, passed the licensing exam <strong>May 21, 1878</strong>, but the license was withheld until <strong>December 30, 1881</strong> because he was underage.</li>
-  <li>Enrolled in medicine at UST in <strong>1878</strong>; did not receive top honors due to hostile treatment from professors toward Filipino students.</li>
-  <li>Sailed for Spain <strong>May 3, 1882</strong> to study at <strong>Central Universidad de Madrid</strong>.</li>
-  <li>Conferred Licentiate in Medicine on <strong>June 21, 1884</strong> (age 23).</li>
-  <li>Completed Philosophy and Letters with "excellent" marks on <strong>June 19, 1885</strong> (age 24).</li>
+  <li>Bachelor of Arts from <strong>Ateneo Municipal de Manila</strong> (1877) with an average of "excellent."</li>
+  <li>Enrolled in Philosophy, Letters, and Medicine at <strong>University of Santo Tomas</strong>.</li>
+  <li>Traveled to Spain to study at <strong>Central Universidad de Madrid</strong> (1882).</li>
+  <li>Conferred Licentiate in Medicine (1884) and completed Philosophy and Letters (1885).</li>
 </ul>
+</div>
 
-<h4>The Secret Mission and Major Works</h4>
+<div class="timeline-era">
+<h4>Secret Mission & Works <span class="era-badge">1887–1892</span></h4>
 <ul>
   <li>Mission: publish nationalistic and reformist writing in Europe to educate Filipinos and push for social reform.</li>
-  <li>Mastered <strong>22 languages</strong> during his travels across Europe, America, and Asia.</li>
-  <li><strong>Noli Me Tangere</strong>: published in <strong>Berlin, March 1887</strong>, exposing abuses by the Spanish clergy.</li>
-  <li><strong>Sucesos de las Islas Filipinas</strong>: Rizal annotated and reprinted <strong>Antonio de Morga's</strong> work in <strong>Paris (1890)</strong> to document pre-colonial Filipino civilization.</li>
-  <li><strong>El Filibusterismo</strong>: printed in <strong>Ghent, September 18, 1891</strong>, a darker sequel to the Noli.</li>
-  <li>First imprisonment: <strong>Fort Santiago, July 6 to July 15, 1892</strong>, after anti-friar leaflets were found in his sister <strong>Lucia's</strong> luggage from Hong Kong.</li>
+  <li>Published <strong>Noli Me Tangere</strong> (1887, Berlin) and <strong>El Filibusterismo</strong> (1891, Ghent).</li>
+  <li>Mastered 22 languages.</li>
+  <li>Imprisoned in Fort Santiago (1892).</li>
 </ul>
+</div>
 
-<h4>The Exile in Dapitan</h4>
+<div class="timeline-era">
+<h4>Exile in Dapitan <span class="era-badge">1892–1896</span></h4>
 <ul>
-  <li>Won a lottery and used the winnings to buy land for farming, fishing, and business.</li>
-  <li>Ran a hospital and built homes for himself, visiting family, and his students.</li>
-  <li>Taught languages, arts, sciences, vocational skills, and self-defense.</li>
+  <li>Ran a hospital, built homes, and taught students.</li>
   <li>Collected biological specimens and corresponded with scientists abroad.</li>
-  <li>Built a <strong>water dam</strong> and a <strong>relief map of Mindanao</strong> together with his students.</li>
+  <li>Built a water dam and a relief map of Mindanao.</li>
 </ul>
+</div>
 
-<h4>Martyrdom</h4>
+<div class="timeline-era">
+<h4>Martyrdom <span class="era-badge">1896</span></h4>
 <ul>
-  <li>Returned to Manila aboard the steamship <strong>Colon</strong> on <strong>November 3, 1896</strong>, after the Philippine Revolution broke out on August 26.</li>
-  <li>Defended by <strong>Don Luis Taviel de Andrade</strong> in a mock court-martial on charges of rebellion, sedition, and illegal association.</li>
-  <li>Governor General <strong>Camilo de Polavieja</strong> approved his death sentence on <strong>December 28, 1896</strong>.</li>
-  <li>Wrote his untitled farewell poem, later known as <strong>"Mi Ultimo Adios,"</strong> in Fort Santiago before his execution.</li>
-  <li>Executed by firing squad at <strong>Bagumbayan Field (Luneta)</strong> on the morning of <strong>December 30, 1896</strong>, at age <strong>35</strong>.</li>
+  <li>Defended by Don Luis Taviel de Andrade in a mock court-martial.</li>
+  <li>Wrote his untitled farewell poem, <strong>"Mi Ultimo Adios."</strong></li>
+  <li>Executed by firing squad at Bagumbayan Field on <strong>December 30, 1896</strong> at age 35.</li>
 </ul>
+</div>
 
-<h4>Attributes of Rizal</h4>
-<p>A versatile figure regarded as an <strong>architect, artist, businessman, cartoonist, educator, economist, ethnologist, scientific farmer, historian, inventor, journalist, linguist, musician, mythologist, nationalist, naturalist, novelist, ophthalmic surgeon, poet, propagandist, psychologist, scientist, sculptor, sociologist, and theologian</strong>.</p>
+</div>
 
+<hr>
+<h3>Attributes of Rizal</h3>
+<div class="five-vs-grid">
+  <div class="v-card">
+    <div class="v-letter">A</div>
+    <h5>Arts & Letters</h5>
+    <p>Poet, Novelist, Journalist, Sculptor, Painter, Linguist.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">S</div>
+    <h5>Sciences</h5>
+    <p>Ophthalmic Surgeon, Scientist, Ethnologist, Sociologist, Psychologist.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">P</div>
+    <h5>Professions</h5>
+    <p>Educator, Architect, Engineer, Farmer, Businessman, Economist.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">N</div>
+    <h5>Nationalism</h5>
+    <p>Propagandist, Reformist, Martyr, Hero, Mythologist.</p>
+  </div>
+</div>
+</section>
 `,
         reviewer: [
           {
@@ -1299,54 +1093,75 @@ const SUBJECTS = [
 
 <h3>Data Analytics Overview</h3>
 
-<h4>Data Analytics</h4>
-<p>The process of examining raw data to uncover patterns, trends, relationships, and actionable insights to support decision-making. It spans data collection, cleaning, transforming, and analyzing via statistical and computational methods.</p>
-
-<h4>Data Analytics vs. Data Analysis</h4>
-<p>Data analysis focuses on inspecting and interpreting data to answer specific questions, while data analytics is the broader end-to-end discipline that turns data into business decisions.</p>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Data Analytics</h5>
+    <p>The broader end-to-end discipline that turns data into business decisions by uncovering patterns, trends, and actionable insights. Spans data collection, cleaning, transforming, and analyzing.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Data Analysis</h5>
+    <p>Focuses on inspecting and interpreting data to answer specific questions.</p>
+  </div>
+</div>
 
 <h4>Core Importance</h4>
-<p>Data Analytics:</p>
-<ul>
-<li>Enables evidence-based decisions</li>
-<li>Boosts efficiency</li>
-<li>Mitigates risks</li>
-<li>Provides competitive advantages</li>
-<li>Forecasts future outcomes</li>
-</ul>
+<div class="quality-dims-grid">
+  <div class="quality-dim-card">
+    <div class="dim-number">1</div>
+    <div class="dim-body">
+      <h5>Evidence-based</h5>
+      <p>Enables evidence-based decisions.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">2</div>
+    <div class="dim-body">
+      <h5>Efficiency</h5>
+      <p>Boosts efficiency.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">3</div>
+    <div class="dim-body">
+      <h5>Risk Mitigation</h5>
+      <p>Mitigates risks.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">4</div>
+    <div class="dim-body">
+      <h5>Advantage</h5>
+      <p>Provides competitive advantages.</p>
+    </div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">5</div>
+    <div class="dim-body">
+      <h5>Forecasting</h5>
+      <p>Forecasts future outcomes.</p>
+    </div>
+  </div>
+</div>
 
 <hr>
 
 <h3>Data-Driven Career Hierarchy</h3>
 
-<h4>Data Engineering <span class="hierarchy-tag tag-base">Base</span></h4>
-<p>Builds infrastructure, pipelines, and storage.</p>
-<p><strong>Important technologies/concepts:</strong></p>
-<ul>
-<li>EDW</li>
-<li>ETL</li>
-<li>EDL</li>
-<li>ESB</li>
-</ul>
-
-<h4>Data Analytics <span class="hierarchy-tag tag-middle">Middle</span></h4>
-<p>Focuses on:</p>
-<ul>
-<li>Data cleaning</li>
-<li>Data stewardship</li>
-<li>Visualization</li>
-<li>BI tools</li>
-<li>Reporting dashboards</li>
-</ul>
-
-<h4>Data Science <span class="hierarchy-tag tag-top">Top</span></h4>
-<p>Handles:</p>
-<ul>
-<li>Advanced data training</li>
-<li>Experimentation</li>
-<li>Machine Learning</li>
-<li>AI</li>
-</ul>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Data Engineering <span class="hierarchy-tag tag-base">Base</span></h5>
+    <p>Builds infrastructure, pipelines, and storage.</p>
+    <p><strong>Concepts:</strong> EDW, ETL, EDL, ESB</p>
+  </div>
+  <div class="tier-card">
+    <h5>Data Analytics <span class="hierarchy-tag tag-middle">Middle</span></h5>
+    <p>Data cleaning, stewardship, visualization, BI tools, and reporting dashboards.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Data Science <span class="hierarchy-tag tag-top">Top</span></h5>
+    <p>Advanced data training, experimentation, Machine Learning, and AI.</p>
+  </div>
+</div>
 
 <hr>
 
@@ -1369,29 +1184,44 @@ const SUBJECTS = [
 </div>
 
 <div class="timeline-era">
-<h4>Business Intelligence <span class="era-badge">1990s–2000s</span></h4>
+<h4>Relational Databases & BI <span class="era-badge">1980s–2000s</span></h4>
 <p><strong>Important concepts:</strong></p>
 <ul>
-<li>Relational databases</li>
-<li>Data warehousing</li>
-<li>ETL pipelines</li>
-<li>OLAP</li>
-<li>Multi-dimensional analysis</li>
-<li>Structured reporting dashboards</li>
+<li>RDBMS (Relational Database Management Systems)</li>
+<li>SQL</li>
+<li>Data Warehousing</li>
+<li>Client-server architecture</li>
+<li>Dashboards</li>
+<li>Early Data Mining</li>
+<li>OLAP (Online Analytical Processing)</li>
 </ul>
 </div>
 
 <div class="timeline-era">
-<h4>Big Data & Advanced Analytics <span class="era-badge">2010s–Present</span></h4>
+<h4>Big Data Era <span class="era-badge">2000s–2010s</span></h4>
 <p><strong>Important concepts:</strong></p>
 <ul>
-<li>Cloud platforms</li>
-<li>Distributed computing</li>
 <li>Hadoop</li>
+<li>NoSQL databases</li>
+<li>Cloud Computing (AWS, Azure)</li>
+<li>MapReduce</li>
 <li>Spark</li>
-<li>Real-time streaming</li>
-<li>Unstructured data handling</li>
-<li>AI/ML models</li>
+<li>Social media data analysis</li>
+<li>IoT data streams</li>
+</ul>
+</div>
+
+<div class="timeline-era">
+<h4>AI & Advanced Analytics <span class="era-badge">2010s–Present</span></h4>
+<p><strong>Important concepts:</strong></p>
+<ul>
+<li>Machine Learning</li>
+<li>Deep Learning</li>
+<li>Real-time analytics</li>
+<li>Predictive analytics</li>
+<li>Prescriptive analytics</li>
+<li>Edge computing</li>
+<li>Automated ML (AutoML)</li>
 </ul>
 </div>
 
@@ -1399,75 +1229,15 @@ const SUBJECTS = [
 
 <hr>
 
-<h3>4 Analytical Methods (Types of Analytics)</h3>
+<h3>Lifecycle of Data Analytics</h3>
 
-<div class="analytics-methods-grid">
-
-<div class="analytics-method-card">
-<h4>Descriptive Analytics</h4>
-<p class="method-question"><em>"What happened?"</em></p>
-<p>Summarizes historical data using:</p>
-<ul>
-<li>Aggregation</li>
-<li>Summary statistics</li>
-<li>Dashboards</li>
-</ul>
-<p><strong>Example:</strong> Monthly sales reports.</p>
-</div>
-
-<div class="analytics-method-card">
-<h4>Diagnostic Analytics</h4>
-<p class="method-question"><em>"Why did it happen?"</em></p>
-<p>Investigates root causes through:</p>
-<ul>
-<li>Drill-down</li>
-<li>Discovery techniques</li>
-</ul>
-<p><strong>Example:</strong> Identifying causes behind dropped web traffic.</p>
-</div>
-
-<div class="analytics-method-card">
-<h4>Predictive Analytics</h4>
-<p class="method-question"><em>"What is likely to happen?"</em></p>
-<p>Forecasts future outcomes using:</p>
-<ul>
-<li>Regression models</li>
-<li>Time-series forecasting</li>
-</ul>
-<p><strong>Example:</strong> Predicting next quarter revenue.</p>
-</div>
-
-<div class="analytics-method-card">
-<h4>Prescriptive Analytics</h4>
-<p class="method-question"><em>"What should we do?"</em></p>
-<p>Recommends optimal actions via:</p>
-<ul>
-<li>Optimization algorithms</li>
-<li>Simulations</li>
-</ul>
-<p><strong>Example:</strong> Marketing budget allocation.</p>
-</div>
-
-</div>
-
-<hr>
-
-<h3>The 7-Step Data Analytics Process</h3>
-
-<div class="steps-list">
+<div class="evolution-timeline">
 
 <div class="step-item">
 <div class="step-number">1</div>
 <div class="step-body">
-<h4>Problem Definition</h4>
-<p>Establish SMART objectives:</p>
-<ul>
-<li><strong>S</strong>pecific</li>
-<li><strong>M</strong>easurable</li>
-<li><strong>A</strong>ttainable</li>
-<li><strong>R</strong>esult-Oriented</li>
-<li><strong>T</strong>ime-bounded</li>
-</ul>
+<h4>Business Problem Understanding</h4>
+<p>Align analytics with organizational objectives.</p>
 </div>
 </div>
 
@@ -1475,21 +1245,14 @@ const SUBJECTS = [
 <div class="step-number">2</div>
 <div class="step-body">
 <h4>Data Collection</h4>
-<p>Gather data from:</p>
-<ul>
-<li>Databases</li>
-<li>Surveys</li>
-<li>Sensors</li>
-<li>APIs</li>
-</ul>
-<p>Remember: <strong>GIGO — Garbage In, Garbage Out</strong></p>
+<p>Gather data from internal and external sources.</p>
 </div>
 </div>
 
 <div class="step-item">
 <div class="step-number">3</div>
 <div class="step-body">
-<h4>Data Cleaning</h4>
+<h4>Data Cleaning & Preparation</h4>
 <p>Resolve:</p>
 <ul>
 <li>Missing values</li>
@@ -1503,18 +1266,7 @@ const SUBJECTS = [
 <div class="step-number">4</div>
 <div class="step-body">
 <h4>Data Exploration (EDA)</h4>
-<p>Identify:</p>
-<ul>
-<li>Distributions</li>
-<li>Correlations</li>
-<li>Outliers</li>
-</ul>
-<p>Using:</p>
-<ul>
-<li>Summary statistics</li>
-<li>Visual charts</li>
-</ul>
-<p>This should happen <strong>before</strong> formal modeling.</p>
+<p>Identify distributions, correlations, and outliers using summary statistics and visual charts. This happens <strong>before</strong> formal modeling.</p>
 </div>
 </div>
 
@@ -1522,12 +1274,7 @@ const SUBJECTS = [
 <div class="step-number">5</div>
 <div class="step-body">
 <h4>Data Analysis & Modeling</h4>
-<p>Build:</p>
-<ul>
-<li>Statistical models</li>
-<li>Regression models</li>
-<li>Machine learning models</li>
-</ul>
+<p>Build statistical models, regression models, and machine learning models.</p>
 </div>
 </div>
 
@@ -1535,12 +1282,7 @@ const SUBJECTS = [
 <div class="step-number">6</div>
 <div class="step-body">
 <h4>Interpretation & Visualization</h4>
-<p>Translate model findings into:</p>
-<ul>
-<li>Dashboards</li>
-<li>Charts</li>
-<li>Actionable insights</li>
-</ul>
+<p>Translate model findings into dashboards, charts, and actionable insights.</p>
 </div>
 </div>
 
@@ -1549,25 +1291,20 @@ const SUBJECTS = [
 <div class="step-body">
 <h4>Decision-Making</h4>
 <p>Implement data-driven actions across organizational tiers.</p>
-
 <div class="decision-tiers">
 <div class="tier-card">
 <h5>Strategic</h5>
-<p>High-level, long-term organizational goals.</p>
-<p>Associated with: <strong>Executive management</strong></p>
+<p>High-level, long-term organizational goals (Executive management).</p>
 </div>
 <div class="tier-card">
 <h5>Tactical</h5>
-<p>Medium-term execution strategies.</p>
-<p>Associated with: <strong>Mid-level management</strong></p>
+<p>Medium-term execution strategies (Mid-level management).</p>
 </div>
 <div class="tier-card">
 <h5>Operational</h5>
-<p>Day-to-day workflow optimizations.</p>
-<p>Associated with: <strong>Operations managers</strong></p>
+<p>Day-to-day workflow optimizations (Operations managers).</p>
 </div>
 </div>
-
 </div>
 </div>
 
@@ -1594,12 +1331,7 @@ const SUBJECTS = [
 <div class="v-card">
 <div class="v-letter">V</div>
 <h5>Variety</h5>
-<p>Heterogeneous formats:</p>
-<ul>
-<li>Structured</li>
-<li>Semi-structured</li>
-<li>Unstructured</li>
-</ul>
+<p>Heterogeneous formats: Structured, Semi-structured, Unstructured.</p>
 </div>
 <div class="v-card">
 <div class="v-letter">V</div>
@@ -1616,16 +1348,17 @@ const SUBJECTS = [
 <hr>
 
 <h3>Core Business Applications</h3>
-<ul>
-<li>Customer segmentation</li>
-<li>Demand forecasting</li>
-<li>Automated fraud detection</li>
-<li>Operational bottleneck reduction</li>
-<li>Marketing ROI evaluation</li>
-<li>New product development</li>
-</ul>
+<div class="decision-tiers">
+  <div class="tier-card"><h5>Customer segmentation</h5></div>
+  <div class="tier-card"><h5>Demand forecasting</h5></div>
+  <div class="tier-card"><h5>Automated fraud detection</h5></div>
+  <div class="tier-card"><h5>Operational bottleneck reduction</h5></div>
+  <div class="tier-card"><h5>Marketing ROI evaluation</h5></div>
+  <div class="tier-card"><h5>New product development</h5></div>
+</div>
 
-</section>`
+</section>
+`
           },
           {
             tab: "Lesson 2",
@@ -1633,27 +1366,43 @@ const SUBJECTS = [
 <h2>Lesson 2: Overview of Data</h2>
 
 <h3>Foundations & Hierarchy</h3>
+<div class="evolution-timeline">
+  <div class="timeline-era">
+    <h4>Data</h4>
+    <p>Raw, unprocessed facts, numbers, symbols, or observations lacking inherent meaning on their own.</p>
+  </div>
+  <div class="timeline-era">
+    <h4>Information</h4>
+    <p>Data processed, cleaned, and organized into meaningful context.</p>
+  </div>
+  <div class="timeline-era">
+    <h4>Knowledge</h4>
+    <p>Actionable understanding and insights derived from interpreting information to guide decisions.</p>
+  </div>
+</div>
 
-<h4>Data</h4>
-<p>Raw, unprocessed facts, numbers, symbols, or observations lacking inherent meaning on their own.</p>
-
-<h4>Information</h4>
-<p>Data processed, cleaned, and organized into meaningful context.</p>
-
-<h4>Knowledge</h4>
-<p>Actionable understanding and insights derived from interpreting information to guide decisions.</p>
-
-<h4>Variable</h4>
-<p>A measurable property that takes different values across subjects.</p>
-
-<h4>Observation</h4>
-<p>A single recorded unit or row across multiple variables.</p>
-
-<h4>Variation</h4>
-<p>Measurable differences observed across observations.</p>
-
-<h4>Random Variable</h4>
-<p>A variable whose exact outcome contains uncertainty.</p>
+<div class="five-vs-grid">
+  <div class="v-card">
+    <div class="v-letter">Var</div>
+    <h5>Variable</h5>
+    <p>A measurable property taking different values across subjects.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">Obs</div>
+    <h5>Observation</h5>
+    <p>A single recorded unit or row across multiple variables.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">Var</div>
+    <h5>Variation</h5>
+    <p>Measurable differences observed across observations.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">RVar</div>
+    <h5>Random Variable</h5>
+    <p>A variable whose exact outcome contains uncertainty.</p>
+  </div>
+</div>
 
 <hr>
 
@@ -1875,60 +1624,41 @@ const SUBJECTS = [
 
 <h3>Data Preparation Techniques</h3>
 
-<h4>Missing Value Imputation</h4>
-<p><strong>Missing Value Imputation:</strong> Techniques used to handle missing values in a dataset.</p>
-
-<p>Methods include:</p>
-<ul>
-<li><strong>Listwise Deletion:</strong> Removing records that contain missing values.</li>
-<li><strong>Statistical Imputation:</strong> Replacing missing values using statistical measures.</li>
-<li><strong>Predictive Modeling:</strong> Using a model to estimate and replace missing values.</li>
-</ul>
-
-<p>Statistical imputation can use:</p>
-<ul>
-<li><strong>Mean:</strong> Replaces missing values with the average value.</li>
-<li><strong>Median:</strong> Replaces missing values with the middle value.</li>
-<li><strong>Mode:</strong> Replaces missing values with the most frequently occurring value.</li>
-</ul>
-
-<h4>Deduplication</h4>
-<p><strong>Deduplication:</strong> Removing identical or duplicate rows to avoid sample overrepresentation.</p>
-
-<h4>Outlier Handling</h4>
-<p><strong>Outlier Handling:</strong> Identifying and managing extreme values that differ substantially from the majority of observations.</p>
-
-<p>Methods include:</p>
-<ul>
-<li><strong>Z-score:</strong> Used to identify observations that are unusually far from the mean.</li>
-<li><strong>IQR (Interquartile Range):</strong> A measure used to identify the spread of the middle 50% of the data and help detect outliers.</li>
-<li><strong>Boxplots:</strong> Visual charts that can be used to identify extreme values and potential outliers.</li>
-</ul>
-
-<h4>Data Transformation</h4>
-<p><strong>Data Transformation:</strong> Converting or modifying data into a suitable format for analysis or modeling.</p>
-
-<p>Includes:</p>
-<ul>
-<li><strong>Categorical Encoding:</strong> Converting categorical data into numerical representations.</li>
-<li><strong>One-Hot Encoding:</strong> Represents categories using separate binary variables.</li>
-<li><strong>Label Encoding:</strong> Assigns numerical labels to categories.</li>
-<li><strong>Feature Engineering:</strong> Creating or modifying variables to make them more useful for analysis or modeling.</li>
-</ul>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Missing Value Imputation</h5>
+    <p>Methods: <strong>Listwise Deletion</strong>, <strong>Statistical Imputation</strong> (Mean, Median, Mode), <strong>Predictive Modeling</strong>.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Deduplication</h5>
+    <p>Removing identical or duplicate rows to avoid sample overrepresentation.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Outlier Handling</h5>
+    <p>Managing extreme values using <strong>Z-score</strong>, <strong>IQR</strong>, or <strong>Boxplots</strong>.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Data Transformation</h5>
+    <p>Converting data. Methods: <strong>Categorical Encoding</strong>, <strong>One-Hot Encoding</strong>, <strong>Label Encoding</strong>, <strong>Feature Engineering</strong>.</p>
+  </div>
+</div>
 
 <h4>Scaling & Normalization</h4>
+<div class="five-vs-grid">
+  <div class="v-card">
+    <div class="v-letter">MM</div>
+    <h5>Min-Max Normalization</h5>
+    <p>Rescales values into a fixed <strong>[0, 1]</strong> interval.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">Z</div>
+    <h5>Z-score Standardization</h5>
+    <p>Transforms values to Mean μ = 0, Standard deviation σ = 1.</p>
+  </div>
+</div>
 
-<h5>Min-Max Normalization</h5>
-<p>Rescales values into a fixed <strong>[0, 1]</strong> interval.</p>
-
-<h5>Z-score Standardization</h5>
-<p>Transforms values to:</p>
-<ul>
-<li>Mean μ = 0</li>
-<li>Standard deviation σ = 1</li>
-</ul>
-
-</section>`
+</section>
+`
           }
         ],
         notes: null,
