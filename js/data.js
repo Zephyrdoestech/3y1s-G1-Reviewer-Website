@@ -1165,66 +1165,102 @@ const SUBJECTS = [
 
 <hr>
 
-<h3>Evolution of Data Analytics</h3>
+<h3>Development of Data Analytics</h3>
 
 <div class="evolution-timeline">
 
 <div class="timeline-era">
-<h4>Early Data Processing <span class="era-badge">1960s–1980s</span></h4>
-<p><strong>Important concepts:</strong></p>
+<h4>Early Data Processing Era <span class="era-badge">1960s–1980s</span></h4>
+<p style="margin-bottom: 1rem;"><strong>Main Idea:</strong> Manual and basic computer-based data handling.</p>
+<h5>Characteristics</h5>
 <ul>
-<li>Mainframe computers</li>
-<li>Batch processing</li>
-<li>Punch cards</li>
-<li>COBOL</li>
-<li>Early hierarchical databases</li>
-<li>Flat file databases</li>
-<li>Basic reporting</li>
+  <li>Data stored in physical files or early databases.</li>
+  <li>Early database types included hierarchical databases and flat files.</li>
+  <li>Limited analytical power.</li>
+  <li>Mainly used for reporting and simple statistics.</li>
+  <li><strong>Batch processing</strong> was commonly used.</li>
+  <li><strong>Mainframe</strong> computers were commonly used.</li>
 </ul>
+<h5>Technologies</h5>
+<ul>
+  <li>COBOL</li>
+  <li>Punch cards</li>
+  <li>Early SQL databases</li>
+</ul>
+<div style="padding: 10px 14px; background: var(--accent-light); color: var(--accent-hover); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-top: 15px; font-size: 0.95rem;">
+  <strong>Memory Cue:</strong> "Early Data Processing = Mainframes + Batch Processing + Basic Reporting"
+</div>
 </div>
 
 <div class="timeline-era">
-<h4>Relational Databases & BI <span class="era-badge">1980s–2000s</span></h4>
-<p><strong>Important concepts:</strong></p>
+<h4>Business Intelligence Era <span class="era-badge">1990s–2000s</span></h4>
+<p style="margin-bottom: 1rem;"><strong>Main Idea:</strong> Systematic reporting and dashboard creation for business decisions.</p>
+<h5>Characteristics</h5>
 <ul>
-<li>RDBMS (Relational Database Management Systems)</li>
-<li>SQL</li>
-<li>Data Warehousing</li>
-<li>Client-server architecture</li>
-<li>Dashboards</li>
-<li>Early Data Mining</li>
-<li>OLAP (Online Analytical Processing)</li>
+  <li><strong>Relational databases</strong> became widely used.</li>
+  <li><strong>Data warehouses</strong> emerged.</li>
+  <li><strong>ETL</strong> processes were used for structured data.</li>
+  <li>ETL means Extract, Transform, Load.</li>
+  <li><strong>OLAP</strong> was used for multi-dimensional analysis.</li>
+  <li>Reporting and dashboards became important for business decision-making.</li>
 </ul>
+<h5>Technologies</h5>
+<ul>
+  <li>Oracle</li>
+  <li>Microsoft SQL Server</li>
+  <li>SAP BusinessObjects</li>
+</ul>
+<div style="padding: 10px 14px; background: var(--accent-light); color: var(--accent-hover); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-top: 15px; font-size: 0.95rem;">
+  <strong>Memory Cue:</strong> "Business Intelligence = Relational Databases + Data Warehouses + ETL + OLAP"
+</div>
 </div>
 
 <div class="timeline-era">
-<h4>Big Data Era <span class="era-badge">2000s–2010s</span></h4>
-<p><strong>Important concepts:</strong></p>
+<h4>Big Data & Advanced Analytics Era <span class="era-badge">2010s–Present</span></h4>
+<p style="margin-bottom: 1rem;"><strong>Main Idea:</strong> Real-time, large-scale analytics powered by AI and machine learning.</p>
+<h5>Characteristics</h5>
 <ul>
-<li>Hadoop</li>
-<li>NoSQL databases</li>
-<li>Cloud Computing (AWS, Azure)</li>
-<li>MapReduce</li>
-<li>Spark</li>
-<li>Social media data analysis</li>
-<li>IoT data streams</li>
+  <li>Explosion of unstructured and semi-structured data.</li>
+  <li>Major data sources include IoT, social media, and sensors.</li>
+  <li>Distributed computing became important.</li>
+  <li><strong>Hadoop</strong> and <strong>Spark</strong> are examples of distributed computing technologies.</li>
+  <li><strong>Cloud</strong>-based analytics platforms became common.</li>
+  <li>Real-time streaming allows data to be analyzed as it is generated.</li>
+  <li><strong>AI</strong> and <strong>Machine Learning</strong> support advanced analytics.</li>
 </ul>
+<h5>Technologies</h5>
+<ul>
+  <li>Hadoop</li>
+  <li>Spark</li>
+  <li>AWS</li>
+  <li>Azure ML</li>
+  <li>TensorFlow</li>
+</ul>
+<div style="padding: 10px 14px; background: var(--accent-light); color: var(--accent-hover); border-left: 3px solid var(--accent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; margin-top: 15px; font-size: 0.95rem;">
+  <strong>Memory Cue:</strong> "Big Data = Distributed Computing + Cloud + Real-Time + AI/ML"
+</div>
 </div>
 
-<div class="timeline-era">
-<h4>AI & Advanced Analytics <span class="era-badge">2010s–Present</span></h4>
-<p><strong>Important concepts:</strong></p>
-<ul>
-<li>Machine Learning</li>
-<li>Deep Learning</li>
-<li>Real-time analytics</li>
-<li>Predictive analytics</li>
-<li>Prescriptive analytics</li>
-<li>Edge computing</li>
-<li>Automated ML (AutoML)</li>
-</ul>
 </div>
 
+<div style="margin-top: 2rem; background: var(--surface-alt); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border);">
+<h4 style="margin-top: 0; margin-bottom: 1.25rem; color: var(--text-primary);">Quick Comparison</h4>
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 180px;">
+    <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.05rem;">Early Data Processing</div>
+    <div style="font-size: 0.95rem; color: var(--text-secondary);">Basic Reporting</div>
+  </div>
+  <div style="color: var(--text-muted); font-size: 1.4rem;">→</div>
+  <div style="flex: 1; min-width: 180px;">
+    <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.05rem;">Business Intelligence</div>
+    <div style="font-size: 0.95rem; color: var(--text-secondary);">Dashboards / Business Decisions</div>
+  </div>
+  <div style="color: var(--text-muted); font-size: 1.4rem;">→</div>
+  <div style="flex: 1; min-width: 180px;">
+    <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 0.5rem; font-size: 1.05rem;">Big Data & Advanced Analytics</div>
+    <div style="font-size: 0.95rem; color: var(--text-secondary);">Real-Time Analytics + AI/ML</div>
+  </div>
+</div>
 </div>
 
 <hr>
