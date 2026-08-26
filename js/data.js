@@ -1967,7 +1967,19 @@ const SUBJECTS = [
           ],
           enum: [
             {
-              question: "Enumerate the 4 types of analytics.",
+              question: "What are the 5 parts of a SMART objective?",
+              requiredAnswerCount: 5,
+              ordered: true,
+              accept: [
+                ["specific"],
+                ["measurable"],
+                ["attainable"],
+                ["result-oriented", "result oriented"],
+                ["time-bounded", "time bounded", "timebound"]
+              ]
+            },
+            {
+              question: "What are the 4 types of Data Analytics?",
               requiredAnswerCount: 4,
               ordered: false,
               accept: [
@@ -1978,7 +1990,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 7 steps of the Data Analytics Process.",
+              question: "What are the 7 steps of the Data Analytics Process?",
               requiredAnswerCount: 7,
               ordered: true,
               accept: [
@@ -1992,7 +2004,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 5 Vs of Big Data.",
+              question: "What are the 5 Vs of Big Data?",
               requiredAnswerCount: 5,
               ordered: false,
               accept: [
@@ -2004,9 +2016,9 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 3 levels of organizational decision-making.",
+              question: "What are the 3 levels of organizational decision-making?",
               requiredAnswerCount: 3,
-              ordered: false,
+              ordered: true,
               accept: [
                 ["strategic"],
                 ["tactical"],
@@ -2014,7 +2026,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 3 areas in the data-driven career hierarchy.",
+              question: "What are the 3 areas in the data-driven career hierarchy?",
               requiredAnswerCount: 3,
               ordered: true,
               accept: [
@@ -2024,7 +2036,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 3 periods in the evolution of Data Analytics.",
+              question: "What are the 3 periods in the evolution of Data Analytics?",
               requiredAnswerCount: 3,
               ordered: true,
               accept: [
@@ -2034,61 +2046,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate 4 technologies/concepts from Early Data Processing.",
-              requiredAnswerCount: 4,
-              ordered: false,
-              accept: [
-                ["mainframe computers", "mainframes", "mainframe"],
-                ["batch processing"],
-                ["punch cards", "punch card"],
-                ["cobol"],
-                ["early hierarchical databases", "hierarchical databases"],
-                ["flat file databases", "flat-file databases", "flat files"],
-                ["basic reporting"]
-              ]
-            },
-            {
-              question: "Enumerate 4 technologies/concepts associated with Business Intelligence.",
-              requiredAnswerCount: 4,
-              ordered: false,
-              accept: [
-                ["relational databases", "relational database"],
-                ["data warehousing", "data warehouse"],
-                ["etl pipelines", "etl pipeline", "etl"],
-                ["olap"],
-                ["multi-dimensional analysis", "multidimensional analysis"],
-                ["structured reporting dashboards", "reporting dashboards"]
-              ]
-            },
-            {
-              question: "Enumerate 4 technologies/concepts associated with Big Data & Advanced Analytics.",
-              requiredAnswerCount: 4,
-              ordered: false,
-              accept: [
-                ["cloud platforms", "cloud platform", "cloud"],
-                ["distributed computing"],
-                ["hadoop"],
-                ["spark"],
-                ["real-time streaming", "real time streaming", "realtime streaming"],
-                ["unstructured data handling"],
-                ["ai", "artificial intelligence"],
-                ["machine learning", "ml"],
-                ["ai/ml models", "ai/ml"]
-              ]
-            },
-            {
-              question: "Enumerate the 4 data collection sources mentioned in the lesson.",
-              requiredAnswerCount: 4,
-              ordered: false,
-              accept: [
-                ["databases", "database"],
-                ["surveys", "survey"],
-                ["sensors", "sensor"],
-                ["apis", "api"]
-              ]
-            },
-            {
-              question: "Enumerate the 3 classifications of data by structure: the type with strict rows and columns, the type using key-value pairs or tags, and the type without a predefined schema.",
+              question: "What are the 3 types of data based on structure?",
               requiredAnswerCount: 3,
               ordered: false,
               accept: [
@@ -2098,7 +2056,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 classifications of data by nature: one described by characteristics or labels, and the other represented by numbers.",
+              question: "What are the 2 types of data based on nature?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2107,7 +2065,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 classifications of data by source: data collected firsthand for a specific purpose, and data obtained from existing sources.",
+              question: "What are the 2 types of data based on source?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2116,7 +2074,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 classifications of data by origin: data generated from within an organization, and data acquired from outside the organization.",
+              question: "What are the 2 types of data based on origin?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2125,7 +2083,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 4 levels of measurement: named categories without order, ranked categories, equal intervals without a true zero, and equal intervals with a meaningful zero.",
+              question: "What are the 4 levels of measurement?",
               requiredAnswerCount: 4,
               ordered: true,
               accept: [
@@ -2136,7 +2094,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 6 dimensions of Data Quality, including whether data is consistent, unique, timely, valid, accurate, and complete.",
+              question: "What are the 6 dimensions of Data Quality?",
               requiredAnswerCount: 6,
               ordered: false,
               accept: [
@@ -2149,7 +2107,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 3 approaches to handling missing values: removing rows, filling with statistical metrics, and using algorithms to guess the value.",
+              question: "What are the 3 methods for handling missing values?",
               requiredAnswerCount: 3,
               ordered: false,
               accept: [
@@ -2159,7 +2117,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 3 statistical methods for missing-value imputation.",
+              question: "What are the 3 statistical methods for imputing missing values?",
               requiredAnswerCount: 3,
               ordered: false,
               accept: [
@@ -2169,7 +2127,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 methods used to identify outliers: measuring standard deviations from the mean, and using the spread between quartiles.",
+              question: "What are the 2 methods commonly used to identify outliers?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2178,7 +2136,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 categorical encoding techniques: creating binary columns for each category, and assigning a unique integer to each category.",
+              question: "What are the 2 categorical encoding techniques?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2187,7 +2145,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 scaling techniques: shifting values to a specific range like 0 to 1, and centering data around a mean of 0.",
+              question: "What are the 2 data scaling techniques?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
@@ -2196,34 +2154,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 main types of data based on nature.",
-              requiredAnswerCount: 2,
-              ordered: false,
-              accept: [
-                ["qualitative"],
-                ["quantitative"]
-              ]
-            },
-            {
-              question: "Enumerate the 2 types of data based on source.",
-              requiredAnswerCount: 2,
-              ordered: false,
-              accept: [
-                ["primary"],
-                ["secondary"]
-              ]
-            },
-            {
-              question: "Enumerate the 2 types of data based on origin.",
-              requiredAnswerCount: 2,
-              ordered: false,
-              accept: [
-                ["internal"],
-                ["external"]
-              ]
-            },
-            {
-              question: "Enumerate the 3 concepts that form the foundation of how data is transformed into meaningful understanding and actionable insights.",
+              question: "What are the 3 levels of the Data-Information-Knowledge hierarchy?",
               requiredAnswerCount: 3,
               ordered: true,
               accept: [
@@ -2233,56 +2164,33 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "Enumerate the 2 variables used in the Slovin-Yamane Formula.",
+              question: "What are the 2 formulas used to determine sample size?",
               requiredAnswerCount: 2,
               ordered: false,
               accept: [
-                ["n", "population", "population (n)"],
-                ["e", "margin of error"]
+                ["slovin-yamane", "slovin yamane", "slovin"],
+                ["cochran", "cochran formula"]
               ]
             },
             {
-              question: "Enumerate the 4 variables used in the Cochran Formula.",
+              question: "What are the 3 common confidence levels and their Z-scores?",
+              requiredAnswerCount: 3,
+              ordered: false,
+              accept: [
+                ["90% = 1.645", "90 = 1.645", "1.645"],
+                ["95% = 1.96", "95 = 1.96", "1.96"],
+                ["99% = 2.576", "99 = 2.576", "2.576"]
+              ]
+            },
+            {
+              question: "What are the 4 common sources of data?",
               requiredAnswerCount: 4,
               ordered: false,
               accept: [
-                ["z", "z-score", "z score", "critical score"],
-                ["p", "estimated proportion"],
-                ["q", "1-p", "1 - p"],
-                ["e", "precision", "margin of error"]
-              ]
-            },
-            {
-              question: "Enumerate the 3 common confidence levels used with their Z-scores.",
-              requiredAnswerCount: 3,
-              ordered: false,
-              accept: [
-                ["90% = 1.645", "90 = 1.645", "1.645", "90%"],
-                ["95% = 1.96", "95 = 1.96", "1.96", "95%"],
-                ["99% = 2.576", "99 = 2.576", "2.576", "99%"]
-              ]
-            },
-            {
-              question: "Enumerate 6 business applications of Data Analytics.",
-              requiredAnswerCount: 6,
-              ordered: false,
-              accept: [
-                ["customer segmentation"],
-                ["demand forecasting"],
-                ["automated fraud detection", "fraud detection"],
-                ["operational bottleneck reduction", "bottleneck reduction"],
-                ["marketing roi evaluation", "marketing roi"],
-                ["new product development", "product development"]
-              ]
-            },
-            {
-              question: "Enumerate the 3 types of data structure.",
-              requiredAnswerCount: 3,
-              ordered: false,
-              accept: [
-                ["structured"],
-                ["semi-structured", "semi structured", "semistructured"],
-                ["unstructured"]
+                ["databases", "database"],
+                ["surveys", "survey"],
+                ["sensors", "sensor"],
+                ["apis", "api"]
               ]
             }
           ]

@@ -438,10 +438,15 @@ function renderExamContent() {
 function renderInteractiveReviewer(container, originalQuestions) {
   let score = 0;
   let answeredCount = 0;
+  let currentMcqIndex = 0;
 
   // Deep clone and shuffle questions
   const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
 
+  // Track answered state per question
+  const answeredFlags = new Array(questions.length).fill(false);
+
+  // Render shell: header + layout (main + navigator)
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
       <h3 style="margin: 0;">Part I. Multiple Choice</h3>
@@ -449,11 +454,33 @@ function renderInteractiveReviewer(container, originalQuestions) {
         Score: <span class="mcq-score" style="color: var(--accent);">0</span> / ${questions.length}
       </div>
     </div>
-    <div class="mcq-quiz-container"></div>
+    <div class="enum-layout">
+      <div class="enum-main">
+        <div class="enum-question-indicator"></div>
+        <div class="mcq-quiz-container"></div>
+        <div class="enum-prev-next">
+          <button class="enum-prev-btn">← Previous</button>
+          <button class="enum-next-btn">Next →</button>
+        </div>
+      </div>
+      <div class="enum-navigator">
+        <div class="enum-navigator-title">Questions</div>
+        <div class="enum-nav-grid"></div>
+        <button class="quiz-restart-btn" style="width: 100%; margin-top: 14px;">Restart Quiz</button>
+      </div>
+    </div>
   `;
   
   const quizContainer = container.querySelector('.mcq-quiz-container');
   const scoreDisplay = container.querySelector('.mcq-score');
+  const indicator = container.querySelector('.enum-question-indicator');
+  const prevBtn = container.querySelector('.enum-prev-btn');
+  const nextBtn = container.querySelector('.enum-next-btn');
+  const navGrid = container.querySelector('.enum-nav-grid');
+  const restartBtn = container.querySelector('.quiz-restart-btn');
+
+  // Build all question containers
+  const questionEls = [];
 
   questions.forEach((q, qIndex) => {
     // Keep track of the correct answer text before shuffling
@@ -465,12 +492,13 @@ function renderInteractiveReviewer(container, originalQuestions) {
 
     const qContainer = document.createElement('div');
     qContainer.className = 'quiz-question-container';
+    qContainer.style.display = 'none';
     
     const qText = document.createElement('div');
     qText.className = 'quiz-question-text';
     // Remove old manual numbering from q.question if it exists, and re-number based on new order
     const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
-    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
+    qText.textContent = rawQuestionText;
     qContainer.appendChild(qText);
     
     const optionsList = document.createElement('div');
@@ -491,6 +519,7 @@ function renderInteractiveReviewer(container, originalQuestions) {
         allBtns.forEach(b => b.disabled = true);
         
         answeredCount++;
+        answeredFlags[qIndex] = true;
         
         if (optIndex === newCorrectIndex) {
           btn.classList.add('quiz-option-correct');
@@ -503,6 +532,9 @@ function renderInteractiveReviewer(container, originalQuestions) {
           }
         }
 
+        // Update navigator button state
+        updateNavButtons();
+
         // Check if finished
         if (answeredCount === questions.length) {
           const pct = Math.round((score / questions.length) * 100);
@@ -513,8 +545,12 @@ function renderInteractiveReviewer(container, originalQuestions) {
           finalFeedback.style.border = '1px solid var(--border)';
           finalFeedback.style.borderRadius = 'var(--radius-md)';
           finalFeedback.style.textAlign = 'center';
+          finalFeedback.className = 'mcq-final-feedback';
           finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
           <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+          // Remove any existing final feedback first
+          const existing = quizContainer.querySelector('.mcq-final-feedback');
+          if (existing) existing.remove();
           quizContainer.appendChild(finalFeedback);
         }
       };
@@ -524,16 +560,67 @@ function renderInteractiveReviewer(container, originalQuestions) {
     
     qContainer.appendChild(optionsList);
     quizContainer.appendChild(qContainer);
+    questionEls.push(qContainer);
   });
-  
-  const restartBtn = document.createElement('button');
-  restartBtn.className = 'quiz-restart-btn';
-  restartBtn.textContent = 'Restart Quiz';
+
+  // Build navigator buttons
+  const navButtons = [];
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'enum-nav-btn';
+    btn.textContent = i + 1;
+    btn.onclick = () => goToQuestion(i);
+    navGrid.appendChild(btn);
+    navButtons.push(btn);
+  });
+
+  function updateNavButtons() {
+    navButtons.forEach((btn, i) => {
+      btn.classList.toggle('active', i === currentMcqIndex);
+      btn.classList.toggle('answered', answeredFlags[i]);
+    });
+  }
+
+  function updatePrevNext() {
+    prevBtn.disabled = currentMcqIndex === 0;
+    if (currentMcqIndex === questions.length - 1) {
+      nextBtn.textContent = 'Finish ✓';
+    } else {
+      nextBtn.textContent = 'Next →';
+    }
+  }
+
+  function goToQuestion(index) {
+    if (index < 0 || index >= questions.length) return;
+    questionEls[currentMcqIndex].style.display = 'none';
+    currentMcqIndex = index;
+    questionEls[currentMcqIndex].style.display = '';
+    indicator.textContent = `Question ${currentMcqIndex + 1} of ${questions.length}`;
+    updateNavButtons();
+    updatePrevNext();
+  }
+
+  prevBtn.onclick = () => goToQuestion(currentMcqIndex - 1);
+  nextBtn.onclick = () => {
+    if (currentMcqIndex < questions.length - 1) {
+      goToQuestion(currentMcqIndex + 1);
+    } else {
+      // On last question, scroll to show final feedback if quiz is complete
+      const finalEl = quizContainer.querySelector('.mcq-final-feedback');
+      if (finalEl) {
+        finalEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
+  // Show the first question
+  goToQuestion(0);
+
+  // Restart button
   restartBtn.onclick = () => {
     renderInteractiveReviewer(container, originalQuestions);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  container.appendChild(restartBtn);
 }
 
 function renderInteractiveIdent(container, originalQuestions) {
@@ -640,11 +727,15 @@ function renderInteractiveIdent(container, originalQuestions) {
 function renderInteractiveEnum(container, originalQuestions) {
   let score = 0;
   let answeredCount = 0;
+  let currentEnumIndex = 0;
 
   // Deep clone and shuffle
   const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
 
-  // Render Header & Score
+  // Track answered state per question
+  const answeredFlags = new Array(questions.length).fill(false);
+
+  // Render shell: header + layout (main + navigator)
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
       <h3 style="margin: 0;">Part II. Enumeration</h3>
@@ -652,64 +743,87 @@ function renderInteractiveEnum(container, originalQuestions) {
         Score: <span class="enum-score" style="color: var(--accent);">0</span> / ${questions.length}
       </div>
     </div>
-    <div class="enum-quiz-container"></div>
+    <div class="enum-layout">
+      <div class="enum-main">
+        <div class="enum-question-indicator"></div>
+        <div class="enum-quiz-container"></div>
+        <div class="enum-prev-next">
+          <button class="enum-prev-btn">← Previous</button>
+          <button class="enum-next-btn">Next →</button>
+        </div>
+      </div>
+      <div class="enum-navigator">
+        <div class="enum-navigator-title">Questions</div>
+        <div class="enum-nav-grid"></div>
+        <button class="quiz-restart-btn" style="width: 100%; margin-top: 14px;">Restart Quiz</button>
+      </div>
+    </div>
   `;
-  
+
   const quizContainer = container.querySelector('.enum-quiz-container');
   const scoreDisplay = container.querySelector('.enum-score');
-  
+  const indicator = container.querySelector('.enum-question-indicator');
+  const prevBtn = container.querySelector('.enum-prev-btn');
+  const nextBtn = container.querySelector('.enum-next-btn');
+  const navGrid = container.querySelector('.enum-nav-grid');
+  const restartBtn = container.querySelector('.quiz-restart-btn');
+
+  // Build all question containers
+  const questionEls = [];
+
   questions.forEach((q, qIndex) => {
     const qContainer = document.createElement('div');
     qContainer.className = 'quiz-question-container';
-    
+    qContainer.style.display = 'none';
+
     const qText = document.createElement('div');
     qText.className = 'quiz-question-text';
     const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
-    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
+    qText.textContent = rawQuestionText;
     qContainer.appendChild(qText);
-    
+
     const inputGroup = document.createElement('div');
     inputGroup.className = 'ident-input-group';
     inputGroup.style.display = 'flex';
     inputGroup.style.flexDirection = 'column';
     inputGroup.style.gap = '8px';
-    
+
     const inputs = [];
     for (let i = 0; i < q.requiredAnswerCount; i++) {
       const row = document.createElement('div');
       row.style.display = 'flex';
       row.style.alignItems = 'center';
       row.style.gap = '8px';
-      
+
       const numLabel = document.createElement('span');
       numLabel.textContent = `${i + 1}.`;
       numLabel.style.fontWeight = '600';
       numLabel.style.color = 'var(--text-secondary)';
       numLabel.style.minWidth = '20px';
-      
+
       const input = document.createElement('input');
       input.type = 'text';
-      input.className = 'ident-input'; 
+      input.className = 'ident-input';
       input.placeholder = `Enter answer ${i + 1}`;
       input.style.flex = '1';
-      
+
       inputs.push(input);
       row.appendChild(numLabel);
       row.appendChild(input);
       inputGroup.appendChild(row);
     }
-    
+
     const actionGroup = document.createElement('div');
     actionGroup.style.marginTop = '12px';
-    
+
     const checkBtn = document.createElement('button');
-    checkBtn.className = 'ident-check-btn'; 
+    checkBtn.className = 'ident-check-btn';
     checkBtn.textContent = 'Check Answer';
-    
+
     const feedback = document.createElement('div');
     feedback.className = 'ident-feedback';
     feedback.style.marginTop = '8px';
-    
+
     const normalize = (str) => {
       const normalized = str.trim().toLowerCase().replace(/\\s+/g, ' ');
       const noPunct = normalized.replace(/[^\\w\\s]/g, '');
@@ -720,15 +834,15 @@ function renderInteractiveEnum(container, originalQuestions) {
       const userNorm = normalize(userStr);
       return acceptedVariants.some(variant => {
         const variantNorm = normalize(variant);
-        return variantNorm.normalized === userNorm.normalized || 
+        return variantNorm.normalized === userNorm.normalized ||
                variantNorm.noPunct === userNorm.noPunct;
       });
     };
-    
+
     checkBtn.onclick = () => {
       let correctCount = 0;
       const usedExpectedIndices = new Set();
-      
+
       if (q.ordered) {
         inputs.forEach((input, i) => {
           const val = input.value;
@@ -752,8 +866,8 @@ function renderInteractiveEnum(container, originalQuestions) {
            }
            let foundMatch = false;
            for (let j = 0; j < q.accept.length; j++) {
-              if (usedExpectedIndices.has(j)) continue; 
-              
+              if (usedExpectedIndices.has(j)) continue;
+
               if (isMatch(val, q.accept[j])) {
                  foundMatch = true;
                  usedExpectedIndices.add(j);
@@ -768,11 +882,12 @@ function renderInteractiveEnum(container, originalQuestions) {
            }
         });
       }
-      
+
       inputs.forEach(input => input.disabled = true);
       checkBtn.disabled = true;
       answeredCount++;
-      
+      answeredFlags[qIndex] = true;
+
       if (correctCount === q.requiredAnswerCount) {
         score++;
         scoreDisplay.textContent = score;
@@ -782,7 +897,10 @@ function renderInteractiveEnum(container, originalQuestions) {
         feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ You got ${correctCount} out of ${q.requiredAnswerCount} correct.</span>
         <div style="margin-top: 4px; font-size: 0.85rem; color: var(--text-secondary);">Expected answers: ${expectedSummary}</div>`;
       }
-      
+
+      // Update navigator button state
+      updateNavButtons();
+
       if (answeredCount === questions.length) {
          const pct = Math.round((score / questions.length) * 100);
          const finalFeedback = document.createElement('div');
@@ -792,12 +910,16 @@ function renderInteractiveEnum(container, originalQuestions) {
          finalFeedback.style.border = '1px solid var(--border)';
          finalFeedback.style.borderRadius = 'var(--radius-md)';
          finalFeedback.style.textAlign = 'center';
+         finalFeedback.className = 'enum-final-feedback';
          finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
          <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+         // Remove any existing final feedback first
+         const existing = quizContainer.querySelector('.enum-final-feedback');
+         if (existing) existing.remove();
          quizContainer.appendChild(finalFeedback);
       }
     };
-    
+
     inputs.forEach((input, i) => {
       input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter') {
@@ -809,23 +931,78 @@ function renderInteractiveEnum(container, originalQuestions) {
         }
       });
     });
-    
+
     actionGroup.appendChild(checkBtn);
     qContainer.appendChild(inputGroup);
     qContainer.appendChild(actionGroup);
     qContainer.appendChild(feedback);
-    
+
     quizContainer.appendChild(qContainer);
+    questionEls.push(qContainer);
   });
-  
-  const restartBtn = document.createElement('button');
-  restartBtn.className = 'quiz-restart-btn';
-  restartBtn.textContent = 'Restart Quiz';
+
+  // Build navigator buttons
+  const navButtons = [];
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'enum-nav-btn';
+    btn.textContent = i + 1;
+    btn.onclick = () => goToQuestion(i);
+    navGrid.appendChild(btn);
+    navButtons.push(btn);
+  });
+
+  function updateNavButtons() {
+    navButtons.forEach((btn, i) => {
+      btn.classList.toggle('active', i === currentEnumIndex);
+      btn.classList.toggle('answered', answeredFlags[i]);
+    });
+  }
+
+  function updatePrevNext() {
+    prevBtn.disabled = currentEnumIndex === 0;
+    if (currentEnumIndex === questions.length - 1) {
+      nextBtn.textContent = 'Finish ✓';
+    } else {
+      nextBtn.textContent = 'Next →';
+    }
+  }
+
+  function goToQuestion(index) {
+    if (index < 0 || index >= questions.length) return;
+    questionEls[currentEnumIndex].style.display = 'none';
+    currentEnumIndex = index;
+    questionEls[currentEnumIndex].style.display = '';
+    indicator.textContent = `Question ${currentEnumIndex + 1} of ${questions.length}`;
+    updateNavButtons();
+    updatePrevNext();
+
+    // Focus first non-disabled input of the new question
+    const firstInput = questionEls[currentEnumIndex].querySelector('.ident-input:not(:disabled)');
+    if (firstInput) firstInput.focus();
+  }
+
+  prevBtn.onclick = () => goToQuestion(currentEnumIndex - 1);
+  nextBtn.onclick = () => {
+    if (currentEnumIndex < questions.length - 1) {
+      goToQuestion(currentEnumIndex + 1);
+    } else {
+      // On last question, scroll to show final feedback if quiz is complete
+      const finalEl = quizContainer.querySelector('.enum-final-feedback');
+      if (finalEl) {
+        finalEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
+  // Show the first question
+  goToQuestion(0);
+
+  // Restart button
   restartBtn.onclick = () => {
     renderInteractiveEnum(container, originalQuestions);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  container.appendChild(restartBtn);
 }
 
 function switchTab(tab) {

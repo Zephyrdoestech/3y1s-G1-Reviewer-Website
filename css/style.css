@@ -1203,6 +1203,148 @@ a:hover { text-decoration: underline; }
   line-height: 1.4;
 }
 
+/* ── Enumeration One-at-a-Time Layout ── */
+.enum-layout {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.enum-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.enum-navigator {
+  position: sticky;
+  top: 1rem;
+  flex-shrink: 0;
+  width: 180px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.enum-navigator-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.enum-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.enum-nav-btn {
+  width: 100%;
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s var(--easing);
+  padding: 0;
+}
+
+.enum-nav-btn:hover {
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+.enum-nav-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.enum-nav-btn.answered {
+  background: var(--success-light);
+  border-color: var(--success);
+  color: var(--success);
+}
+
+.enum-nav-btn.answered.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.enum-question-indicator {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.enum-prev-next {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  gap: 0.75rem;
+}
+
+.enum-prev-btn,
+.enum-next-btn {
+  padding: 9px 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s var(--easing);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.enum-prev-btn:hover:not(:disabled),
+.enum-next-btn:hover:not(:disabled) {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+}
+
+.enum-prev-btn:disabled,
+.enum-next-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.enum-next-btn {
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .enum-layout {
+    flex-direction: column;
+  }
+
+  .enum-navigator {
+    position: static;
+    width: 100%;
+    order: -1;
+  }
+
+  .enum-nav-grid {
+    grid-template-columns: repeat(auto-fill, minmax(34px, 1fr));
+  }
+}
+
 /* ============================================================
    DATA ANALYTICS NOTES — Custom Components
    ============================================================ */
