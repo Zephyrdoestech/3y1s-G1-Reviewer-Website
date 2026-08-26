@@ -444,7 +444,7 @@ function renderInteractiveReviewer(container, originalQuestions) {
   const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
 
   // Track answered state per question
-  const answeredFlags = new Array(questions.length).fill(false);
+  const answeredFlags = new Array(questions.length).fill(null);
 
   // Render shell: header + layout (main + navigator)
   container.innerHTML = `
@@ -504,6 +504,9 @@ function renderInteractiveReviewer(container, originalQuestions) {
     const optionsList = document.createElement('div');
     optionsList.className = 'quiz-options-list';
     
+    let selectedOptionIndex = -1;
+    let isAnswered = false;
+    
     const letterPrefixes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 
     q.options.forEach((optText, optIndex) => {
@@ -514,51 +517,81 @@ function renderInteractiveReviewer(container, originalQuestions) {
       btn.textContent = `${letterPrefixes[optIndex] || ''}. ${rawOptText}`;
       
       btn.onclick = () => {
-        // Lock all options for this question
+        if (isAnswered) return;
+        
         const allBtns = optionsList.querySelectorAll('.quiz-option-btn');
-        allBtns.forEach(b => b.disabled = true);
+        allBtns.forEach(b => b.classList.remove('quiz-option-selected'));
+        btn.classList.add('quiz-option-selected');
         
-        answeredCount++;
-        answeredFlags[qIndex] = true;
-        
-        if (optIndex === newCorrectIndex) {
-          btn.classList.add('quiz-option-correct');
-          score++;
-          scoreDisplay.textContent = score;
-        } else {
-          btn.classList.add('quiz-option-incorrect');
-          if (allBtns[newCorrectIndex]) {
-            allBtns[newCorrectIndex].classList.add('quiz-option-correct');
-          }
-        }
-
-        // Update navigator button state
-        updateNavButtons();
-
-        // Check if finished
-        if (answeredCount === questions.length) {
-          const pct = Math.round((score / questions.length) * 100);
-          const finalFeedback = document.createElement('div');
-          finalFeedback.style.marginTop = '2rem';
-          finalFeedback.style.padding = '16px';
-          finalFeedback.style.background = 'var(--surface-alt)';
-          finalFeedback.style.border = '1px solid var(--border)';
-          finalFeedback.style.borderRadius = 'var(--radius-md)';
-          finalFeedback.style.textAlign = 'center';
-          finalFeedback.className = 'mcq-final-feedback';
-          finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
-          <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
-          // Remove any existing final feedback first
-          const existing = quizContainer.querySelector('.mcq-final-feedback');
-          if (existing) existing.remove();
-          quizContainer.appendChild(finalFeedback);
-        }
+        selectedOptionIndex = optIndex;
+        checkBtn.disabled = false;
       };
       
       optionsList.appendChild(btn);
     });
     
+    const actionGroup = document.createElement('div');
+    actionGroup.style.marginTop = '12px';
+    
+    const checkBtn = document.createElement('button');
+    checkBtn.className = 'ident-check-btn';
+    checkBtn.textContent = 'Check Answer';
+    checkBtn.disabled = true;
+
+    checkBtn.onclick = () => {
+      if (selectedOptionIndex === -1 || isAnswered) return;
+      
+      isAnswered = true;
+      checkBtn.disabled = true;
+      
+      const allBtns = optionsList.querySelectorAll('.quiz-option-btn');
+      allBtns.forEach(b => b.disabled = true);
+      
+      answeredCount++;
+      answeredFlags[qIndex] = true;
+      
+      const selectedBtn = allBtns[selectedOptionIndex];
+      selectedBtn.classList.remove('quiz-option-selected');
+      
+      if (selectedOptionIndex === newCorrectIndex) {
+        answeredFlags[qIndex] = 'correct';
+        selectedBtn.classList.add('quiz-option-correct');
+        score++;
+        scoreDisplay.textContent = score;
+      } else {
+        answeredFlags[qIndex] = 'incorrect';
+        selectedBtn.classList.add('quiz-option-incorrect');
+        if (allBtns[newCorrectIndex]) {
+          allBtns[newCorrectIndex].classList.add('quiz-option-correct');
+        }
+      }
+
+      // Update navigator button state
+      updateNavButtons();
+
+      // Check if finished
+      if (answeredCount === questions.length) {
+        const pct = Math.round((score / questions.length) * 100);
+        const finalFeedback = document.createElement('div');
+        finalFeedback.style.marginTop = '2rem';
+        finalFeedback.style.padding = '16px';
+        finalFeedback.style.background = 'var(--surface-alt)';
+        finalFeedback.style.border = '1px solid var(--border)';
+        finalFeedback.style.borderRadius = 'var(--radius-md)';
+        finalFeedback.style.textAlign = 'center';
+        finalFeedback.className = 'mcq-final-feedback';
+        finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
+        <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+        // Remove any existing final feedback first
+        const existing = quizContainer.querySelector('.mcq-final-feedback');
+        if (existing) existing.remove();
+        quizContainer.appendChild(finalFeedback);
+      }
+    };
+    
+    actionGroup.appendChild(checkBtn);
     qContainer.appendChild(optionsList);
+    qContainer.appendChild(actionGroup);
     quizContainer.appendChild(qContainer);
     questionEls.push(qContainer);
   });
@@ -577,7 +610,8 @@ function renderInteractiveReviewer(container, originalQuestions) {
   function updateNavButtons() {
     navButtons.forEach((btn, i) => {
       btn.classList.toggle('active', i === currentMcqIndex);
-      btn.classList.toggle('answered', answeredFlags[i]);
+      btn.classList.toggle('correct', answeredFlags[i] === 'correct');
+      btn.classList.toggle('incorrect', answeredFlags[i] === 'incorrect');
     });
   }
 
@@ -626,9 +660,13 @@ function renderInteractiveReviewer(container, originalQuestions) {
 function renderInteractiveIdent(container, originalQuestions) {
   let score = 0;
   let answeredCount = 0;
+  let currentIdentIndex = 0;
 
   // Deep clone and shuffle
   const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
+
+  // Track answered state per question (null, 'correct', 'incorrect')
+  const answeredFlags = new Array(questions.length).fill(null);
 
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
@@ -637,19 +675,42 @@ function renderInteractiveIdent(container, originalQuestions) {
         Score: <span class="ident-score" style="color: var(--accent);">0</span> / ${questions.length}
       </div>
     </div>
-    <div class="ident-quiz-container"></div>
+    <div class="enum-layout">
+      <div class="enum-main">
+        <div class="enum-question-indicator"></div>
+        <div class="ident-quiz-container"></div>
+        <div class="enum-prev-next">
+          <button class="enum-prev-btn">← Previous</button>
+          <button class="enum-next-btn">Next →</button>
+        </div>
+      </div>
+      <div class="enum-navigator">
+        <div class="enum-navigator-title">Questions</div>
+        <div class="enum-nav-grid"></div>
+        <button class="quiz-restart-btn" style="width: 100%; margin-top: 14px;">Restart Quiz</button>
+      </div>
+    </div>
   `;
+  
   const quizContainer = container.querySelector('.ident-quiz-container');
   const scoreDisplay = container.querySelector('.ident-score');
+  const indicator = container.querySelector('.enum-question-indicator');
+  const prevBtn = container.querySelector('.enum-prev-btn');
+  const nextBtn = container.querySelector('.enum-next-btn');
+  const navGrid = container.querySelector('.enum-nav-grid');
+  const restartBtn = container.querySelector('.quiz-restart-btn');
+
+  const questionEls = [];
   
   questions.forEach((q, qIndex) => {
     const qContainer = document.createElement('div');
     qContainer.className = 'quiz-question-container';
+    qContainer.style.display = 'none';
     
     const qText = document.createElement('div');
     qText.className = 'quiz-question-text';
     const rawQuestionText = q.question.replace(/^\d+\.\s*/, '');
-    qText.textContent = `${qIndex + 1}. ${rawQuestionText}`;
+    qText.textContent = rawQuestionText;
     qContainer.appendChild(qText);
     
     const inputGroup = document.createElement('div');
@@ -662,10 +723,11 @@ function renderInteractiveIdent(container, originalQuestions) {
     
     const checkBtn = document.createElement('button');
     checkBtn.className = 'ident-check-btn';
-    checkBtn.textContent = 'Check';
+    checkBtn.textContent = 'Check Answer';
     
     const feedback = document.createElement('div');
     feedback.className = 'ident-feedback';
+    feedback.style.marginTop = '8px';
     
     checkBtn.onclick = () => {
       const val = input.value.trim().toLowerCase();
@@ -682,10 +744,14 @@ function renderInteractiveIdent(container, originalQuestions) {
         scoreDisplay.textContent = score;
         feedback.innerHTML = `<span style="color: var(--success); font-weight: 600;">✓ Correct!</span>`;
         input.classList.add('input-correct');
+        answeredFlags[qIndex] = 'correct';
       } else {
         feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ Incorrect. The correct answer is: ${q.answer}</span>`;
         input.classList.add('input-incorrect');
+        answeredFlags[qIndex] = 'incorrect';
       }
+
+      updateNavButtons();
 
       if (answeredCount === questions.length) {
         const pct = Math.round((score / questions.length) * 100);
@@ -696,8 +762,12 @@ function renderInteractiveIdent(container, originalQuestions) {
         finalFeedback.style.border = '1px solid var(--border)';
         finalFeedback.style.borderRadius = 'var(--radius-md)';
         finalFeedback.style.textAlign = 'center';
+        finalFeedback.className = 'ident-final-feedback';
         finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
         <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+        
+        const existing = quizContainer.querySelector('.ident-final-feedback');
+        if (existing) existing.remove();
         quizContainer.appendChild(finalFeedback);
       }
     };
@@ -712,16 +782,70 @@ function renderInteractiveIdent(container, originalQuestions) {
     qContainer.appendChild(feedback);
     
     quizContainer.appendChild(qContainer);
+    questionEls.push(qContainer);
   });
   
-  const restartBtn = document.createElement('button');
-  restartBtn.className = 'quiz-restart-btn';
-  restartBtn.textContent = 'Restart Quiz';
+  // Build navigator buttons
+  const navButtons = [];
+  questions.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'enum-nav-btn';
+    btn.textContent = i + 1;
+    btn.onclick = () => goToQuestion(i);
+    navGrid.appendChild(btn);
+    navButtons.push(btn);
+  });
+
+  function updateNavButtons() {
+    navButtons.forEach((btn, i) => {
+      btn.classList.toggle('active', i === currentIdentIndex);
+      btn.classList.toggle('correct', answeredFlags[i] === 'correct');
+      btn.classList.toggle('incorrect', answeredFlags[i] === 'incorrect');
+    });
+  }
+
+  function updatePrevNext() {
+    prevBtn.disabled = currentIdentIndex === 0;
+    if (currentIdentIndex === questions.length - 1) {
+      nextBtn.textContent = 'Finish ✓';
+    } else {
+      nextBtn.textContent = 'Next →';
+    }
+  }
+
+  function goToQuestion(index) {
+    if (index < 0 || index >= questions.length) return;
+    questionEls[currentIdentIndex].style.display = 'none';
+    currentIdentIndex = index;
+    questionEls[currentIdentIndex].style.display = '';
+    indicator.textContent = `Question ${currentIdentIndex + 1} of ${questions.length}`;
+    updateNavButtons();
+    updatePrevNext();
+
+    // Focus input
+    const inputEl = questionEls[currentIdentIndex].querySelector('.ident-input:not(:disabled)');
+    if (inputEl) inputEl.focus();
+  }
+
+  prevBtn.onclick = () => goToQuestion(currentIdentIndex - 1);
+  nextBtn.onclick = () => {
+    if (currentIdentIndex < questions.length - 1) {
+      goToQuestion(currentIdentIndex + 1);
+    } else {
+      const finalEl = quizContainer.querySelector('.ident-final-feedback');
+      if (finalEl) {
+        finalEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  };
+
+  // Show the first question
+  goToQuestion(0);
+
   restartBtn.onclick = () => {
     renderInteractiveIdent(container, originalQuestions);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  container.appendChild(restartBtn);
 }
 
 function renderInteractiveEnum(container, originalQuestions) {
@@ -729,18 +853,21 @@ function renderInteractiveEnum(container, originalQuestions) {
   let answeredCount = 0;
   let currentEnumIndex = 0;
 
+  // Total points instead of total questions length for the score tracker
+  const totalPoints = originalQuestions.reduce((sum, q) => sum + q.requiredAnswerCount, 0);
+
   // Deep clone and shuffle
   const questions = shuffleArray(JSON.parse(JSON.stringify(originalQuestions)));
 
   // Track answered state per question
-  const answeredFlags = new Array(questions.length).fill(false);
+  const answeredFlags = new Array(questions.length).fill(null);
 
   // Render shell: header + layout (main + navigator)
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
       <h3 style="margin: 0;">Part II. Enumeration</h3>
       <div style="font-weight: 600; font-size: 1.05rem; color: var(--text-primary);">
-        Score: <span class="enum-score" style="color: var(--accent);">0</span> / ${questions.length}
+        Score: <span class="enum-score" style="color: var(--accent);">0</span> / ${totalPoints}
       </div>
     </div>
     <div class="enum-layout">
@@ -886,23 +1013,25 @@ function renderInteractiveEnum(container, originalQuestions) {
       inputs.forEach(input => input.disabled = true);
       checkBtn.disabled = true;
       answeredCount++;
-      answeredFlags[qIndex] = true;
 
       if (correctCount === q.requiredAnswerCount) {
-        score++;
-        scoreDisplay.textContent = score;
+        answeredFlags[qIndex] = 'correct';
         feedback.innerHTML = `<span style="color: var(--success); font-weight: 600;">✓ Correct! All answers are right.</span>`;
       } else {
+        answeredFlags[qIndex] = 'incorrect';
         const expectedSummary = q.accept.map(aliases => aliases[0]).join(', ');
         feedback.innerHTML = `<span style="color: var(--warning); font-weight: 600;">✗ You got ${correctCount} out of ${q.requiredAnswerCount} correct.</span>
         <div style="margin-top: 4px; font-size: 0.85rem; color: var(--text-secondary);">Expected answers: ${expectedSummary}</div>`;
       }
 
+      score += correctCount;
+      scoreDisplay.textContent = score;
+
       // Update navigator button state
       updateNavButtons();
 
       if (answeredCount === questions.length) {
-         const pct = Math.round((score / questions.length) * 100);
+         const pct = Math.round((score / totalPoints) * 100);
          const finalFeedback = document.createElement('div');
          finalFeedback.style.marginTop = '2rem';
          finalFeedback.style.padding = '16px';
@@ -912,7 +1041,7 @@ function renderInteractiveEnum(container, originalQuestions) {
          finalFeedback.style.textAlign = 'center';
          finalFeedback.className = 'enum-final-feedback';
          finalFeedback.innerHTML = `<h3 style="margin-top: 0;">Quiz Completed</h3>
-         <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${questions.length}</strong> (${pct}%).</p>`;
+         <p style="font-size: 1.1rem; margin-bottom: 0;">Your final score is <strong>${score} / ${totalPoints}</strong> (${pct}%).</p>`;
          // Remove any existing final feedback first
          const existing = quizContainer.querySelector('.enum-final-feedback');
          if (existing) existing.remove();
@@ -955,7 +1084,8 @@ function renderInteractiveEnum(container, originalQuestions) {
   function updateNavButtons() {
     navButtons.forEach((btn, i) => {
       btn.classList.toggle('active', i === currentEnumIndex);
-      btn.classList.toggle('answered', answeredFlags[i]);
+      btn.classList.toggle('correct', answeredFlags[i] === 'correct');
+      btn.classList.toggle('incorrect', answeredFlags[i] === 'incorrect');
     });
   }
 

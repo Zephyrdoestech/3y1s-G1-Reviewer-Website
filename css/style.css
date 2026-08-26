@@ -1087,6 +1087,13 @@ a:hover { text-decoration: underline; }
   color: var(--text-primary);
 }
 
+.quiz-option-btn.quiz-option-selected {
+  background: var(--bg-secondary);
+  border-color: var(--accent);
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
 .quiz-option-btn.quiz-option-correct {
   background: var(--success-light);
   border-color: var(--success);
@@ -1271,13 +1278,20 @@ a:hover { text-decoration: underline; }
   color: #fff;
 }
 
-.enum-nav-btn.answered {
+.enum-nav-btn.correct {
   background: var(--success-light);
   border-color: var(--success);
   color: var(--success);
 }
 
-.enum-nav-btn.answered.active {
+.enum-nav-btn.incorrect {
+  background: var(--danger-light);
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+.enum-nav-btn.correct.active,
+.enum-nav-btn.incorrect.active {
   background: var(--accent);
   border-color: var(--accent);
   color: #fff;

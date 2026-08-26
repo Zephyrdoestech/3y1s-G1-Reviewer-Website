@@ -1658,38 +1658,230 @@ const SUBJECTS = [
 
 <hr>
 
-<h3>Data Preparation Techniques</h3>
-
+<h3>1. Common Data Quality Issues</h3>
 <div class="decision-tiers">
   <div class="tier-card">
-    <h5>Missing Value Imputation</h5>
-    <p>Methods: <strong>Listwise Deletion</strong>, <strong>Statistical Imputation</strong> (Mean, Median, Mode), <strong>Predictive Modeling</strong>.</p>
+    <h5>Missing Values</h5>
+    <p>Values that are absent or not recorded.<br><small>Examples: <code>#NULL!</code>, <code>#N/A</code></small></p>
   </div>
   <div class="tier-card">
-    <h5>Deduplication</h5>
-    <p>Removing identical or duplicate rows to avoid sample overrepresentation.</p>
+    <h5>Duplicate Records</h5>
+    <p>The same data entry appears more than once. Can cause overrepresentation and biased analysis.</p>
   </div>
   <div class="tier-card">
-    <h5>Outlier Handling</h5>
-    <p>Managing extreme values using <strong>Z-score</strong>, <strong>IQR</strong>, or <strong>Boxplots</strong>.</p>
+    <h5>Measurement Errors</h5>
+    <p>Errors caused by incorrect or invalid calculations or measurements.<br><small>Examples: <code>#DIV/0!</code>, <code>#REF!</code>, <code>#NUM!</code></small></p>
   </div>
   <div class="tier-card">
-    <h5>Data Transformation</h5>
-    <p>Converting data. Methods: <strong>Categorical Encoding</strong>, <strong>One-Hot Encoding</strong>, <strong>Label Encoding</strong>, <strong>Feature Engineering</strong>.</p>
+    <h5>Outliers and Anomalies</h5>
+    <p>Values that are unusually different from most observations.<br><small>Examples: <code>#VALUE!</code>, <code>#NAME?</code></small></p>
+  </div>
+  <div class="tier-card">
+    <h5>Inconsistent Formats</h5>
+    <p>Data values are stored using different formats, making the dataset difficult to analyze consistently.</p>
+  </div>
+</div>
+<div class="formula-block" style="text-align:center; padding: 10px; margin-top: 15px;">
+  <strong>Memory Cue:</strong> Common Data Quality Issues = Missing + Duplicates + Errors + Outliers + Inconsistent Formats
+</div>
+
+<hr>
+
+<h3>2. Data Preparation</h3>
+<blockquote>
+  <strong>Definition:</strong> Data Preparation is the process of transforming raw data into a clean, structured, and analysis-ready format.
+</blockquote>
+<p><span class="highlight-concept highlight-abs-zero">Important Point:</span> It is one of the most time-consuming stages in data analytics.</p>
+
+<hr>
+
+<h3>3. Core Concepts of Data Preparation</h3>
+<div class="quality-dims-grid">
+  <div class="quality-dim-card">
+    <div class="dim-number">1</div>
+    <div class="dim-body"><h5>Data Cleaning</h5></div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">2</div>
+    <div class="dim-body"><h5>Missing Values Handling</h5></div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">3</div>
+    <div class="dim-body"><h5>Removing Duplicates</h5></div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">4</div>
+    <div class="dim-body"><h5>Outlier Detection</h5></div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">5</div>
+    <div class="dim-body"><h5>Data Transformation</h5></div>
+  </div>
+  <div class="quality-dim-card">
+    <div class="dim-number">6</div>
+    <div class="dim-body"><h5>Feature Scaling & Normalization</h5></div>
   </div>
 </div>
 
-<h4>Scaling & Normalization</h4>
+<hr>
+
+<h3>4. Data Cleaning</h3>
+<p><strong>Definition:</strong> The process of identifying and correcting errors, inconsistencies, and inaccuracies in datasets.</p>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Purpose</h5>
+    <ul>
+      <li>Makes data accurate and reliable.</li>
+      <li>Makes data suitable for analysis.</li>
+      <li>Improves the validity and credibility of analytical results.</li>
+    </ul>
+  </div>
+  <div class="tier-card">
+    <h5>Common Tasks</h5>
+    <ul>
+      <li>Correct data entry errors.</li>
+      <li>Standardize formats.</li>
+      <li>Remove invalid records.</li>
+    </ul>
+  </div>
+</div>
+<div class="formula-block" style="text-align:center; padding: 10px; margin-top: 15px;">
+  <strong>Remember:</strong> Data Cleaning = Find + Correct + Standardize + Remove Errors
+</div>
+
+<hr>
+
+<h3>5. Missing / Null Values Handling</h3>
+<p><strong>Definition:</strong> Missing data occurs when values are absent or were not recorded.</p>
+<p><strong>Why it matters:</strong> Unmanaged missing values can bias results and reduce model accuracy.</p>
+<h4>Common Strategies:</h4>
 <div class="five-vs-grid">
   <div class="v-card">
-    <div class="v-letter">MM</div>
-    <h5>Min-Max Normalization</h5>
-    <p>Rescales values into a fixed <strong>[0, 1]</strong> interval.</p>
+    <div class="v-letter">1</div>
+    <h5>Remove</h5>
+    <p>Remove incomplete records.</p>
   </div>
   <div class="v-card">
-    <div class="v-letter">Z</div>
-    <h5>Z-score Standardization</h5>
-    <p>Transforms values to Mean μ = 0, Standard deviation σ = 1.</p>
+    <div class="v-letter">2</div>
+    <h5>Replace</h5>
+    <p>Replace values using Mean, Median, or Mode.</p>
+  </div>
+  <div class="v-card">
+    <div class="v-letter">3</div>
+    <h5>Predict</h5>
+    <p>Predict missing values using statistical/ML models.</p>
+  </div>
+</div>
+<p><em>Important:</em> The appropriate method depends on the amount, pattern, and importance of missing data.</p>
+
+<hr>
+
+<h3>6. Removing Duplicates</h3>
+<p><strong>Definition:</strong> Removing records where the same data entry appears more than once.</p>
+<p><strong>Why remove duplicates?</strong></p>
+<ul>
+  <li>Prevents overrepresentation, biased analysis, and incorrect insights.</li>
+  <li>Helps ensure each observation represents a unique real-world entity.</li>
+  <li>Maintains data integrity and analytical accuracy.</li>
+</ul>
+<div class="formula-block" style="text-align:center; padding: 10px; margin-top: 15px;">
+  <strong>Remember:</strong> Duplicates = Same record repeated → possible bias
+</div>
+
+<hr>
+
+<h3>7. Outlier Detection</h3>
+<p><strong>Definition:</strong> Outliers are extreme or unusual values that differ significantly from most data points.</p>
+<p><strong>Purpose:</strong> Detecting outliers can improve model robustness and analytical reliability.</p>
+<p><span class="highlight-concept highlight-no-zero">Important:</span> Investigate outliers before removing them. Do not automatically delete an outlier because it may contain valuable information.</p>
+<h4>Common Detection Methods:</h4>
+<ul>
+  <li>Z-score analysis</li>
+  <li>Interquartile Range (IQR)</li>
+  <li>Boxplots</li>
+  <li>Scatterplots</li>
+</ul>
+
+<hr>
+
+<h3>8. Data Transformation</h3>
+<p><strong>Definition:</strong> The process of converting data into a format suitable for analysis or modeling.</p>
+<p><strong>Why transform data?</strong> Improves compatibility with statistical and ML algorithms, interpretability, and predictive performance.</p>
+<h4>Common Techniques:</h4>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Categorical Encoding</h5>
+    <p>Label Encoding, One-Hot Encoding.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Aggregation / Grouping</h5>
+    <p>Summarizing data groups.</p>
+  </div>
+  <div class="tier-card">
+    <h5>Feature Engineering</h5>
+    <p>Creating new meaningful features.</p>
+  </div>
+</div>
+<div class="formula-block" style="text-align:center; padding: 10px; margin-top: 15px;">
+  <strong>Remember:</strong> Data Transformation = Convert data into a form that is easier and more suitable to analyze.
+</div>
+
+<hr>
+
+<h3>9. Feature Scaling & Normalization</h3>
+<p><strong>Definition:</strong> Techniques used to put numeric variables on a comparable scale.</p>
+<p><strong>Why is scaling important?</strong> Prevents features with large numeric ranges from dominating models. Improves performance of distance-based and gradient-based algorithms.</p>
+
+<div class="table-responsive">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Method</th>
+        <th>Main Idea</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Normalization (Min-Max)</strong></td>
+        <td>Rescales values to a fixed range. Common range: <strong>0 to 1</strong>.</td>
+      </tr>
+      <tr>
+        <td><strong>Standardization (Z-score)</strong></td>
+        <td>Centers values around the mean with unit variance.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+
+<h3>FINAL QUICK REVIEW</h3>
+<div class="decision-tiers">
+  <div class="tier-card">
+    <h5>Data Quality Issues</h5>
+    <p>→ Missing Values<br>→ Duplicate Records<br>→ Measurement Errors<br>→ Outliers & Anomalies<br>→ Inconsistent Formats</p>
+  </div>
+  <div class="tier-card">
+    <h5>Data Preparation</h5>
+    <p>→ Data Cleaning<br>→ Missing Values Handling<br>→ Removing Duplicates<br>→ Outlier Detection<br>→ Data Transformation<br>→ Feature Scaling & Normalization</p>
+  </div>
+</div>
+<div class="five-vs-grid" style="margin-top: 15px;">
+  <div class="v-card">
+    <h5>Missing Values</h5>
+    <p>Remove → Mean/Median/Mode → Predict</p>
+  </div>
+  <div class="v-card">
+    <h5>Outliers</h5>
+    <p>Z-score → IQR → Boxplot/Scatterplot</p>
+  </div>
+  <div class="v-card">
+    <h5>Transformation</h5>
+    <p>Encoding → Aggregation → Feature Eng</p>
+  </div>
+  <div class="v-card">
+    <h5>Scaling</h5>
+    <p>Min-Max Normalization → Z-score</p>
   </div>
 </div>
 
@@ -2015,7 +2207,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "What are the 4 types of Data Analytics?",
+              question: "What are the 4 types of Data Analytics/Analytical Methods?",
               requiredAnswerCount: 4,
               ordered: false,
               accept: [
@@ -2190,7 +2382,7 @@ const SUBJECTS = [
               ]
             },
             {
-              question: "What are the 3 levels of the Data-Information-Knowledge hierarchy?",
+              question: "Enumerate the 3 levels of the information hierarchy, starting from raw facts.",
               requiredAnswerCount: 3,
               ordered: true,
               accept: [
