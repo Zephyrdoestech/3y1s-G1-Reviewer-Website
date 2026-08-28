@@ -952,8 +952,8 @@ function renderInteractiveEnum(container, originalQuestions) {
     feedback.style.marginTop = '8px';
 
     const normalize = (str) => {
-      const normalized = str.trim().toLowerCase().replace(/\\s+/g, ' ');
-      const noPunct = normalized.replace(/[^\\w\\s]/g, '');
+      const normalized = str.trim().toLowerCase().replace(/\s+/g, ' ');
+      const noPunct = normalized.replace(/[^\w\s]/g, '');
       return { normalized, noPunct };
     };
 
@@ -1241,11 +1241,12 @@ function adminLogout() {
 function updateAdminUI() {
   const badge  = $('admin-badge');
   const footerBtn = $('footer-admin-btn');
-  if (footerBtn) footerBtn.style.display = 'none';
   if (isAdmin()) {
     badge.classList.add('visible');
+    if (footerBtn) footerBtn.style.display = 'none';
   } else {
     badge.classList.remove('visible');
+    if (footerBtn) footerBtn.style.display = '';
   }
 }
 
@@ -1321,6 +1322,22 @@ function initAdminFormEnter() {
   });
 }
 
+// ── Scroll-to-top button ────────────────────────────────────
+function initScrollToTop() {
+  const btn = $('scroll-top-btn');
+  if (!btn) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        btn.classList.toggle('visible', window.scrollY > 400);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
 // ── Boot ────────────────────────────────────────────────────
 function init() {
   initThemeAndMode();
@@ -1328,6 +1345,7 @@ function init() {
   initKeyboardSupport();
   initModalBackdropClose();
   initAdminFormEnter();
+  initScrollToTop();
   showLanding();
 }
 

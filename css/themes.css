@@ -12,8 +12,10 @@
    the font files for the active theme.
    ============================================================ */
 
-/* ── Google Fonts Imports ── */
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Space+Grotesk:wght@300..700&family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@300..800&family=Geist+Mono:wght@300..800&display=swap');
+/* ── Google Fonts ──
+   Loaded via <link> tags in index.html for non-blocking performance.
+   See: index.html <head> section.
+   ─────────────────────────────────────────────────────────── */
 
 /* ── Theme: Folio ────────────────────────────────────────────
    The Editorial Document. Deep reading aesthetic. 

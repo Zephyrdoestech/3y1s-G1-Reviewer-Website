@@ -8,11 +8,26 @@
     content="All the reviewers for G1, 1st Semester, 3rd Year, including quizzes, midterms, finals, notes, and reviewers in one place." />
   <meta name="theme-color" content="#5b4bcc" />
 
+  <!-- Open Graph -->
+  <meta property="og:title" content="Reviewer Para Tanan — 1st Sem" />
+  <meta property="og:description" content="All the reviewers you need in one place. Notes, quizzes, midterms, finals for 3rd Year, 1st Semester — G1." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/gcash-qr.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Reviewer Para Tanan — 1st Sem" />
+  <meta name="twitter:description" content="All the reviewers you need in one place. Notes, quizzes, midterms, finals for 3rd Year G1." />
+
   <title>Reviewer Para Tanan 1st Sem</title>
 
-  <!-- Preconnect for Google Fonts -->
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+
+  <!-- Google Fonts (moved from CSS @import for non-blocking load) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..800&family=Newsreader:ital,opsz,wght@0,6..72,300..800;1,6..72,300..800&family=Space+Grotesk:wght@300..700&family=Outfit:wght@300..800&family=Plus+Jakarta+Sans:wght@300..800&family=Geist+Mono:wght@300..800&display=swap" />
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/themes.css" />
@@ -96,16 +111,7 @@
             Pick an exam below or browse by subject.
           </p>
           <div style="margin-top:24px">
-            <button onclick="showApp(null)" style="
-                display:inline-flex; align-items:center; gap:10px;
-                background:var(--accent); color:#fff;
-                border:none; border-radius:100px;
-                padding:12px 24px; font-size:0.9rem; font-weight:700;
-                cursor:pointer; font-family:var(--font-sans);
-                transition:background 0.2s var(--easing), transform 0.15s var(--easing-spring);
-              " onmouseover="this.style.background='var(--accent-hover)'"
-              onmouseout="this.style.background='var(--accent)'" onmousedown="this.style.transform='scale(0.97)'"
-              onmouseup="this.style.transform='scale(1)'" aria-label="Browse all subjects">
+            <button class="hero-cta-btn" onclick="showApp(null)" aria-label="Browse all subjects">
               Browse all subjects
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                 stroke-linecap="round">
@@ -192,9 +198,8 @@
           out</button>
       </span>
 
-      <!-- Admin login button (hidden) -->
-      <button id="footer-admin-btn" class="footer-admin-btn" onclick="openAdminModal()" aria-label="Admin login"
-        style="display:none">
+      <!-- Admin login button -->
+      <button id="footer-admin-btn" class="footer-admin-btn" onclick="openAdminModal()" aria-label="Admin login">
         Admin Login
       </button>
     </div>
@@ -235,9 +240,16 @@
 
   </div>
 
+  <!-- Scroll-to-top button -->
+  <button id="scroll-top-btn" class="scroll-top-btn" aria-label="Scroll to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
   <!-- ── Scripts (data first, then app) ── -->
-  <script src="js/data.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/data.js" defer></script>
+  <script src="js/app.js" defer></script>
 
 </body>
 
